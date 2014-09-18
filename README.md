@@ -14,7 +14,7 @@ Note: All the data is Case-Sensitive. Emails, names and other values are case se
 Contacts  & Companies API
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
-|:----------|:-----------|:------|:------|:----------|:----------|
+|----------:|-----------:|------:|------:|----------:|----------:|
 |id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
 |type|Type distinguishes a contact or company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts|list|no|no| N/A|
@@ -623,7 +623,7 @@ Status 401: Unauthorised. When the user name and password fields are wrong.
 Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
-|:----|:----------|:-----|:-----|:-------|:---------|
+|----:|----------:|-----:|-----:|-------:|---------:|
 |id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
@@ -1536,3 +1536,621 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 Status 204: Note removed successfully.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format
+
+
+Tasks API
+---------
+
+|Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
+|:-------|:-----------|:---------|:--------|:-------|:----------|
+|id|Unique id generated  when task is created|Long|no|no|N/A|
+|type|Determines the type to which the task belongs. The type should be one in the given list. It is case sensitive. Should be specified as above only.|String|no|yes|CALL, EMAIL, FOLLOW_UP, MEETING, MILESTONE, SEND, TWEET, OTHER.|
+|priority_type|Determines the priority of the task. It is case sensitive. Should be specified as above only.|String|no|yes|There are 3 types of priorities HIGH, NORMAL, LOW.|
+|due|Due date of the task. It should be specified as Epoch Time.|Long|no|yes|Epoch time|
+|created_time|Creation time of task|Long|yes|no|Epoch time|
+|is_complete|Determines whether the task is completed or not. If completed then true or else false.|Boolean|no|no|true/false|
+|contacts|List of contacts related to the task. While saving we need to give the contact ids as a string array to relate them to the task.|String array|no|no|ID’s of the contacts.|
+|subject|Subject of the task.|String|no|yes|N/A|
+|entity_type|It is a read only variable. Its value is ‘task’ always.|String|yes|no|task|
+|notes|It is the list of notes related to this task. While adding a task or editing a task, we need to send the list of note id’s as a string array in order to save them.|String array|no|no|N/A|
+|progress|It is used to determine the progress of the task. (0-100%)|Int|no|no|0 to 100|
+|status|Determines the status of the task. The following are the statuses of the task.  These are case sensitive.|String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. |
+|taskOwner|It has the information about the owner of the task.|JSON object|yes|no|N/A|
+|owner_id|lId of the user who is the owner of the task. We need to send this field in the task object while adding or updating the task in order to assign the owner to the task.|Long|no|no|Id of the user(Owner)|
+
+
+##Get the list of pending tasks:
+###dev/api/tasks
+Method: GET
+
+	Retrieve all the pending tasks of all the users. It will return a list of task as a JSON Array.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript
+[
+    {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    },
+    {
+        "id": 5176288276905984,
+        "type": "EMAIL",
+        "priority_type": "LOW",
+        "due": -19800,
+        "created_time": 1409649695,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+          ...
+    }
+]
+```
+
+##Get all tasks:
+###dev/api/tasks/all
+Method: GET
+
+	Get all the tasks of all the users. It will get both pending and and completed tasks of all the users.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/all -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript
+[
+    {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    },
+    {
+        "id": 5176288276905984,
+        "type": "EMAIL",
+        "priority_type": "LOW",
+        "due": -19800,
+        "created_time": 1409649695,
+        "is_complete": true,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+          ...
+    }
+]
+```
+
+##Get the list of pending tasks depending on pending days:
+###dev/api/tasks/pending/{num-days}
+Method: GET
+
+	Retrieve the pending tasks of all the users which are given ‘num-days’ days away from the due date. It will return a list of task as a JSON Array.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/pending/3 -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript
+[
+    {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    },
+    {
+        "id": 5176288276905984,
+        "type": "EMAIL",
+        "priority_type": "LOW",
+        "due": -19800,
+        "created_time": 1409649695,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+          ...
+    }
+]
+```
+##Get the list of tasks of current user:
+###dev/api/tasks/pending/{num-days}
+Method: GET
+
+	Retrieve all tasks of the current user. It will return a list of task as a JSON Array.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/my/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript
+[
+    {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    },
+    {
+        "id": 5176288276905984,
+        "type": "EMAIL",
+        "priority_type": "LOW",
+        "due": -19800,
+        "created_time": 1409649695,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+          ...
+    }
+]
+```
+##Get the list of tasks based on given filters:
+###dev/api/tasks/fordue
+Method: GET
+
+	Retrive the list of tasks based on the given filters. The filters available or ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters start_time and end_time are the epoch time and these will filter on due date of the task.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/based?pending=true&type=EMAIL -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript
+[
+    {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    },
+    {
+        "id": 5176288276905984,
+        "type": "EMAIL",
+        "priority_type": "LOW",
+        "due": -19800,
+        "created_time": 1409649695,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+          ...
+    }
+]
+```
+
+##Get the task based on ID:
+###dev/api/tasks/{id}
+Method: GET
+
+	Get the task with the give ID.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key}
+```
+###Response:
+Status 200: Get the list of tasks.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+###Example response:
+```javascript  
+  {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": -19800,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    }
+```
+
+##Create a task:
+###dev/api/tasks
+Method: POST
+
+	Creates a new task.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+```
+###Response:
+Status 200: Task added successfully and return the newly created task as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+###Example response:
+```javascript   
+   {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": 11545245654,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "test",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    }
+```
+
+##Create a task based on Contact email:
+###dev/api/tasks/email/{email}
+Method: POST
+
+	Creates a new task and relates it to the contact having the email.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"subject" : "test", "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+```
+###Response:
+Status 200: Task added successfully and return the newly created task as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+###Example response:
+```javascript   
+   {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": 11545245654,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "test",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    }
+```
+
+##Update a task:
+###dev/api/tasks
+Method: PUT
+
+	Updates a task. We need to specify the ID of the task.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"id" : 5149503652888576", "subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT 
+```
+###Response:
+Status 200: Task updated successfully and return the newly updated task as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+###Example response:
+```javascript   
+   {
+        "id": 5149503652888576,
+        "type": "EMAIL",
+        "priority_type": "HIGH",
+        "due": 11545245654,
+        "created_time": 1409649528,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5704147139559424,
+                "type": "PERSON",
+                "created_time": 1398421585,
+                "updated_time": 1406619697,
+              ...
+            }
+        ],
+        "subject": "test",
+        "entity_type": "task",
+        "notes": [
+            
+        ],
+        "progress": 0,
+        "status": "YET_TO_START",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+          ...
+    }
+```
+
+##Delete the task based on ID:
+###dev/api/tasks/{id}
+Method: DELETE
+
+	Delete the task having the given ID.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+```
+###Response:
+Status 204: Task deleted successfully.
+Status 401: Unauthorised. When the user name and password fields are wrong.
