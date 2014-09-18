@@ -9,14 +9,14 @@ Endpoints:
 ----------
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
-Note: All the data is Case-Sensitive. Emails, names and other values are case sensitive. For example, “Test” and “test” are considered as two different words.
+Note: All the data is Case-Sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
 
 Contacts  & Companies API
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
-|----------:|-----------:|------:|------:|----------:|----------:|
+|:----------|:-----------|:------|:------|:----------|:----------|
 |id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
-|type|Type distinguishes a contact or company.|string|no|No.|Defaults to “PERSON” if not mentioned.“PERSON” or “COMPANY”|
+|type|Type distinguishes a contact or company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts|list|no|no| N/A|
 |lead_score|Score of contact|integer|no|no|Any positive integer|
 |star_value|Rating of contact (Max value 5)|short|no|no|0 to 5|
@@ -97,7 +97,7 @@ For the Response in the XML format, add the header Accept as application/xml. By
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts -H “Accept : application/xml” -v -u {email}:{apikey}```
+curl https://{domain}.agilecrm.com/dev/api/contacts -H "Accept : application/xml" -v -u {email}:{apikey}```
 
 ###Example XML response
 ```xml
@@ -167,7 +167,7 @@ For the Response in the JSON format, add the header Accept as application/json.
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts -H “Accept : application/json” 
+curl https://{domain}.agilecrm.com/dev/api/contacts -H "Accept : application/json" 
 -v -u {email}:{apikey}
 ```
 ####Example JSON response
@@ -297,7 +297,7 @@ Returns contact object which is associated given id
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H “Accept :application/xml” 
+curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application/xml" 
 -v -u {email}:{apikey}
 ```
 ###Example Response
@@ -378,7 +378,7 @@ Accepts contact object with valid id parameter in it, where ‘id’  refers the
 ###Acceptable request Representation:
 ```javascript
 {      
-	“id”:8573489754593
+	"id":8573489754593
 "star_value": "4",
       "lead_score": "92",
       "tags": ["Lead","Likely Buyer","You_can-user $special chars"],
@@ -455,7 +455,7 @@ Searches for the contact with given email address. Email address should be sent 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/xml"
--H “Content-Type :application/x-www-form-urlencoded” 
+-H "Content-Type :application/x-www-form-urlencoded" 
 -d ‘email_ids=["notifications@basecamp.com"]’
 -v -u {email}:{apikey} -X POST
 ```
@@ -474,8 +474,8 @@ Searches for the contact based on the given email address and add the given tags
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/xml"
--H “Content-Type :application/x-www-form-urlencoded” 
--d ‘email=notifications@basecamp.com&tags=[“testing”]’
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d ‘email=notifications@basecamp.com&tags=["testing"]’
 -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -492,8 +492,8 @@ Searches for the contact based on the given email address and search for the giv
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept: application/xml"
--H “Content-Type :application/x-www-form-urlencoded” 
--d ‘email=notifications@basecamp.com&tags=[“testing”]’
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d ‘email=notifications@basecamp.com&tags=["testing"]’
 -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -509,7 +509,7 @@ It is used to change the score of the contact by using the email address. If we 
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/xml" -H “Content-Type :application/x-www-form-urlencoded” 
+curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
 -d ‘email=notifications@basecamp.com&score=5’ -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -623,7 +623,7 @@ Status 401: Unauthorised. When the user name and password fields are wrong.
 Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
-|----:|----------:|-----:|-----:|-------:|---------:|
+|:----|:----------|:-----|:-----|:-------|:---------|
 |id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
@@ -636,7 +636,7 @@ Deals API
 |owner_id|owner_id represents id of domain user|string|No, write access is provided to set owner of deal|Yes|The id of the user.|
 |prefs||JSON string|||N/A|
 |contacts|Relates list of contacts to deal|List of contact.|Yes|No||
-|contact_ids|Relates list of contacts to deal. Should be sent in the request while creating and updating contact.|List of contact id.ex:  [“122”, 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
+|contact_ids|Relates list of contacts to deal. Should be sent in the request while creating and updating contact.|List of contact id.ex:  ["122", 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
 
 
 ###Deal JSON Example
@@ -665,7 +665,7 @@ Deals API
 ##Listing deals
 ###dev/api/opportunity
 Method: GET 
-Returns list of all “Deal” in the domain in JSON format, which are ordered on created time
+Returns list of all "Deal" in the domain in JSON format, which are ordered on created time
 
 ###Using curl
 ```sh
@@ -847,7 +847,7 @@ Milestones name should be same as the the one in the website and it is case sens
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\“name\” : \“deal\”,  \”contact_ids\” : [\“2358\”, \”2356\”] , \”owner_id\” : \“516\”, \“pipeline_id\” :\”43535822\”, \”milestone\” : \“milestone\”}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response Statuses:
 Status 200: Deal added successfully and return the new created deal as JSON in response.
@@ -862,7 +862,7 @@ Accepts Deal JSON. Id parameter of the deal should be specified, it indicates wh
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"name\" : \"deal\",  \”contact_ids\” : [\“2358\”,\”2356\”] , \”owner_id\” : \“516\”, \“pipeline_id\” :\”43535822\”, \”milestone\” : \“milestone\”}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\",\"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
 ```
 ###Response Statuses:
 Status 200: Deal updated successfully and return the updated deal as JSON in response.
@@ -877,7 +877,7 @@ Milestones name should be same as the the one in the website and it is case sens
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"name" : "deal", ”owner_id” : “516”, \“pipeline_id\” :\”43535822\”, \”milestone\” : \“milestone\”}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"name" : "deal", "owner_id" : "516", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 	Creates a Deals for the contact with the given email address. If there is no contact, it will not create any deal.
 
@@ -909,7 +909,7 @@ Accepts list of deal ids in post request, add deletes all deals based on list of
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: application/x-www-form-urlencoded" -d ‘{“ids” : [“123”, ”234”, ”235”]}’ -v -u {email}:{API Key} -X POST
+curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: application/x-www-form-urlencoded" -d ‘{"ids" : ["123", "234", "235"]}’ -v -u {email}:{API Key} -X POST
 ```
 ###Response Statuses:
 Status 200: Deal deleted successfully.
@@ -923,7 +923,7 @@ Method: GET
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/byMilestone -H “Accept : application/json”  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/byMilestone -H "Accept : application/json"  -v -u {email} : {API Key}
 ```
 ###Example Response :
 ```javascript
@@ -1130,7 +1130,7 @@ Method: GET
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/byPipeline/based?pipeline_id=4756437 -H “Accept : application/json”  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/byPipeline/based?pipeline_id=4756437 -H "Accept : application/json"  -v -u {email} : {API Key}
 ```
 ###Example Response :
 ```javascript
@@ -1249,7 +1249,7 @@ Method: GET
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/based?pipeline_id=4756437 -H “Accept : application/json”  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/based?pipeline_id=4756437 -H "Accept : application/json"  -v -u {email} : {API Key}
 ```
 ###Example Response :
 ```javascript
@@ -1360,18 +1360,18 @@ Method: GET
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H “Accept : application/json”  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accept : application/json"  -v -u {email} : {API Key}
 ```
 ###Example Response :
 ```javascript
 [
   {
-	“id” :		   822,
-	“name” :	   “Game Development”,
-	“created_time” :  1356325843,
-	“contacts”	 :  [
+	"id" :		   822,
+	"name" :	   "Game Development",
+	"created_time" :  1356325843,
+	"contacts"	 :  [
 {
-	id : “445”,
+	id : "445",
 	created_time : 1356315843
 	…
 }
@@ -1380,9 +1380,9 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H “Acc
 	…
    },
   {
-	“id” :		   850,
-	“name”	 :	   “Product Design”,
-	“created_time”	 : “1357794282”,
+	"id" :		   850,
+	"name"	 :	   "Product Design",
+	"created_time"	 : "1357794282",
 …	
   },
    ...
@@ -1400,29 +1400,29 @@ Method: GET
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H “Accept : application/json”  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : application/json"  -v -u {email} : {API Key}
 ```
 ###Example Response :
 ```javascript
 [
   {
-	“id” :		   822,
-	“name” :	   “Game Development”,
-	“created_time” :  1356325843,
-	“contacts”	 :  [
+	"id" :		   822,
+	"name" :	   "Game Development",
+	"created_time" :  1356325843,
+	"contacts"	 :  [
 {
-	id : “445”,
+	id : "445",
 	created_time : 1356315843
 	…
 }
 ...
      ]
-	…
+	...
    },
   {
-	“id” :		   850,
-	“name”	 :	   “Product Design”,
-	“created_time”	 : “1357794282”,
+	"id" :		   850,
+	"name"	 :	   "Product Design",
+	"created_time"	 : "1357794282",
 …	
   },
    ...
@@ -1431,3 +1431,108 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H “Accept : a
 ###Response Statuses:
 Status 200: Successfully retrieved the deals list. 
 Status 401: Unauthorised. When the user name and password fields are wrong.
+
+
+
+
+Notes API
+------------
+
+|Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
+|:----|:----------|:--------|:-----|:------|:------|
+|id|Unique id generated  when note is created|Long|no|no|N/A|
+|created_time|Creation time of note|Long|yes|no|epoch time|
+|subject|Subject of the note|String|no|yes|N/A|
+|description|Description of note|String|no|yes|N/A|
+|contact_json|list of contact ids|String array|no|no|N/A|
+
+
+##Create a note and relate to contacts :
+###/dev/api/notes
+Method: POST 
+
+Creates a note and relates it to contacts, which are sent in the note JSON contact field.
+
+###Using curl : 
+```sh
+	curl https://{domain}.agilecrm.com/dev/api/notes/ -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"subject" : " Note subject" , "description" : "Note description", "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
+```
+###Example response : 	
+```javascript
+	{
+		"id" : 80001
+		"created_time" : 1360561958,
+		"subject" : "Note subject",
+		"description" : "Note description",
+		"contacts" : ["721002"],
+"entity_type" : "note"
+	}
+```
+
+###Response Statuses:
+Status 200: Note added successfully and return the newly created note as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+##Add Note to a Contact using Email-ID:
+###dev/api/contacts/email/note/add
+Method: POST
+
+Add a note to the contact with given Email-ID. We need to email address and the note object as a url encoded form parameters to the above given URL.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: application/xml"
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d ‘email=notifications@basecamp.com&note={"subject":"test","description":"testing description"}’ -v -u {email}:{apikey} -X POST
+```
+###Response:
+Status 204: Note added successfully.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format.
+
+##Gets notes related to specific contact :
+###/dev/api/contacts/{contact_id}/notes
+Method: GET
+
+Returns list of note JSONs related to the contact. 
+
+###Using curl :
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/contacts/710002/notes -H "Accept : application/json" -v -u {email} : {API Key}
+```
+###Example response :
+```sh	
+[
+{
+		"id" : 79001,
+		"created_time" : 1360561958,
+		"subject" : "Note subject1",
+		"description" : "Note description1",
+		"contacts" : ["721002"],
+"entity_type" : "note"
+},
+{
+"id" : 80001
+		"created_time" : 1360561722,
+		"subject" : "Note subject2",
+		"description" : "Note description2",
+		"contacts" : ["721002"],
+"entity_type" : "note"
+}
+]
+```
+	
+##Delete a specific note from specific contact :
+###/dev/api/contacts/{contact_id}/notes/{note_id}
+Method: DELETE
+	Delete the note of the specific contact. It means, it will remove the relationaship between the note and the contact.
+
+###Using curl : 
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id} -H "Accept : application/json" -v -u {email} : {API Key} -X DELETE
+```
+###Response:
+Status 204: Note removed successfully.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
