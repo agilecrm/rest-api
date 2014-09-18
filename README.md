@@ -1543,7 +1543,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 |entity_type|It is a read only variable. Its value is ‘task’ always.|String|yes|no|task|
 |notes|It is the list of notes related to this task. While adding a task or editing a task, we need to send the list of note id’s as a string array in order to save them.|String array|no|no|N/A|
 |progress|It is used to determine the progress of the task. (0-100%)|Int|no|no|0 to 100|
-|- Status|Determines the - Status of the task. The following are the - Statuses of the task.  These are case sensitive.|String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. |
+|status|Determines the - Status of the task. The following are the - Statuses of the task.  These are case sensitive.|String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. |
 |taskOwner|It has the information about the owner of the task.|JSON object|yes|no|N/A|
 |owner_id|lId of the user who is the owner of the task. We need to send this field in the task object while adding or updating the task in order to assign the owner to the task.|Long|no|no|Id of the user(Owner)|
 
@@ -1586,7 +1586,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1616,7 +1616,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1664,7 +1664,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1694,7 +1694,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1742,7 +1742,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1772,7 +1772,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1819,7 +1819,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1849,7 +1849,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1898,7 +1898,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1928,7 +1928,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -1975,7 +1975,7 @@ Method: GET
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -2024,7 +2024,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -2073,7 +2073,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Con
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
@@ -2122,7 +2122,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
             
         ],
         "progress": 0,
-        "- Status": "YET_TO_START",
+        "status": "YET_TO_START",
         "taskOwner": {
             "id": 5345980119515136,
             "domain": "prabathk",
