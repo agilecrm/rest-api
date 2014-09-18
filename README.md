@@ -14,12 +14,12 @@ Note: All the data is Case-Sensitive. Emails, names and other values are case se
 1. Contacts  & Companies API
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
-|----------:|-----------:|------:|------:|----------:|----------:|
+|:----------|:-----------|:------|:------|:----------|:----------|
 |id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
 |type|Type distinguishes a contact or company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
-|tags|Unique identifiers added to contact, for easy management of contacts|list|no|no| N/A|
-|lead_score|Score of contact|integer|no|no|Any positive integer|
-|star_value|Rating of contact (Max value 5)|short|no|no|0 to 5|
+|tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| N/A|
+|lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
+|star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type SYSTEM.|List of JSON objects|no|first_name is mandator|
 
 
@@ -610,7 +610,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
-|----:|----------:|-----:|-----:|-------:|---------:|
+|:----|:----------|:-----|:-----|:-------|:---------|
 |id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
