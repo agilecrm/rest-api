@@ -12,7 +12,7 @@ All API requests should be made to: https://{domain}.agilecrm.com/dev/
 Note: All the data is Case-Sensitive. Emails, names and other values are case sensitive. For example, “Test” and “test” are considered as two different words.
 
 Contacts  & Companies API
-
+-----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |----------:|-----------:|------:|------:|----------:|----------:|
 |id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
@@ -84,9 +84,11 @@ sample jason
         	"info_json_string": "{\"logged_in_time\":1364879569,\"created_time\":1361958281}",
         	"hashedString": "81dc9bdb52d04dc20036dbd8313ed055"
     	}
-}```
+}
+```
 
-##Listing Contacts :  
+Listing Contacts :  
+--------
 ###dev/api/contacts 
 Method: GET
 
@@ -288,7 +290,8 @@ curl https://{domain}.agilecrm.com/dev/api/contacts -H “Accept : application/j
 Status 200: Gives the above JSON object in above format.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 
-##Get contact by id
+Get contact by id
+---------------
 ###dev/api/contacts/{id}
 Method: GET 
 
@@ -307,7 +310,8 @@ Returns created contact object with all parameters in it as mentioned in the abo
 Status 200: Gives the above JSON object in above format.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 
-##Creating a contact
+Creating a contact
+-----------
 ###dev/api/contacts
 Method: POST
 
@@ -367,7 +371,8 @@ Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format.
 Status 406: If the Limit of the contacts exceeded.
 
-##Updating contact
+Updating contact
+---------------------
 ###dev/api/contacts
 Method: PUT 
 
@@ -430,7 +435,8 @@ Status 200: Contact updated successfully. Returns the updated contact object in 
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format.
 
-##Delete single contact
+Delete single contact
+---------------------
 ###dev/api/contacts/{id}
 Method: DELETE
 	Deletes contact based on the id of the contact, which is  sent in request url path.
@@ -445,7 +451,8 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 Status 204: Contact deleted successfully.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 
-##Search Contact by Email
+Search Contact by Email
+---------------------
 ###dev/api/contacts/search/email
 Method: POST
 
@@ -464,7 +471,8 @@ Status 200: Gives the Contact as JSON object in above format. If email doesn’t
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the email is in wrong format.
 
-##Adding Tags to a contact based on Email:
+Adding Tags to a contact based on Email:
+-------------------------------
 ###dev/api/contacts/email/tags/add
 Method: POST
 
@@ -482,7 +490,8 @@ Status 204: Tags added successfully.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format.
 
-##Delete Tags to a contact based on Email:
+Delete Tags to a contact based on Email:
+----------------
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
@@ -500,7 +509,8 @@ Status 204: Tags deleted successfully.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format.
 
-##Add Score to a Contact using Email-ID:
+Add Score to a Contact using Email-ID:
+-----------------
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -516,7 +526,8 @@ Status 200: Score changed successfully and returns the Contact object.
 Status 401: Unauthorised. When the user name and password fields are wrong.
 Status 400: If the input is in wrong format
 
-##Get Tasks related to Contact:
+Get Tasks related to Contact:
+---------------------
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -603,5 +614,4 @@ Status 200: Returns the task list related to the contact.
 ]
 ```
 Status 401: Unauthorised. When the user name and password fields are wrong.
-
 
