@@ -2154,3 +2154,320 @@ Method: DELETE
 ###Response:
 Status 204: Task deleted successfully.
 Status 401: Unauthorised. When the user name and password fields are wrong.
+
+
+
+Events API
+------------
+
+|Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
+|:--------|:----------|:---------|:-------|:---------|:-------------|
+|id|Unique id generated  when event is created||Long|no|no|N/A|
+|created_time|Creation time of Event|Long|yes|no|Epoch time|
+|allDay|Determines whether the event lasts for the whole day or not.|Boolean|no|no|true / false|
+|contacts|List of contacts related to the event. While saving we need to give the contact ids as a string array to relate them to the event.|String array|no|no|ID’s of the contacts|
+|title|Title of the event|String|no|yes|N/A|
+|color|Color states the priority of the event.|The colors are case sensitive. Should be specified in the same case.|String|no|no|High = red, Normal = #36C, Low = green.|
+|start|Start time of Event in epoch time format.|Long|no|yes|epoch time|
+|end|End time of Event in epoch time format.|Long|no|yes|epoch time|
+|is_event_starred|It determines whether the particular event is starred or not.|Boolean|no|no|true / false|
+
+##Get List of Events:
+###dev/api/events
+Method: GET
+
+Fetches the list of events between particular time. We need send the start and end time in epoch format as query parameters.
+
+###Using curl
+	   curl https:{domain}.agilecrm.com/dev/api/events?start=1409423400&end=1413052200 -H  "Accept:application/json" -v -u {email}:{API Key}
+
+###Response:
+Status 200: Get the list of events.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+
+###Example Response:
+```javascript
+[
+    {
+        "id": 5758048710688768,
+        "start": 1409682600,
+        "end": 1409768100,
+        "is_event_starred": false,
+        "allDay": true,
+        "title": "Today Test event",
+        "color": "red",
+        "created_time": 1409569472,
+        "contacts": [
+            {
+                "id": 5716606839685120,
+                "type": "PERSON",
+                "star_value": 0,
+                "lead_score": 0,
+                "tags": [],
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "Basecamp (2Desk)"
+                    },
+                   ...
+                ],
+              ...
+            }
+        ]
+    },
+    {
+        "id": 5740240702537728,
+        "start": 1409769000,
+        "end": 1409855340,
+        "is_event_starred": false,
+        "allDay": false,
+        "title": "tlest",
+        "color": "green",
+        "created_time": 1410421808,
+        "contacts": [
+            {
+                "id": 5727217287954432,
+                "type": "PERSON",
+                "star_value": 0,
+                "lead_score": 1,
+                "tags": [
+                    "  mobile",
+                    "test"
+                ],
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "test first"
+                    }
+                   ...
+                ],
+                ...
+            }
+        ]
+    }
+]
+```
+
+##Get Events related to Contact:
+###dev/api/contacts/{contact_id}/events/sort
+Method: GET
+
+Retrieve the events related to contact sorted on the date.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H "Accept: application/xml" -v -u {email}:{apikey}
+```
+###Response:
+Status 200: Returns the events list related to the contact.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+
+###Example Response:
+```javascript
+[
+    {
+        "id": 5758048710688768,
+        "start": 1409682600,
+        "end": 1409768100,
+        "is_event_starred": false,
+        "allDay": true,
+        "title": "Today Test event",
+        "color": "red",
+        "created_time": 1409569472,
+        "contacts": [
+            {
+                "id": 5716606839685120,
+                "type": "PERSON",
+   …...                 
+            }
+        ]
+    }
+]
+```
+
+##Create Event:
+###dev/api/events
+Method: POST
+
+Create an event.
+
+###Using curl : 
+```sh
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
+```
+###Example response : 	
+```javascript
+	{
+        "id": 5758048710688768,
+        "start": 1409682600,
+        "end": 1409768100,
+        "is_event_starred": false,
+        "allDay": true,
+        "title": "Today Test event",
+        "color": "red",
+        "created_time": 1409569472,
+        "contacts": [
+            {
+                "id": 721001,
+                "type": "PERSON",
+   ...                 
+            }
+        ]
+    }
+```
+
+###Response Statuses:
+Status 200: Event added successfully and return the newly created event as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+##Update Event:
+###dev/api/events
+Method: PUT
+
+Update an event. To update the event, we should provide the event id in the request object, otherwise it will be considered as a new event.
+
+###Using curl : 
+```sh
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5758048710688768, "title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X PUT
+```
+
+###Example response : 	
+```javascript
+	{
+        "id": 5758048710688768,
+        "start": 1409682600,
+        "end": 1409768100,
+        "is_event_starred": false,
+        "allDay": true,
+        "title": "Today Test event",
+        "color": "red",
+        "created_time": 1409569472,
+        "contacts": [
+            {
+                "id": 721001,
+                "type": "PERSON",
+   ...                 
+            }
+        ]
+    }
+```
+
+###Response Statuses:
+Status 200: Event updated successfully and return the updated event as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+##Delete an Event:
+###dev/api/events/{id}
+Method: DELETE
+
+Delete the event with the particular id. The id passed in the url will be used to identify the event.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/events/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+```
+###Response:
+Status 204: Event deleted successfully.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+
+
+Track / Milestones API
+----------------------
+
+|Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
+|:---------|:----------|:---------|:--------|:--------|:--------------|
+|id|Unique id generated  when Track is created|Long|no|no|N/A|
+|name|Name of the track|String|no|yes|N/A|
+|milestones|Comma separated strings. Each string is a milestone and these are case sensitive. Should be specified in the same case. Need to specify the first letter of the track in upper case.|String|no|yes|N/A|
+
+##Get all the Tracks:
+###dev/api/milestone/pipelines
+Method: GET
+
+Get all the tracks. Each track will be having set of milestones.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Accept: application/xml" -v -u {email}:{apikey}
+```
+###Response:
+Status 200: Returns the events list related to the contact.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+
+###Example Response:
+```javascript
+[
+    {
+        "id": 5146448186310656,
+        "milestones": "Open,New,Prospect,Proposal,Won,Lost",
+        "name": "Default"
+    }
+]
+```
+
+##Create a Track:
+###dev/api/milestone/pipelines
+Method: POST
+
+Create a track. Name should not be "Default". Milestone fields should be a string with group of strings separated by comma. All the milestones first letter should be in uppercase.
+
+###Using curl : 
+```sh`
+	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"name" : "Test" , "milestone" : "Open,New,Prospect,Proposal,Won,Lost" }’ -v -u {email} : {APi Key} -X POST
+```
+###Example Response:
+```javascript
+ {
+   "id": 5146448186310656,
+   "milestones": "Open,New,Prospect,Proposal,Won,Lost",
+   "name": "Default"
+ }
+```
+###Response Statuses:
+Status 200: Track created successfully and return the newly created track as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+##Update a Track:
+###dev/api/milestone/pipelines
+Method: PUT
+
+Update a track. Name should not be "Default". Milestone fields should be a string with group of strings separated by comma. All the milestones first letter should be in uppercase. Need to specify the Id of the track in the request json to update the track. Otherwise, it will be considered as a new track.
+
+###Using curl : 
+```sh
+	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5146448186310656,
+ "name" : "Test" , "milestone" : "Open,New,Prospect,Proposal,Won,Lost" }’ -v -u {email} : {APi Key} -X PUT
+```
+
+###Example Response:
+```javascript
+ {
+   "id": 5146448186310656,
+   "milestones": "Open,New,Prospect,Proposal,Won,Lost",
+   "name": "Default"
+ }
+```
+###Response Statuses:
+Status 200: Track updated successfully and return the updated track as JSON in response.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+Status 400: If the input is in wrong format
+
+##Delete an Track:
+###dev/api/milestone/pipelines/{id}
+Method: DELETE
+
+Delete the track with the particular id. The id passed in the url will be used to identify the track.
+
+###Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/milestone/pipelines/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+```
+###Response:
+Status 204: Track deleted successfully.
+Status 401: Unauthorised. When the user name and password fields are wrong.
+
