@@ -1,15 +1,15 @@
 Authentication :
 ---------------
 
-This is HTTPS-only API. Authentication will be performed based in the email address of the user and their respective API Key.
+This is HTTPS-only API. Authentication will be performed based on the email address of the user and the respective API Key.
 
-Email and API key should be passed via HTTP Basic Authentication. Email address as username and their respective API Key as password.
+Email and API key should pass HTTP Basic Authentication. (Use email address as username and the respective API Key as password)
 
 Endpoints:
 ----------
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
-Note: All the data is Case-Sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
+Note: All the data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
 
 1. Contacts  & Companies API
 -----------------------------
@@ -91,9 +91,9 @@ sample jason
 ###dev/api/contacts 
 Method: GET
 
-Returns list of contacts in domain, which are ordered by creation time
+- returns list of contacts in domain which are ordered by creation time.
 
-For the Response in the XML format, add the header Accept as application/xml. By default, the response will be in XML format. We can apply paging using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor means the it is the end of list.
+For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. We can apply paging using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl
 ```sh
@@ -163,7 +163,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
    </contact>
 </contacts>
 ```
-For the Response in the JSON format, add the header Accept as application/json.
+For the Response in the JSON format, add the header 'Accept' as application/json.
 
 ###Using curl
 ```sh
@@ -287,13 +287,13 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
 
 ###Other available Responses:
 - Status 200: Gives the above JSON object in above format.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised (when the user name and password fields are wrong.)
 
 ##1.2 Get contact by id
 ###dev/api/contacts/{id}
 Method: GET 
 
-Returns contact object which is associated given id
+- Returns contact object which is associated with given id
 
 ###Using curl
 ```sh
@@ -302,11 +302,11 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application
 ```
 ###Example Response
 
-Returns created contact object with all parameters in it as mentioned in the above example. 
+- Returns created contact object with all parameters in it as mentioned in the above example. 
 
 ###Other available Responses:
 - Status 200: Gives the above JSON object in above format.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##1.3 Creating a contact
 ###dev/api/contacts
@@ -364,16 +364,16 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 
 ###Response:
 - Status 200: Contact added successfully. Returns the newly added contact object in the response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
-- Status 406: If the Limit of the contacts exceeded.
+- Status 406: If the limit of the contacts is exceeded.
 
 ##1.4 Updating contact
 ###dev/api/contacts
 Method: PUT 
 
 
-Accepts contact object with valid id parameter in it, where ‘id’  refers the contact to be updated.
+Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated.
 
 ###Acceptable request Representation:
 ```javascript
@@ -428,7 +428,7 @@ If there is no ID, it will considered as a new contact.
 
 ###Response:
 - Status 200: Contact updated successfully. Returns the updated contact object in the response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
 ##1.5 Delete single contact
@@ -444,13 +444,13 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 
 ###Response:
 - Status 204: Contact deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##1.6 Search Contact by Email
 ###dev/api/contacts/search/email
 Method: POST
 
-Searches for the contact with given email address. Email address should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded ). We can search for multiple contacts using their Email-Id’s.
+Searches for the contact with given email address. Email address should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded ). We can search for multiple contacts using their Email-Ids. 
 
 ###Using curl
 ```sh
@@ -462,7 +462,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 
 ###Response:
 - Status 200: Gives the Contact as JSON object in above format. If email doesn’t match, it will return an empty object.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
 ##1.7 Adding Tags to a contact based on Email:
@@ -480,14 +480,14 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 ```
 ###Response:
 - Status 204: Tags added successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
 ##1.8 Delete Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
-Searches for the contact based on the given email address and search for the given tag in the contact tags list. If the there is, then delete that tag. You can delete multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+Searches for the contact based on the given email address and search for the given tag in the contact tags list. If there is a match, then delete that tag. You can delete multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
 
 ###Using curl
 ```sh
@@ -498,14 +498,14 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 ```
 ###Response:
 - Status 204: Tags deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
 ##1.9 Add Score to a Contact using Email-ID:
 ###dev/api/contacts/add-score
 Method: POST
 
-It is used to change the score of the contact by using the email address. If we want to decrease a quantity from the existing score, then use negative values for the score parameter.
+It is used to change the score of the contact by using the email address. If you want to decrease a quantity from the existing score, then use negative values for the score parameter.
 
 ###Using curl
 ```sh
@@ -513,15 +513,15 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 -d ‘email=notifications@basecamp.com&score=5’ -v -u {email}:{apikey} -X POST
 ```
 ###Response:
-- Status 200: Score changed successfully and returns the Contact object.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 200: Score changed successfully and it returns the Contact object.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##1.10 Get Tasks related to Contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
-Retrieve the tasks related to contact sorted on the date (Latest first.).
+Retrieve the tasks related to contact sorted by the date (Latest first.).
 
 ###Using curl
 ```sh
@@ -603,7 +603,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
     }
 ]
 ```
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 
@@ -616,14 +616,14 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 |description|Brief description about deal.|string|no|No|N/A|
 |expected_value|Estimated value of a deal.|long|no|Yes|Max up to  1000000000000|
 |pipeline_id|Track id of the deal. |long|no|Yes|There should be a track with this Id.|
-|milestone|Milestone of deal (won, progress, lost..). These are depending up on the track selected. Milestones may differ based on the tracks.|String|no|Yes|MIlestone in the above mentioned track.|
+|milestone|Milestone of deal (won, progress, lost..). These depend up on the track selected. Milestones may differ based on the tracks.|String|no|Yes|MIlestone in the above mentioned track.|
 |probability||integer|no|should be ranging between 0-100| 0 to 100|
 |close_date|close date of deal|long|no|Yes|Epoch time|
 |created_time|Created time of the deal. Returns time in seconds|long|yes|No, generated automatically on deal creation|Epoch time|
 |owner_id|owner_id represents id of domain user|string|No, write access is provided to set owner of deal|Yes|The id of the user.|
 |prefs||JSON string|||N/A|
 |contacts|Relates list of contacts to deal|List of contact.|Yes|No||
-|contact_ids|Relates list of contacts to deal. Should be sent in the request while creating and updating contact.|List of contact id.ex:  ["122", 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
+|contact_ids|Relates list of contacts to deal. They Should be sent in the request while creating and updating contact.|List of contact id.ex:  ["122", 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
 
 
 ###Deal JSON Example
@@ -652,7 +652,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ##2.1 Listing deals
 ###dev/api/opportunity
 Method: GET 
-Returns list of all "Deal" in the domain in JSON format, which are ordered on created time. We can apply paging using the page_size and cursor query parameters. Count of the deals will be in the first contact and Cursor for the next page will be in the last deal of the list. If there is no cursor means the it is the end of list.
+Returns list of all "Deal" in the domain in JSON format, which are ordered on created time. We can apply paging using the page_size and cursor query parameters. Count of the deals will be in the first contact and Cursor for the next page will be in the last deal of the list. If there is no cursor means that it is the end of list.
 
 ###Using curl
 ```sh
@@ -736,7 +736,7 @@ Returns list of all "Deal" in the domain in JSON format, which are ordered on cr
 ]
 ```
 ###Other Response - Statuses:
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.2 Get deal by its id
 ###dev/api/opportunity/{id}
@@ -824,7 +824,7 @@ Method: GET
 ```
 
 ###Other Response - Statuses:
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.3 Create Deal
 ###dev/api/opportunity
@@ -838,7 +838,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 ```
 ###Response - Statuses:
 - Status 200: Deal added successfully and return the new created deal as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 
@@ -853,7 +853,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 ```
 ###Response - Statuses:
 - Status 200: Deal updated successfully and return the updated deal as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##2.4 Create Deal to a contact using Email Id
@@ -870,7 +870,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Con
 
 ###Response - Statuses:
 - Status 200: Deal added successfully and return the new created deal as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 
@@ -886,7 +886,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/{id} -H "Content-Type: ap
 ```
 ###Response - Statuses:
 - Status 200: Deal deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.6 Bulk Delete 
 ###dev/api/opportunity/bulk
@@ -900,7 +900,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: ap
 ```
 ###Response - Statuses:
 - Status 200: Deal deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.7 Get Deals from Default track separated based milestones:
 ###dev/api/opportunity/byMilestone
@@ -1106,7 +1106,7 @@ In this above example Lost, Open, Won, Stage 1 are different milestone. These ma
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.8 Get Deals for a particular Track (grouped on Milestone).
 ###dev/api/opportunity/byPipeline/based
@@ -1222,7 +1222,7 @@ In this above example Lost, Open, Won, Stage 1 are different milestone. These ma
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 
@@ -1339,7 +1339,7 @@ In this above example Lost, Open, Won, Stage 1 are different milestone. These ma
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.10 Get Deals Related To  Specific Contact
 ###dev/api/contacts/{id}/deals
@@ -1379,7 +1379,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accep
 ```
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##2.11 Get Deals of Current user (my deals)
 ###dev/api/opportunity/my/deals
@@ -1419,7 +1419,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 ```
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 
@@ -1460,7 +1460,7 @@ Creates a note and relates it to contacts, which are sent in the note JSON conta
 
 ###Response - Statuses:
 - Status 200: Note added successfully and return the newly created note as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##3.2 Add Note to a Contact using Email-ID:
@@ -1477,7 +1477,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: a
 ```
 ###Response:
 - Status 204: Note added successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
 ##3.3 Gets notes related to specific contact :
@@ -1523,7 +1523,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 ```
 ###Response:
 - Status 204: Note removed successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 
@@ -1560,7 +1560,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
 [
@@ -1638,7 +1638,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
 [
@@ -1716,7 +1716,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
 [
@@ -1793,7 +1793,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
 [
@@ -1872,7 +1872,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
 [
@@ -1950,7 +1950,7 @@ Method: GET
 ```
 ###Response:
 - Status 200: Get the list of tasks.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript  
   {
@@ -1997,7 +1997,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
 ```
 ###Response:
 - Status 200: Task added successfully and return the newly created task as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ###Example response:
@@ -2046,7 +2046,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Con
 ```
 ###Response:
 - Status 200: Task added successfully and return the newly created task as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ###Example response:
@@ -2095,7 +2095,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
 ```
 ###Response:
 - Status 200: Task updated successfully and return the newly updated task as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ###Example response:
@@ -2144,7 +2144,7 @@ Method: DELETE
 ```
 ###Response:
 - Status 204: Task deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 
@@ -2174,7 +2174,7 @@ Fetches the list of events between particular time. We need send the start and e
 
 ###Response:
 - Status 200: Get the list of events.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ###Example Response:
 ```javascript
@@ -2253,7 +2253,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H 
 ```
 ###Response:
 - Status 200: Returns the events list related to the contact.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ###Example Response:
 ```javascript
@@ -2311,7 +2311,7 @@ Create an event.
 
 ###Response - Statuses:
 - Status 200: Event added successfully and return the newly created event as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##5.4 Update Event:
@@ -2348,7 +2348,7 @@ Update an event. To update the event, we should provide the event id in the requ
 
 ###Response - Statuses:
 - Status 200: Event updated successfully and return the updated event as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##5.5 Delete an Event:
@@ -2363,7 +2363,7 @@ Delete the event with the particular id. The id passed in the url will be used t
 ```
 ###Response:
 - Status 204: Event deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 6. Track / Milestones API
@@ -2387,7 +2387,7 @@ curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Accept: appli
 ```
 ###Response:
 - Status 200: Returns the events list related to the contact.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ###Example Response:
 ```javascript
@@ -2420,7 +2420,7 @@ Create a track. Name should not be "Default". Milestone fields should be a strin
 ```
 ###Response - Statuses:
 - Status 200: Track created successfully and return the newly created track as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##6.3 Update a Track:
@@ -2445,7 +2445,7 @@ Update a track. Name should not be "Default". Milestone fields should be a strin
 ```
 ###Response - Statuses:
 - Status 200: Track updated successfully and return the updated track as JSON in response.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##6.4 Delete an Track:
@@ -2460,5 +2460,5 @@ Delete the track with the particular id. The id passed in the url will be used t
 ```
 ###Response:
 - Status 204: Track deleted successfully.
-- Status 401: Unauthorised. When the user name and password fields are wrong.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
