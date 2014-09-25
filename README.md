@@ -15,7 +15,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
-|id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
+|id|Unique id is generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
 |type|Type distinguishes a contact or company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| N/A|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
@@ -461,7 +461,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 ```
 
 ###Response:
-- Status 200: Gives the Contact as JSON object in above format. If email doesn’t match, it will return an empty object.
+- Status 200: Gives the Contact as JSON object in the above format. If email doesn’t match, it will return an empty object.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
@@ -469,7 +469,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 ###dev/api/contacts/email/tags/add
 Method: POST
 
-Searches for the contact based on the given email address and add the given tags to the contact. You can add multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+Search for the contact based on the given email address and add the given tags to the contact. You can add multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
 
 ###Using curl
 ```sh
@@ -487,7 +487,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
-Searches for the contact based on the given email address and search for the given tag in the contact tags list. If there is a match, then delete that tag. You can delete multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+Search for the contact based on the given email address and search for the given tag in the contact tags list. If there is a match, then delete that tag. You can delete multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
 
 ###Using curl
 ```sh
@@ -652,7 +652,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ##2.1 Listing deals
 ###dev/api/opportunity
 Method: GET 
-Returns list of all "Deal" in the domain in JSON format, which are ordered on created time. We can apply paging using the page_size and cursor query parameters. Count of the deals will be in the first contact and Cursor for the next page will be in the last deal of the list. If there is no cursor means that it is the end of list.
+- Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. We can apply paging using the page_size and cursor query parameters. Count of the deals will be in the first contact and Cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
 ###Using curl
 ```sh
@@ -741,7 +741,7 @@ Returns list of all "Deal" in the domain in JSON format, which are ordered on cr
 ##2.2 Get deal by its id
 ###dev/api/opportunity/{id}
 Method: GET 
-	Get the deal with the given ID.
+	- Get the deal with the given ID.
 ###Using curl : 
 ```sh
 	  curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : application/json" -v -u {email}:{API Key}
@@ -829,7 +829,7 @@ Method: GET
 ##2.3 Create Deal
 ###dev/api/opportunity
 Method: POST
-Accepts deal JSON as data in post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If post data includes valid deal id, respective deal is updated with the data sent in request.
+- Accepts deal JSON as data in post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If post data includes valid deal id, respective deal is updated with the data sent in request.
 Milestones name should be same as the the one in the website and it is case sensitive. If the milestone name is given wrong even the case, it will not be shown in the milestone view.
 
 ###Using curl
@@ -837,7 +837,7 @@ Milestones name should be same as the the one in the website and it is case sens
 curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response - Statuses:
-- Status 200: Deal added successfully and return the new created deal as JSON in response.
+- Status 200: Deal added successfully and it returns the new created deal as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
