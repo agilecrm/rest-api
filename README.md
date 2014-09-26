@@ -15,12 +15,12 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
-|id|Unique id generated  when contact is created|integer|Yes|Yes, for update and delete calls.|N/A|
-|type|Type distinguishes a contact or company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
+|id|Unique id is generated  when contact is created|integer|Yes|Yes, to update and delete calls.|N/A|
+|type|Type distinguishes a contact and a company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| N/A|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
-|properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type SYSTEM.|List of JSON objects|no|first_name is mandator|
+|properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
 
 
 ###Example
@@ -93,7 +93,7 @@ Method: GET
 
 - returns list of contacts in domain which are ordered by creation time.
 
-For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. We can apply paging using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
+For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl
 ```sh
@@ -434,7 +434,7 @@ If there is no ID, it will considered as a new contact.
 ##1.5 Delete single contact
 ###dev/api/contacts/{id}
 Method: DELETE
-	Deletes contact based on the id of the contact, which is  sent in request url path.
+- Deletes contact based on the id of the contact, which is  sent in request url path.
 	
 ###Using curl
 ```sh
@@ -450,7 +450,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 ###dev/api/contacts/search/email
 Method: POST
 
-Searches for the contact with given email address. Email address should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded ). We can search for multiple contacts using their Email-Ids. 
+- Searches for the contact with given email address. Email address should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ). We can search for multiple contacts using their Email-Ids. 
 
 ###Using curl
 ```sh
@@ -461,7 +461,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 ```
 
 ###Response:
-- Status 200: Gives the Contact as JSON object in above format. If email doesn’t match, it will return an empty object.
+- Status 200: Gives the Contact as JSON object in the above format. If email doesn’t match, it will return an empty object.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
@@ -469,7 +469,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 ###dev/api/contacts/email/tags/add
 Method: POST
 
-Searches for the contact based on the given email address and add the given tags to the contact. You can add multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+- Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded )
 
 ###Using curl
 ```sh
@@ -487,7 +487,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
-Searches for the contact based on the given email address and search for the given tag in the contact tags list. If there is a match, then delete that tag. You can delete multiple tags. Tags should be sent as a array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+- Searches for the contact based on the given email address and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
 
 ###Using curl
 ```sh
@@ -505,7 +505,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 ###dev/api/contacts/add-score
 Method: POST
 
-It is used to change the score of the contact by using the email address. If you want to decrease a quantity from the existing score, then use negative values for the score parameter.
+- It is used to change the score of the contact using the email address. If you want to decrease the existing score, then use negative values for the score parameter.
 
 ###Using curl
 ```sh
@@ -521,14 +521,14 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
-Retrieve the tasks related to contact sorted by the date (Latest first.).
+- Retrieves the tasks related to contact, sorted by the date (latest first.).
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/xml" -v -u {email}:{apikey}
 ```
 ###Response:
-- Status 200: Returns the task list related to the contact.
+- Status 200: Returns the tasks list related to the contact.
 ```javascript
 [
     {
@@ -623,7 +623,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 |owner_id|owner_id represents id of domain user|string|No, write access is provided to set owner of deal|Yes|The id of the user.|
 |prefs||JSON string|||N/A|
 |contacts|Relates list of contacts to deal|List of contact.|Yes|No||
-|contact_ids|Relates list of contacts to deal. They Should be sent in the request while creating and updating contact.|List of contact id.ex:  ["122", 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
+|contact_ids|Relates list of contacts to deal. They Should be sent in the request while creating and updating contacts.|List of contact id.ex:  ["122", 145,201].|Write access to relate contacts, while returning contact jsons respective to ids set|No|IDs of contacts.|
 
 
 ###Deal JSON Example
@@ -652,7 +652,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ##2.1 Listing deals
 ###dev/api/opportunity
 Method: GET 
-Returns list of all "Deal" in the domain in JSON format, which are ordered on created time. We can apply paging using the page_size and cursor query parameters. Count of the deals will be in the first contact and Cursor for the next page will be in the last deal of the list. If there is no cursor means that it is the end of list.
+- Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Count of the deals will be in the first deal and the cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
 ###Using curl
 ```sh
@@ -741,7 +741,7 @@ Returns list of all "Deal" in the domain in JSON format, which are ordered on cr
 ##2.2 Get deal by its id
 ###dev/api/opportunity/{id}
 Method: GET 
-	Get the deal with the given ID.
+	- Get the deal with the given ID.
 ###Using curl : 
 ```sh
 	  curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : application/json" -v -u {email}:{API Key}
@@ -829,15 +829,15 @@ Method: GET
 ##2.3 Create Deal
 ###dev/api/opportunity
 Method: POST
-Accepts deal JSON as data in post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If post data includes valid deal id, respective deal is updated with the data sent in request.
-Milestones name should be same as the the one in the website and it is case sensitive. If the milestone name is given wrong even the case, it will not be shown in the milestone view.
+- Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
+Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response - Statuses:
-- Status 200: Deal added successfully and return the new created deal as JSON in response.
+- Status 200: Deal added successfully and it returns the newly created deal as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -845,31 +845,31 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 ##2.4 Update Deal
 ###dev/api/opportunity
 Method: PUT 
-Accepts Deal JSON. Id parameter of the deal should be specified, it indicates which deal to be updated with the new data sent. Milestones name should be same as the the one in the website and it is case sensitive. If the milestone name is given wrong even the case, it will not be shown in the milestone view.
+- Accepts Deal JSON. Id parameter of the deal should be specified. It indicates the deal to be updated with the new data sent. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in wrong case, it will not be shown in the milestone view.)
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\",\"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
 ```
 ###Response - Statuses:
-- Status 200: Deal updated successfully and return the updated deal as JSON in response.
+- Status 200: Deal updated successfully and it returns the updated deal as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
 ##2.4 Create Deal to a contact using Email Id
 ###dev/api/opportunity/email/{email}
 Method: POST
-Accepts deal JSON as data in post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If post data includes valid deal id, respective deal is updated with the data sent in request.
-Milestones name should be same as the the one in the website and it is case sensitive. If the milestone name is given wrong even the case, it will not be shown in the milestone view.
+- Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
+Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"name" : "deal", "owner_id" : "516", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
-	Creates a Deals for the contact with the given email address. If there is no contact, it will not create any deal.
+	Creates a deal for the contact with the given email address. If there is no contact, it will not create any deal.
 
 ###Response - Statuses:
-- Status 200: Deal added successfully and return the new created deal as JSON in response.
+- Status 200: Deal added successfully and it returns the new created deal as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -878,7 +878,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Con
 ###dev/api/opportunity/{id}
 Method: DELETE 
 
-Deletes the deal based the id specified in the url.
+- Deletes the deal based on the id specified in the url.
 
 ###Using curl
 ```sh
@@ -892,7 +892,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/{id} -H "Content-Type: ap
 ###dev/api/opportunity/bulk
 Method: POST 
 
-Accepts list of deal ids in post request, add deletes all deals based on list of ids sent.
+- Accepts list of deal ids in Post request and deletes all deals based on list of ids sent.
 
 ###Using curl :
 ```sh
@@ -902,11 +902,11 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: ap
 - Status 200: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.7 Get Deals from Default track separated based milestones:
+##2.7 Get Deals from Default track grouped by milestones:
 ###dev/api/opportunity/byMilestone
 Method: GET 
 
-	Fetches list of deals from the default track separated by the milestones. Number of milestones is depended upon the milestones added by user to default track.
+- Fetches list of deals from the default track grouped by milestones. Number of milestones depends upon the milestones added by user to default track.
 
 ###Using curl :
 ```sh
@@ -1102,18 +1102,17 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/byMilestone -H "Accept : 
     ]
 }
  ````
-In this above example Lost, Open, Won, Stage 1 are different milestone. These may vary depending on the user choice.
+In this above example, Lost, Open, Won, Stage 1 are different milestones. These may vary depending on the user choice.
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.8 Get Deals for a particular Track (grouped on Milestone).
+##2.8 Get Deals for a particular Track (grouped by Milestone).
 ###dev/api/opportunity/byPipeline/based
 Method: GET 
 
-	Fetches list of deals from the particular track separated by the milestones. Number of milestones is depended upon the milestones added by user to that track. We need to send the track id as a query parameter.
-	If you sent the parameter as 0, it will give the list of deals from the default track.
+- Fetches list of deals from the particular track grouped by milestones. Number of milestones depends upon the milestones added by user to that track. The track id has to be sent as a query parameter. If 0 is sent as the parameter, it will give the list of deals from the default track.
 
 ###Using curl :
 ```sh
@@ -1218,7 +1217,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/byPipeline/based?pipeline
     ]
 }
  ```
-In this above example Lost, Open, Won, Stage 1 are different milestone. These may vary depending on the user choice.
+In this above example, Lost, Open, Won, Stage 1 are different milestones. These may vary depending on the user choice.
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
@@ -1230,11 +1229,11 @@ In this above example Lost, Open, Won, Stage 1 are different milestone. These ma
 ###dev/api/opportunity/based
 Method: GET 
 
-	Fetches list of deals from the particular track. Number of milestones is depended upon the milestones added by user to that track. We need to send the track id as a query parameter.
-	- If you sent the parameter as 0, it will give the list of deals from the default track.
-	- If you sent the parameter as 1, it will give the list of all deals from all tracks.
+  - Fetches list of deals from the particular track. Number of milestones depends upon the milestones added by user to that track. The track id has to be sent as a query parameter.
+	- If 0 is sent as the parameter, it will give the list of deals from the default track.
+	- If 1 is sent as the parameter, it will give the list of all deals from all tracks.
 	
-	We can apply paging using the page_size and cursor query parameters. Count of the deal will be in the first deal and Cursor for the next page will be in the last deal of the list. If there is no cursor means the it is the end of list.
+	Paging can be applied using the page_size and cursor query parameters. Count of the deal will be in the first deal and Cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl :
 ```sh
@@ -1335,17 +1334,17 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/based?pipeline_id=4756437
         }
 ] 
 ```
-In this above example Lost, Open, Won, Stage 1 are different milestone. These may vary depending on the user choice.
+In this above example, Lost, Open, Won, Stage 1 are different milestones. These may vary depending on the user choice.
 
 ###Response - Statuses:
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.10 Get Deals Related To  Specific Contact
+##2.10 Get Deals Related To Specific Contact
 ###dev/api/contacts/{id}/deals
 Method: GET 
 
-	Fetches list of deals related to specified contact using the contact id.
+	- Fetches list of deals related to specified contact using the contact id.
 
 ###Using curl :
 ```sh
@@ -1385,7 +1384,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accep
 ###dev/api/opportunity/my/deals
 Method: GET 
 
-	Fetches list of deals of the current user
+	- Fetches list of deals of the current user
 
 ###Using curl :
 ```sh
@@ -1436,11 +1435,11 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 |contact_json|list of contact ids|String array|no|no|N/A|
 
 
-##3.1 Create a note and relate to contacts :
+##3.1 Create a note and relate that to contacts :
 ###/dev/api/notes
 Method: POST 
 
-Creates a note and relates it to contacts, which are sent in the note JSON contact field.
+- Creates a note and relates it to contacts, which are sent in the note JSON contact field.
 
 ###Using curl : 
 ```sh
@@ -1459,7 +1458,7 @@ Creates a note and relates it to contacts, which are sent in the note JSON conta
 ```
 
 ###Response - Statuses:
-- Status 200: Note added successfully and return the newly created note as JSON in response.
+- Status 200: Note added successfully and it returns the newly created note as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -1467,7 +1466,7 @@ Creates a note and relates it to contacts, which are sent in the note JSON conta
 ###dev/api/contacts/email/note/add
 Method: POST
 
-Add a note to the contact with given Email-ID. We need to email address and the note object as a url encoded form parameters to the above given URL.
+- Adds a note to the contact with given Email-ID. Email address and the note object should be sent as url-encoded form parameters to the above given URL.
 
 ###Using curl
 ```sh
@@ -1484,7 +1483,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: a
 ###/dev/api/contacts/{contact_id}/notes
 Method: GET
 
-Returns list of note JSONs related to the contact. 
+- Returns list of note JSONs related to the contact. 
 
 ###Using curl :
 ```sh	
@@ -1515,7 +1514,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/710002/notes -H "Accept : ap
 ##3.4 Delete a specific note from specific contact :
 ###/dev/api/contacts/{contact_id}/notes/{note_id}
 Method: DELETE
-	Delete the note of the specific contact. It means, it will remove the relationaship between the note and the contact.
+	- Deletes the note of the specific contact. (It will remove the relationship between the note and the contact.)
 
 ###Using curl : 
 ```sh	
@@ -1532,27 +1531,27 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
 |:-------|:-----------|:---------|:--------|:-------|:----------|
-|id|Unique id generated  when task is created|Long|no|no|N/A|
-|type|Determines the type to which the task belongs. The type should be one in the given list. It is case sensitive. Should be specified as above only.|String|no|yes|CALL, EMAIL, FOLLOW_UP, MEETING, MILESTONE, SEND, TWEET, OTHER.|
-|priority_type|Determines the priority of the task. It is case sensitive. Should be specified as above only.|String|no|yes|There are 3 types of priorities HIGH, NORMAL, LOW.|
+|id|Unique id generated when task is created|Long|no|no|N/A|
+|type|Determines the type to which the task belongs. The type should be in the given list. It is case sensitive. It should only be specified as mentioned here - |String|no|yes|CALL, EMAIL, FOLLOW_UP, MEETING, MILESTONE, SEND, TWEET, OTHER.|
+|priority_type|Determines the priority of the task. It is case sensitive. It should only be specified as mentioned here. |String|no|yes| There are 3 kinds of priorities - HIGH, NORMAL, LOW.|
 |due|Due date of the task. It should be specified as Epoch Time.|Long|no|yes|Epoch time|
 |created_time|Creation time of task|Long|yes|no|Epoch time|
-|is_complete|Determines whether the task is completed or not. If completed then true or else false.|Boolean|no|no|true/false|
-|contacts|List of contacts related to the task. While saving we need to give the contact ids as a string array to relate them to the task.|String array|no|no|ID’s of the contacts.|
+|is_complete|Determines whether the task is completed or not. If completed, then true. Else, false.|Boolean|no|no|true/false|
+|contacts|List of contacts related to the task. While saving, the contact ids have to be given as a string array to relate them to the task.|String array|no|no|ID’s of the contacts.|
 |subject|Subject of the task.|String|no|yes|N/A|
 |entity_type|It is a read only variable. Its value is ‘task’ always.|String|yes|no|task|
-|notes|It is the list of notes related to this task. While adding a task or editing a task, we need to send the list of note id’s as a string array in order to save them.|String array|no|no|N/A|
+|notes|It is the list of notes related to this task. While adding or editing a task, the list of note id’s has to be sent as a string array in order to save them.|String array|no|no|N/A|
 |progress|It is used to determine the progress of the task. (0-100%)|Int|no|no|0 to 100|
-|status|Determines the - Status of the task. The following are the - Statuses of the task.  These are case sensitive.|String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. |
+|status|Determines the status of the task. |String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. These are case sensitive.
 |taskOwner|It has the information about the owner of the task.|JSON object|yes|no|N/A|
-|owner_id|lId of the user who is the owner of the task. We need to send this field in the task object while adding or updating the task in order to assign the owner to the task.|Long|no|no|Id of the user(Owner)|
+|owner_id|lId of the user who is the owner of the task. Send this field in the task object while adding or updating the task in order to assign the task to the owner.|Long|no|no|Id of the user(Owner)|
 
 
 ##4.1 Get the list of pending tasks:
 ###dev/api/tasks
 Method: GET
 
-	Retrieve all the pending tasks of all the users. It will return a list of task as a JSON Array.
+	- Retrieve all the pending tasks of all the users. It will return a list of tasks as a JSON Array.
 
 ###Using curl
 ```sh	
@@ -1630,7 +1629,7 @@ Method: GET
 ###dev/api/tasks/all
 Method: GET
 
-	Get all the tasks of all the users. It will get both pending and and completed tasks of all the users.
+	- Get all the tasks of all the users. It will get both the pending and the completed tasks of all the users.
 
 ###Using curl
 ```sh	
@@ -1704,11 +1703,11 @@ Method: GET
 ]
 ```
 
-##4.3 Get the list of pending tasks depending on pending days:
+##4.3 Get the list of pending tasks depending on the number of pending days:
 ###dev/api/tasks/pending/{num-days}
 Method: GET
 
-	Retrieve the pending tasks of all the users which are given ‘num-days’ days away from the due date. It will return a list of task as a JSON Array.
+	- Retrieve the pending tasks of all the users which are ‘num-days’ days away from the due date. It will return the list of tasks as a JSON Array.
 
 ###Using curl
 ```sh	
@@ -1785,7 +1784,7 @@ Method: GET
 ###dev/api/tasks/pending/{num-days}
 Method: GET
 
-	Retrieve all tasks of the current user. It will return a list of task as a JSON Array.
+	- Retrieves all the tasks of the current user. It will return the list of tasks as a JSON Array.
 
 ###Using curl
 ```sh	
@@ -1862,9 +1861,9 @@ Method: GET
 ###dev/api/tasks/fordue
 Method: GET
 
-	Retrive the list of tasks based on the given filters. The filters available or ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters start_time and end_time are the epoch time and these will filter on due date of the task.
+	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters 'start_time' and 'end_time' are the epoch time and these will filter by the due date of the task.
 
-	We can apply paging using the page_size and cursor query parameters. Count of the tasks will be in the first task and Cursor for the next page will be in the last task of the list. If there is no cursor means the it is the end of list.
+	Paging can be applied using the page_size and cursor query parameters. Count of the tasks will be in the first task and Cursor for the next page will be in the last task of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl
 ```sh	
@@ -1942,14 +1941,14 @@ Method: GET
 ###dev/api/tasks/{id}
 Method: GET
 
-	Get the task with the give ID.
+	- Gets the task of the contact with the given ID.
 
 ###Using curl
 ```sh	
 	curl https:{domain}.agilecrm.com/dev/api/tasks/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript  
@@ -1989,14 +1988,14 @@ Method: GET
 ###dev/api/tasks
 Method: POST
 
-	Creates a new task.
+	- Creates a new task.
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response:
-- Status 200: Task added successfully and return the newly created task as JSON in response.
+- Status 200: Task added successfully and it returns the newly created task as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2038,14 +2037,14 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
 ###dev/api/tasks/email/{email}
 Method: POST
 
-	Creates a new task and relates it to the contact having the email.
+	- Creates a new task and relates it to the contact having the email.
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"subject" : "test", "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response:
-- Status 200: Task added successfully and return the newly created task as JSON in response.
+- Status 200: Task added successfully and it returns the newly created task as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2087,14 +2086,14 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Con
 ###dev/api/tasks
 Method: PUT
 
-	Updates a task. We need to specify the ID of the task.
+	- Updates a task. The ID of the task has to be specified.
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"id" : 5149503652888576", "subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT 
 ```
 ###Response:
-- Status 200: Task updated successfully and return the newly updated task as JSON in response.
+- Status 200: Task updated successfully and it returns the newly updated task as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2112,7 +2111,6 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
                 "id": 5704147139559424,
                 "type": "PERSON",
                 "created_time": 1398421585,
-                "updated_time": 1406619697,
               ...
             }
         ],
@@ -2132,11 +2130,11 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
     }
 ```
 
-##4.10 Delete the task based on ID:
+##4.10 Delete a task based on ID:
 ###dev/api/tasks/{id}
 Method: DELETE
 
-	Delete the task having the given ID.
+	- Deletes the task having the given ID.
 
 ###Using curl
 ```sh	
@@ -2156,9 +2154,9 @@ Method: DELETE
 |id|Unique id generated  when event is created||Long|no|no|N/A|
 |created_time|Creation time of Event|Long|yes|no|Epoch time|
 |allDay|Determines whether the event lasts for the whole day or not.|Boolean|no|no|true / false|
-|contacts|List of contacts related to the event. While saving we need to give the contact ids as a string array to relate them to the event.|String array|no|no|ID’s of the contacts|
+|contacts|List of contacts related to the event. While saving, the contact ids have to be given as a string array to relate them to the event.|String array|no|no|ID’s of the contacts|
 |title|Title of the event|String|no|yes|N/A|
-|color|Color states the priority of the event.|The colors are case sensitive. Should be specified in the same case.|String|no|no|High = red, Normal = #36C, Low = green.|
+|color|Color states the priority of the event.|The colors are case sensitive. All of them should be specified in the same case.|String|no|no|High = red, Normal = #36C, Low = green.|
 |start|Start time of Event in epoch time format.|Long|no|yes|epoch time|
 |end|End time of Event in epoch time format.|Long|no|yes|epoch time|
 |is_event_starred|It determines whether the particular event is starred or not.|Boolean|no|no|true / false|
@@ -2167,13 +2165,13 @@ Method: DELETE
 ###dev/api/events
 Method: GET
 
-Fetches the list of events between particular time. We need send the start and end time in epoch format as query parameters.
+- Fetches the list of events happened in particular time. The start time and end time have to be sent in epoch format as query parameters.
 
 ###Using curl
 	   curl https:{domain}.agilecrm.com/dev/api/events?start=1409423400&end=1413052200 -H  "Accept:application/json" -v -u {email}:{API Key}
 
 ###Response:
-- Status 200: Get the list of events.
+- Status 200: Gets the list of events.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ###Example Response:
@@ -2245,7 +2243,7 @@ Fetches the list of events between particular time. We need send the start and e
 ###dev/api/contacts/{contact_id}/events/sort
 Method: GET
 
-Retrieve the events related to contact sorted on the date.
+- Retrieves the events related to contact sorted by date.
 
 ###Using curl
 ```sh
@@ -2282,7 +2280,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H 
 ###dev/api/events
 Method: POST
 
-Create an event.
+- Creates an event.
 
 ###Using curl : 
 ```sh
@@ -2310,7 +2308,7 @@ Create an event.
 ```
 
 ###Response - Statuses:
-- Status 200: Event added successfully and return the newly created event as JSON in response.
+- Status 200: Event added successfully and it returns the newly created event as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2318,7 +2316,7 @@ Create an event.
 ###dev/api/events
 Method: PUT
 
-Update an event. To update the event, we should provide the event id in the request object, otherwise it will be considered as a new event.
+- Updates an event. To update the event, the event id has to be provided in the request object. Otherwise, it will be considered as a new event.
 
 ###Using curl : 
 ```sh
@@ -2347,7 +2345,7 @@ Update an event. To update the event, we should provide the event id in the requ
 ```
 
 ###Response - Statuses:
-- Status 200: Event updated successfully and return the updated event as JSON in response.
+- Status 200: Event updated successfully and it returns the updated event as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2355,7 +2353,7 @@ Update an event. To update the event, we should provide the event id in the requ
 ###dev/api/events/{id}
 Method: DELETE
 
-Delete the event with the particular id. The id passed in the url will be used to identify the event.
+- Deletes the event with the particular id. The id passed in the url will be used to identify the event.
 
 ###Using curl
 ```sh	
@@ -2373,13 +2371,13 @@ Delete the event with the particular id. The id passed in the url will be used t
 |:---------|:----------|:---------|:--------|:--------|:--------------|
 |id|Unique id generated  when Track is created|Long|no|no|N/A|
 |name|Name of the track|String|no|yes|N/A|
-|milestones|Comma separated strings. Each string is a milestone and these are case sensitive. Should be specified in the same case. Need to specify the first letter of the track in upper case.|String|no|yes|N/A|
+|milestones|Comma separated strings. Each string is a milestone and these are case sensitive. All of them should be specified in the same case. The first letter of the track needs to be specified in upper case.|String|no|yes|N/A|
 
 ##6.1 Get all the Tracks:
 ###dev/api/milestone/pipelines
 Method: GET
 
-Get all the tracks. Each track will be having set of milestones.
+- Gets all the tracks. Each track will be having a set of milestones.
 
 ###Using curl
 ```sh
@@ -2404,7 +2402,7 @@ curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Accept: appli
 ###dev/api/milestone/pipelines
 Method: POST
 
-Create a track. Name should not be "Default". Milestone fields should be a string with group of strings separated by comma. All the milestones first letter should be in uppercase.
+- Creates a track. Name should not be "Default". Milestone fields should be a single string - a group of multiple strings separated by comma. First letter of all the milestones should be in uppercase.
 
 ###Using curl : 
 ```sh`
@@ -2419,7 +2417,7 @@ Create a track. Name should not be "Default". Milestone fields should be a strin
  }
 ```
 ###Response - Statuses:
-- Status 200: Track created successfully and return the newly created track as JSON in response.
+- Status 200: Track created successfully and it returns the newly created track as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
@@ -2427,7 +2425,7 @@ Create a track. Name should not be "Default". Milestone fields should be a strin
 ###dev/api/milestone/pipelines
 Method: PUT
 
-Update a track. Name should not be "Default". Milestone fields should be a string with group of strings separated by comma. All the milestones first letter should be in uppercase. Need to specify the Id of the track in the request json to update the track. Otherwise, it will be considered as a new track.
+- Updates a track. Name should not be "Default". Milestone fields should be a single string - group of multiple strings separated by comma. First letter all the milestones should be in uppercase. The Id of the track needs to be specified in the request json to update the track. Otherwise, it will be considered as a new track.
 
 ###Using curl : 
 ```sh
@@ -2444,15 +2442,15 @@ Update a track. Name should not be "Default". Milestone fields should be a strin
  }
 ```
 ###Response - Statuses:
-- Status 200: Track updated successfully and return the updated track as JSON in response.
+- Status 200: Track updated successfully and it returns the updated track as JSON in response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##6.4 Delete an Track:
+##6.4 Delete a Track:
 ###dev/api/milestone/pipelines/{id}
 Method: DELETE
 
-Delete the track with the particular id. The id passed in the url will be used to identify the track.
+- Deletes the track with the particular id. The id passed in the url will be used to identify the track.
 
 ###Using curl
 ```sh	
