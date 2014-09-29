@@ -741,7 +741,7 @@ Method: GET
 ##2.2 Get deal by its id
 ###dev/api/opportunity/{id}
 Method: GET 
-	- Get the deal with the given ID.
+	- Gets the deal with the given ID.
 ###Using curl : 
 ```sh
 	  curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : application/json" -v -u {email}:{API Key}
@@ -1551,14 +1551,14 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 ###dev/api/tasks
 Method: GET
 
-	- Retrieve all the pending tasks of all the users. It will return a list of tasks as a JSON Array.
+	- Retrieves all the pending tasks of all the users. It will return a list of tasks as a JSON Array.
 
 ###Using curl
 ```sh	
 	curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
@@ -1636,7 +1636,7 @@ Method: GET
 	curl https:{domain}.agilecrm.com/dev/api/tasks/all -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
@@ -1714,7 +1714,7 @@ Method: GET
 	curl https:{domain}.agilecrm.com/dev/api/tasks/pending/3 -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
@@ -1791,7 +1791,7 @@ Method: GET
 	curl https:{domain}.agilecrm.com/dev/api/tasks/my/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
@@ -1870,7 +1870,7 @@ Method: GET
 	curl https:{domain}.agilecrm.com/dev/api/tasks/based?pending=true&type=EMAIL&page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
-- Status 200: Get the list of tasks.
+- Status 200: Gets the list of tasks.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 ###Example response:
 ```javascript
@@ -2111,6 +2111,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
                 "id": 5704147139559424,
                 "type": "PERSON",
                 "created_time": 1398421585,
+                "updated_time": 1406619697,
               ...
             }
         ],
@@ -2449,6 +2450,7 @@ Method: PUT
 ##6.4 Delete a Track:
 ###dev/api/milestone/pipelines/{id}
 Method: DELETE
+
 
 - Deletes the track with the particular id. The id passed in the url will be used to identify the track.
 
