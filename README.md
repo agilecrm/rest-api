@@ -1781,7 +1781,7 @@ Method: GET
 ]
 ```
 ##4.4 Get the list of tasks of current user:
-###dev/api/tasks/pending/{num-days}
+###dev/api/tasks/my/tasks
 Method: GET
 
 	- Retrieves all the tasks of the current user. It will return the list of tasks as a JSON Array.
