@@ -287,6 +287,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
 
 ###Other available Responses:
 - Status 200: Gives the above JSON object in above format.
+- Status 204: There are no contacts in your account.
 - Status 401: Unauthorised (when the user name and password fields are wrong.)
 
 ##1.2 Get contact by id
@@ -306,6 +307,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application
 
 ###Other available Responses:
 - Status 200: Gives the above JSON object in above format.
+- Status 204: No contact with the specified ID in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##1.3 Creating a contact
