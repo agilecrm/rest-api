@@ -23,9 +23,8 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
 
 
-###Example
+###Contact JSON Example
 
-sample jason 
 ```javascript
 {
     	"id": 27001,
