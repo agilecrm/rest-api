@@ -17,7 +17,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |:----------|:-----------|:------|:------|:----------|:----------|
 |id|Unique id is generated  when contact is created|integer|Yes|Yes, to update and delete calls.|N/A|
 |type|Type distinguishes a contact and a company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
-|tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| N/A|
+|tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
@@ -470,7 +470,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 ###dev/api/contacts/email/tags/add
 Method: POST
 
-- Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded )
+- Searches for the contact based on the given email address and adds the given tags to the contact. You can add multiple tags. Tags should be sent as an array. Email address (email) and tags (tags) array should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Tag name should start with an alphabet and can not contain special characters other than underscore and space.
 
 ###Using curl
 ```sh
@@ -1859,7 +1859,7 @@ Method: GET
 ]
 ```
 ##4.5 Get the list of tasks based on given filters:
-###dev/api/tasks/fordue
+###dev/api/tasks/based
 Method: GET
 
 	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters 'start_time' and 'end_time' are the epoch time and these will filter by the due date of the task.
