@@ -23,6 +23,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
 |campaignStatus|Information about the campaigns ran on that contact like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
+|emailBounceStatus|Information about the email bounce and spam while running the campaign|List of JOSNObjects|Yes|Only if this conatct has campaigns|N/A|
 
 ###Contact JSON Example
 
@@ -375,7 +376,7 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 Method: PUT 
 
 
-Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the campaignStatus and unsubscribeStatus in the contact object. 
+Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the fields emailBounceStatus, campaignStatus and unsubscribeStatus in the contact object (The data in these fields should be same as it is in the retrieved contact object). 
 
 ###Acceptable request Representation:
 ```javascript
