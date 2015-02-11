@@ -72,6 +72,29 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
             	"value": "Custom value"
         	}
     	],
+		"campaignStatus": [
+			{
+				"start_time": 1418204274,
+				"end_time": 1418204293,
+				"campaign_id": "5338160762454016",
+				"campaign_name": "Send Email",
+				"status": "5338160762454016-DONE"
+			}
+		],
+		 "unsubscribeStatus": [
+			{
+				"campaign_id": "5338160762454016",
+				"unsubscribeType": "CURRENT"
+			}
+		],
+		"emailBounceStatus": [
+			{
+				"email": "hard_bounce@test.mandrillapp.com",
+				"emailBounceType": "HARD_BOUNCE",
+				"time": 1418204263,
+				"campaign_id": "5338160762454016"
+			}
+		],
     	"widget_properties": "{\"Twitter\":\"11458852\"}",
     	"domainUser": {
         	"id": 314001,
