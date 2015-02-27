@@ -1,20 +1,18 @@
-Authentication :
+Things to know:
 ---------------
 
+###Authentication :
 This is HTTPS-only API. Authentication will be performed based on the email address of the user and the respective API Key.
 
 Email and API key should pass HTTP Basic Authentication. (Use email address as username and the respective API Key as password)
 
-Requirements :
---------------
 ###API Key
 - You may access the API Key from Admin Settings -> API & Analytics -> API Key
 - Use the first one (API Key for REST client) for all the REST API calls.
 
 ![Finding API Key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key.png)
 
-Endpoints:
-----------
+###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
 Note: All the data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
