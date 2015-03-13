@@ -37,7 +37,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
 |name|Name of the field.|String|No|Yes|Any string|
-|type|Type of the field. Whether it is system defined field or custom field.|String|No|Yes|SYSTEM or CUSTOM|
+|type|Type of the field (Whether it is system defined field or custom field).|String|No|Yes|SYSTEM or CUSTOM|
 |subtype|Sub type of the field.Only SYSTEM properties like email will have the sybtypes.|String|No|No|The value of this field depends up on the property name.|
 |value|Value of the property.|String|No|No|Any String.|
 

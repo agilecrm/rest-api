@@ -22,14 +22,35 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
 |id|Unique id is generated  when contact is created|integer|Yes|Yes, to update and delete calls.|N/A|
-|type|Type distinguishes a contact and a company.|string|no|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
+|type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
+|contact_company_id|This field should be added in the Contact object only, to specify that the contact is working in the given company.|Long|No|No|We should give the company id. It will accept long values only.|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
 |campaignStatus|Information about the campaigns ran on that contact like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |emailBounceStatus|Information about the email bounce and spam while running the campaign|List of JOSNObjects|Yes|Only if this conatct has campaigns|N/A|
+
+###Properties JSON:
+
+|Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
+|:----------|:-----------|:------|:------|:----------|:----------|
+|name|Name of the field.|String|No|Yes|Any string|
+|type|Type of the field (Whether it is system defined field or custom field).|String|No|Yes|SYSTEM or CUSTOM|
+|subtype|Sub type of the field.Only SYSTEM properties like email will have the sybtypes.|String|No|No|The value of this field depends up on the property name.|
+|value|Value of the property.|String|No|No|Any String.|
+
+The below are the subtypes for respective property fields.
+
+|Name|Type|Syb types|
+|:-----|:------|:--------------|
+|email|SYSTEM|work,personal|
+|phone|SYSTEM|work,home,mobile,main,home fax,work fax,other|
+|address|SYSTEM|home,postal,office|
+|website|SYSTEM|URL,SKYPE,TWITTER,LINKEDIN,FACEBOOK,XING,FEED,GOOGLE_PLUS,FLICKR,GITHUB,YOUTUBE|
+
+Note: There will be subtypes for custom fields. User should specify the above mentioned subtype for those respective properties only.
 
 ###Contact JSON Example
 
