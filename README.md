@@ -372,7 +372,7 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 {      
 "star_value": "4",
       "lead_score": "92",
-      "tags": ["Lead","Likely Buyer","You_can-user $special chars"],
+      "tags": ["Lead","Likely Buyer"],
        "properties": [
            {
                "type": "SYSTEM",
@@ -434,7 +434,7 @@ Accepts contact object with valid id parameter in it, where ‘id’  refers to 
 	"id":8573489754593
 "star_value": "4",
       "lead_score": "92",
-      "tags": ["Lead","Likely Buyer","You_can-user $special chars"],
+      "tags": ["Lead","Likely Buyer"],
        "properties": [
            {
                "type": "SYSTEM",
