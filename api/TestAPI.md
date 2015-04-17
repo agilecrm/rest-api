@@ -663,11 +663,11 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 Method: POST 
 
 
-We can update the single field of the contact using this call. It is used to add the new property or update the existing property. it accepts property object of contact with valid parameter in it. We need to send the Email-Id of the contact to identify it. This will not effect other fields. 
+We can update a single field of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Email-Id of the contact to identify it. This will not effect other fields. 
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=test@agile.com -H "Content-Type: application/json" -d ‘{\"type\" : \"SYSTEM\",  \"name\" : \"first_name\", \"value\" : \"AgileTest\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=test@agile.com -H "Content-Type: application/json" -d '{\"type\" : \"SYSTEM\",  \"name\" : \"first_name\", \"value\" : \"AgileTest\"}' 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 
 ###Acceptable request Representation:
@@ -695,11 +695,11 @@ We can update the owner of the contact using this call. It will take two paramet
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Type: application/x-www-form-urlencoded" -d ‘owner_email=test@agilecrm.com&contact_id=5646748928180224’ -V -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Type: application/x-www-form-urlencoded" -d 'owner_email=test@agilecrm.com&contact_id=5646748928180224' -V -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 
 ###Response:
-- Status 200: Owner changed successfully. Returns the updated contact object in the response. If the user does not exists with that email returns a message saying user does not exists with that email.
+- Status 200: Owner changed successfully. Returns the updated contact object in the response. If the user does not exists with the given email, it returns a message saying user does not exist with that email.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 

@@ -658,7 +658,50 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
+##1.11 Updating contact properties
+###dev/api/contacts/add/property
+Method: POST 
 
+
+We can update a single field of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Email-Id of the contact to identify it. This will not effect other fields. 
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=test@agile.com -H "Content-Type: application/json" -d '{\"type\" : \"SYSTEM\",  \"name\" : \"first_name\", \"value\" : \"AgileTest\"}' 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+```
+
+###Acceptable request Representation:
+```javascript   
+	{
+	   "type": "SYSTEM",
+	   "name": "first_name",
+	   "value": "Los "
+   }
+```
+
+If there is no ID, it will considered as a new contact.
+
+###Response:
+- Status 200: Contact updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.12 Change contact owner
+###dev/api/contacts/change-owner
+Method: POST 
+
+
+We can update the owner of the contact using this call. It will take two parameters. One is the email address of the user (owner_email) and the second one is the ID of the contact(contact_id). Both fields are mandatory.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Type: application/x-www-form-urlencoded" -d 'owner_email=test@agilecrm.com&contact_id=5646748928180224' -V -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+```
+
+###Response:
+- Status 200: Owner changed successfully. Returns the updated contact object in the response. If the user does not exists with the given email, it returns a message saying user does not exist with that email.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
 
 2. Deals API
 -----------
