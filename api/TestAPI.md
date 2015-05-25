@@ -523,13 +523,9 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 Method: GET 
 
 
-- Retrieves the list of companies based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query 
+- Retrieves the list of companies based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query parameters in the URL. To retrieves list of companies, type must be “COMPANY”.
 
-parameters in the URL. To retrieves list of companies, type must be “COMPANY”.
-
-- Retrieves the list of contacts based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query 
-
-parameters in the URL. To retrieves list of contacts, type must be “PERSON”.
+- Retrieves the list of contacts based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query parameters in the URL. To retrieves list of contacts, type must be “PERSON”.
 
 - Here q represents keywords typed to search for companies or contacts.
 
@@ -541,6 +537,7 @@ parameters in the URL. To retrieves list of contacts, type must be “PERSON”.
 curl https://{domain}.agilecrm.com/dev/api/ search?q=ab&page_size=10&type="COMPANY" -H "Accept: application/json" -v -u {email}:{apikey}
 ```
 
+####Notes
 - q=“ab”, here “ab” are keywords typed to search company/contacts we are looking for.
 
 - Example:-keywords “ab” return list of companies starting with “ab” if type is “COMPANY” and return list of contacts starting with “ab” if type is “PERSON”.
