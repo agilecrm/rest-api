@@ -534,7 +534,7 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/ search?q=ab&page_size=10&type="COMPANY" -H "Accept: application/json" -v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPANY" -H "Accept: application/json" -v -u {email}:{apikey}
 ```
 
 ####Notes
