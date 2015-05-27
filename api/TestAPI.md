@@ -524,7 +524,7 @@ Method: GET
 
 Parameters allowed are as below. All parameters are mandatory. 
 
--  ‘q'  - Search keyword  (Mention what contact/company fields are considered for search)
+-  ‘q'  - Search keyword  (keyword considered all system and custom fields) 
 
 -  ‘page_size’  - Number of results to fetch
 
