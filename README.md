@@ -518,7 +518,28 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
-##1.7 Adding Tags to a contact based on Email:
+##1.7 Search Contacts/Companies 
+###dev/api/search
+Method: GET 
+
+Parameters allowed are as below. All parameters are mandatory. 
+
+-  ‘q'  - Search keyword (all contact/company default fields and <i>searchable</i> custom fields will be searched)
+
+-  ‘page_size’  - Number of results to fetch
+
+- 'type' - Should be 'PERSON' for searching Contacts and 'COMPANY' for Companies
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPANY" -H "Accept: application/json" -v -u {email}:{apikey}
+```
+
+###Response:
+- Status 200: Gives the list of Companies/Contacts.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.8 Adding Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/add
 Method: POST
 
@@ -536,7 +557,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.8 Delete Tags to a contact based on Email:
+##1.9 Delete Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
@@ -554,7 +575,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.9 Add Score to a Contact using Email-ID:
+##1.10 Add Score to a Contact using Email-ID:
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -570,7 +591,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##1.10 Get Tasks related to Contact:
+##1.11 Get Tasks related to Contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -658,7 +679,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.11 Updating contact properties
+##1.12 Updating contact properties
 ###dev/api/contacts/add/property
 Method: POST 
 
@@ -686,7 +707,7 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.12 Change contact owner
+##1.13 Change contact owner
 ###dev/api/contacts/change-owner
 Method: POST 
 
