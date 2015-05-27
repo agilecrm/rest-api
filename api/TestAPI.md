@@ -518,29 +518,22 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
-##1.7 Search Company or Contact by keywords 
+##1.7 Search Contacts/Companies 
 ###dev/api/search
 Method: GET 
 
+Parameters allowed are as below. All parameters are mandatory. 
 
-- Retrieves the list of companies based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query parameters in the URL. To retrieves list of companies, type must be “COMPANY”.
+-  ‘q'  - Search keyword  <<<Mention what contact/company fields are considered for search>>>
 
-- Retrieves the list of contacts based on the given mandatory filters. The mandatory filters available are ‘q, ‘page_size’ and ‘type’. These should be sent as a query parameters in the URL. To retrieves list of contacts, type must be “PERSON”.
+-  ‘page_size’  - Number of results to fetch
 
-- Here q represents keywords typed to search for companies or contacts.
-
-- page_size must need to provide as a query parameters.
-                                                                                                 
+- 'type' - Should be 'PERSON' for searching Contacts and 'COMPANY' for Companies
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPANY" -H "Accept: application/json" -v -u {email}:{apikey}
 ```
-
-####Notes
-- q=“ab”, here “ab” are keywords typed to search company/contacts we are looking for.
-
-- Example:-keywords “ab” return list of companies starting with “ab” if type is “COMPANY” and return list of contacts starting with “ab” if type is “PERSON”.
 
 ###Response:
 - Status 200: Gives the list of Companies/Contacts.
