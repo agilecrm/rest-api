@@ -731,7 +731,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 |id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
-|expected_value|Estimated value of a deal.|long|no|Yes|Max up to  1000000000000|
+|expected_value|Estimated value of a deal.|double|no|Yes|Max up to  1000000000000|
 |pipeline_id|Track id of the deal. |long|no|Yes|There should be a track with this Id.|
 |milestone|Milestone of deal (won, progress, lost..). These depend up on the track selected. Milestones may differ based on the tracks.|String|no|Yes|MIlestone in the above mentioned track.|
 |probability||integer|no|should be ranging between 0-100| 0 to 100|
