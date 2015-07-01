@@ -21,7 +21,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
-|id|Unique id is generated  when contact is created|integer|Yes|Yes, to update and delete calls.|N/A|
+|id|Unique id is generated  when contact is created|long|Yes|Yes, to update and delete calls.|N/A|
 |type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
