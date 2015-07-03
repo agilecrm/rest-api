@@ -21,7 +21,7 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
-|id|Unique id is generated  when contact is created|long|Yes|Yes, to update and delete calls.|N/A|
+|id|Unique id is generated  when contact is created|Long|Yes|Yes, to update and delete calls.|N/A|
 |type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
@@ -728,7 +728,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
 |:----|:----------|:-----|:-----|:-------|:---------|
-|id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
+|id|Unique id is assigned to every deal, when it is created| Long|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
 |expected_value|Estimated value of a deal.|double|no|Yes|Max up to  1000000000000|
