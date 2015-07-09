@@ -2,9 +2,9 @@ Things to know:
 ---------------
 
 ###Authentication :
-This is HTTPS-only API. Authentication will be performed based on the email address of the user and the respective API Key.
+This is an HTTPS-only API. Authentications are performed based on the email address of the user and the respective API Key.
 
-Email and API key should pass HTTP Basic Authentication. (Use email address as username and the respective API Key as password)
+The Email and API key should pass basic HTTP Authentication. For this, use email address as the username and the respective API Key as the password)
 
 ###API Key
 - You may access the API Key from Admin Settings -> API & Analytics -> API Key
@@ -15,7 +15,7 @@ Email and API key should pass HTTP Basic Authentication. (Use email address as u
 ###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
-Note: All the data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
+Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
 1. Contacts  & Companies API
 -----------------------------
@@ -25,10 +25,10 @@ Note: All the data is case-sensitive. Emails, names and other values are case se
 |type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
-|contact_company_id|This field should be added in the Contact object only, to specify that the contact is working in the given company.|Long|No|No|We should give the company id. It will accept long values only.|
+|contact_company_id|This field should only be added in the Contact object to specify that the contact works for the given company.|Long|No|No|Company ID can be provided here. Only long values are accepted.|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
-|campaignStatus|Information about the campaigns ran on that contact like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
+|campaignStatus|Information about campaigns running on a contact, like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |emailBounceStatus|Information about the email bounce and spam while running the campaign|List of JOSNObjects|Yes|Only if this conatct has campaigns|N/A|
 
