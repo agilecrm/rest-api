@@ -724,6 +724,41 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
+##1.14 List of Campaigns.
+###dev/api/workflows
+Method: GET 
+
+- returns list of campaigns.
+
+For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. 
+
+###Using curl :
+```sh
+curl https://{domain}.agilecrm.com/ dev/api/workflows?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H "Accept : application/xml" -v -u {email}:{apikey}```
+###Example Response :
+```javascript
+{
+id: 5727517264576512
+name: "letter head"
+created_time: 1437996248
+updated_time: 0
+rules: "{"nodes":[{"NodeDefinition":{"name":"Start","thumbnail":"json/nodes/images/common/Start.png","icon":"json/nodes/icons/common/Start.png","info":"Entry point of your campaign. Please create workflow for your campaign starting from here.","help":"Start point in your campaign.....
+.....
+valign=\"top\">&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</center></div>"},{"name":"track_clicks","value":"yes"},{"name":"purl_keyword","value":""},{"name":"time_zone","value":"ACT"},{"name":"on","value":"any_day"},{"name":"at","value":"any_time"}],"States":[{"yes":"hangup"}]}]}"
+unsubscribe: {
+action: "ASK_USER"
+tag: ""
+unsubscribe_email: ""
+}-
+domainUserId: 5609297576722432
+creatorName: "ghanshyam"
+}
+ ```
+
+###Response - Statuses:
+- Status 200: Successfully retrieved the deals list. 
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
