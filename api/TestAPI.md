@@ -756,7 +756,7 @@ creatorName: "ghanshyam"
  ```
 
 ###Response - Statuses:
-- Status 200: Successfully retrieved the deals list. 
+- Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 2. Deals API
