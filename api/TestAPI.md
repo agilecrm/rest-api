@@ -756,6 +756,25 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 - Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
+##1.15 Add Contact to a Campaign
+###dev/api/campaigns/enroll/email
+Method: POST
+
+- It is used to add the campaign to a contact using the email address.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/ dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+-d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+```
+
+- Workflow-id is the id return from list of campaign.
+
+###Response:
+- Status 200: Campaign added successfully to the Contact.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
