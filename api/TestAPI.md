@@ -775,6 +775,25 @@ curl https://{domain}.agilecrm.com/ dev/api/campaigns/enroll/email -H "Accept: a
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
+##1.16 Remove Contact from a Campaign
+###dev/api/campaigns/unsubscribe
+Method: POST
+
+- It is used to remove the campaign from a contact using the email address (Unsubscribe contact from campaign based on email of contact).
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/ dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+-d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+```
+
+- Workflow-id is the id returned from list of campaign.
+
+###Response:
+- Status 200: Campaign removed successfully from the Contact.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
