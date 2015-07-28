@@ -764,7 +764,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/ dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
@@ -783,7 +783,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/ dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
