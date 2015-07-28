@@ -733,7 +733,7 @@ For the Response in the XML format, add the header 'Accept' as application/xml. 
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H "Accept : application/xml" -v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H "Accept : application/json" -v -u {email}:{apikey}
 ```
 ###Example response:
 ```javascript
