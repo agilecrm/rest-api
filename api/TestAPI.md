@@ -768,7 +768,7 @@ curl https://{domain}.agilecrm.com/ dev/api/campaigns/enroll/email -H "Accept: a
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
-- Workflow-id is the id return from list of campaign.
+- Workflow-id is the id returned from list of campaign.
 
 ###Response:
 - Status 200: Campaign added successfully to the Contact.
