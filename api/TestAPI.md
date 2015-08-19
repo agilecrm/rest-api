@@ -736,7 +736,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
-- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign added successfully to the Contact.
@@ -755,7 +755,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: app
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
-- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign removed successfully from the Contact.
