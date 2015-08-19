@@ -724,6 +724,44 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
+##1.14 Add Contact to a Campaign
+###dev/api/campaigns/enroll/email
+Method: POST
+
+- This is used when a campaign needs to be added to a contact (with an email address)
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+-d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+```
+
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
+
+###Response:
+- Status 200: Campaign added successfully to the Contact.
+- Status 401: Unauthorized (When the User Name and Password fields are wrong.)
+- Status 400: If the input is in the wrong format
+
+##1.15 Remove Contact from a Campaign
+###dev/api/campaigns/unsubscribe
+Method: POST
+
+- This is used when a contact needs to be taken off a campaign with the contact's email address. In other words, to unsubscribe a contact from a campaign.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
+-d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+```
+
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
+
+###Response:
+- Status 200: Campaign removed successfully from the Contact.
+- Status 401: Unauthorized (When the User Name and Password fields are wrong.)
+- Status 400: If the input is in the wrong format
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
