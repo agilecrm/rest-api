@@ -728,7 +728,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 ###dev/api/campaigns/enroll/email
 Method: POST
 
-- This is used when a campaign needs to be added to a contact (with an email address)
+- This is used when a contact added to campaign (with an email address)
 
 ###Using curl
 ```sh
