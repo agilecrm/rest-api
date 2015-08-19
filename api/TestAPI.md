@@ -728,7 +728,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 ###dev/api/campaigns/enroll/email
 Method: POST
 
-- It is used to add the campaign to a contact using the email address.
+- This is used when a campaign needs to be added to a contact (with an email address)
 
 ###Using curl
 ```sh
@@ -737,6 +737,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 ```
 
 - Workflow-id is the id returned from list of campaign (https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns).
+[Sites Using React](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign added successfully to the Contact.
