@@ -736,19 +736,18 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
-- Workflow-id is the id returned from list of campaign (https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns).
-[Sites Using React](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign added successfully to the Contact.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-- Status 400: If the input is in wrong format
+- Status 401: Unauthorized (When the User Name and Password fields are wrong.)
+- Status 400: If the input is in the wrong format
 
 ##1.15 Remove Contact from a Campaign
 ###dev/api/campaigns/unsubscribe
 Method: POST
 
-- It is used to remove the campaign from a contact using the email address (Unsubscribe contact from campaign based on email of contact).
+- This is used when a contact needs to be taken off a campaign with the contact's email address. In other words, to unsubscribe a contact from a campaign.
 
 ###Using curl
 ```sh
@@ -756,12 +755,12 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: app
 -d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
 ```
 
-- Workflow-id is the id returned from list of campaign (https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns).
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#71-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign removed successfully from the Contact.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-- Status 400: If the input is in wrong format
+- Status 401: Unauthorized (When the User Name and Password fields are wrong.)
+- Status 400: If the input is in the wrong format
 
 2. Deals API
 -----------
@@ -2618,10 +2617,10 @@ Method: DELETE
 - Status 204: Track deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##7.1 List of Campaigns.
+##7 List of Campaigns.
 ###dev/api/workflows
 Method: GET 
-- returns list of campaigns.
+- Returns a list of campaigns
 
 For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. 
 
@@ -2648,4 +2647,4 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 ```
 ###Response - Statuses:
 - Status 200: Successfully retrieved the campaign list. 
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 401: Unauthorized. (When the user name and password fields are wrong.)
