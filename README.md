@@ -507,7 +507,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/xml"
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json"
 -H "Content-Type :application/x-www-form-urlencoded" 
 -d ‘email_ids=["notifications@basecamp.com"]’
 -v -u {email}:{apikey} -X POST
