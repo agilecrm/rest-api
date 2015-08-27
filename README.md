@@ -744,21 +744,20 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 400: If the input is in the wrong format
 
 ##1.15 Remove Contact from a Campaign
-###dev/api/campaigns/unsubscribe
-Method: POST
+###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
+Method: DELETE
 
-- This is used when a contact needs to be taken off a campaign with the contact's email address. In other words, to unsubscribe a contact from a campaign.
+- This is used when a contact needs to be taken off a campaign with the contact's contact_id. In other words, to unsubscribe a contact from a campaign.
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d 'email=tester@gmail.com&workflow-id = 5727517264576512' -v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id} -H "Accept : application/json" -v -u {email} : {API Key} -X DELETE
 ```
 
 - [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
 
 ###Response:
-- Status 200: Campaign removed successfully from the Contact.
+- Status 204: Campaign removed successfully from the Contact.
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
