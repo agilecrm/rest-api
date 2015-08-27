@@ -733,7 +733,7 @@ Method: POST
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+-d 'email=tester@gmail.com&workflow-id = 5727517264576512' -v -u {email}:{apikey} -X POST
 ```
 
 - [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
@@ -752,7 +752,7 @@ Method: POST
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+-d 'email=tester@gmail.com&workflow-id = 5727517264576512' -v -u {email}:{apikey} -X POST
 ```
 
 - [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
