@@ -599,7 +599,7 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/xml" -v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/json" -v -u {email}:{apikey}
 ```
 ###Response:
 - Status 200: Returns the tasks list related to the contact.
@@ -1003,7 +1003,7 @@ Method: PUT
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\",\"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"id\" : \"5149503652888576\",\"name\" : \"deal\",  \"contact_ids\" : [\"2358\",\"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
 ```
 ###Response - Statuses:
 - Status 200: Deal updated successfully and it returns the updated deal as JSON in response.
