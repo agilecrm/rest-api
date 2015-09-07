@@ -2439,7 +2439,7 @@ Method: POST
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contacts" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
 ```
 ###Example response : 	
 ```javascript
@@ -2475,7 +2475,7 @@ Method: PUT
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5758048710688768, "title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X PUT
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5758048710688768, "title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contacts" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X PUT
 ```
 
 ###Example response : 	
