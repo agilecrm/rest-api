@@ -22,11 +22,11 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
 |id|Unique id is generated  when contact is created|Long|Yes|Yes, to update and delete calls.|N/A|
-|type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
-|tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
-|lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
+|type|Type distinguishes a contact and a company.|String|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
+|tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|List|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
+|lead_score|Score of contact. This is not applicable for companies.|Integer|no|no|Any positive integer|
 |contact_company_id|This field should only be added in the Contact object to specify that the contact works for the given company.|Long|No|No|Company ID can be provided here. Only long values are accepted.|
-|star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
+|star_value|Rating of contact (Max value 5). This is not applicable for companies.|Short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
 |campaignStatus|Information about campaigns running on a contact, like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
@@ -369,50 +369,52 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 
 ###Acceptable request Representation:
 ```javascript
-{      
-"star_value": "4",
-      "lead_score": "92",
-      "tags": ["Lead","Likely Buyer"],
-       "properties": [
-           {
-               "type": "SYSTEM",
-               "name": "first_name",
-               "value": "Los "
-           },
-           {
-               "type": "SYSTEM",
-               "name": "last_name",
-               "value": "Bruikheilmer"
-           },
-          {
+{
+    "star_value": "4",
+    "lead_score": "92",
+    "tags": [
+        "Lead",
+        "Likely Buyer"
+    ],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Los "
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Bruikheilmer"
+        },
+        {
             "type": "SYSTEM",
             "name": "company",
             "value": "steady.inc"
-          },
-          {
+        },
+        {
             "type": "SYSTEM",
             "name": "title",
             "value": "VP Sales"
-          },
-          {
+        },
+        {
             "type": "SYSTEM",
             "name": "email",
             "subtype": "work",
-            "value": "bruik@walt.inc"
-          },
-          {
+            "value": "clinton@walt.ltd"
+        },
+        {
             "type": "SYSTEM",
             "name": "address",
-            "value": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"\"}"
-          },
-          {
-            	"type": "CUSTOM",
-            	"name": "My Custom Field",
-            	"value": "Custom value"
-        	}
-
-        ]
-  }
+            "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
+        },
+        {
+            "type": "CUSTOM",
+            "name": "My Custom Field",
+            "value": "Custom value"
+        }
+    ]
+}
 ```
 
 ###Response:
@@ -428,53 +430,57 @@ Method: PUT
 
 Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the fields emailBounceStatus, campaignStatus and unsubscribeStatus in the contact object (The data in these fields should be same as it is in the retrieved contact object). 
 
+- Note : Please send all data related to contact.
+
 ###Acceptable request Representation:
 ```javascript
-{      
-	"id":8573489754593
-"star_value": "4",
-      "lead_score": "92",
-      "tags": ["Lead","Likely Buyer"],
-       "properties": [
-           {
-               "type": "SYSTEM",
-               "name": "first_name",
-               "value": "Los "
-           },
-           {
-               "type": "SYSTEM",
-               "name": "last_name",
-               "value": "Bruikheilmer"
-           },
-          {
+{
+    "id": "5676477903273984",
+    "star_value": "4",
+    "lead_score": "92",
+    "tags": [
+        "Lead",
+        "Likely Buyer"
+    ],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Losali"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Bruikheilmer"
+        },
+        {
             "type": "SYSTEM",
             "name": "company",
             "value": "steady.inc"
-          },
-          {
+        },
+        {
             "type": "SYSTEM",
             "name": "title",
             "value": "VP Sales"
-          },
-          {
+        },
+        {
             "type": "SYSTEM",
             "name": "email",
             "subtype": "work",
-            "value": "bruik@walt.inc"
-          },
-          {
+            "value": "clinton@walt.ltd"
+        },
+        {
             "type": "SYSTEM",
             "name": "address",
-            "value": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"\"}"
-          },
-          {
-            	"type": "CUSTOM",
-            	"name": "My Custom Field",
-            	"value": "Custom value"
-        	}
-
-        ]
-  }
+            "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
+        },
+        {
+            "type": "CUSTOM",
+            "name": "My Custom Field",
+            "value": "Custom value"
+        }
+    ]
+}
 ```
 
 If there is no ID, it will considered as a new contact.
@@ -484,7 +490,85 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.5 Delete single contact
+##1.5 Update properties of a contact by id (partial update)
+###dev/api/contacts/edit-properties
+Method: PUT 
+
+
+We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+
+- Note : Send only required properties data to update contact. No need to send all data of a contact.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "5676477903273984",
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Losalitest"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Lee"
+        },
+        {
+            "type": "CUSTOM",
+            "name": "My Custom Field",
+            "value": "Custom value chane"
+        }
+    ]
+}
+```
+
+###Response:
+- Status 200: Contact updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.6 Update lead score by id
+###dev/api/contacts/edit/lead-score
+Method: PUT 
+
+
+We can update lead score of a contact using this call. It accepts lead score and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "5676477903273984",
+    "lead_score": 20
+}
+```
+
+###Response:
+- Status 200: Lead score updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.7 Update star value by id
+###dev/api/contacts/edit/add-star
+Method: PUT 
+
+
+We can update star value of a contact using this call. It accepts star value and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "5676477903273984",
+    "star_value": 20
+}
+```
+
+###Response:
+- Status 200: Star value updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.8 Delete single contact
 ###dev/api/contacts/{id}
 Method: DELETE
 - Deletes contact based on the id of the contact, which is  sent in request url path.
@@ -499,7 +583,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 - Status 204: Contact deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.6 Search Contact by Email
+##1.9 Search Contact by Email
 ###dev/api/contacts/search/email
 Method: POST
 
@@ -518,7 +602,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
-##1.7 Search Contacts/Companies 
+##1.10 Search Contacts/Companies 
 ###dev/api/search
 Method: GET 
 
@@ -539,7 +623,7 @@ curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPAN
 - Status 200: Gives the list of Companies/Contacts.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.8 Adding Tags to a contact based on Email:
+##1.11 Adding Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/add
 Method: POST
 
@@ -557,7 +641,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.9 Delete Tags to a contact based on Email:
+##1.12 Delete Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
@@ -575,7 +659,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.10 Add Score to a Contact using Email-ID:
+##1.13 Add Score to a Contact using Email-ID:
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -591,7 +675,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##1.11 Get Tasks related to Contact:
+##1.14 Get Tasks related to Contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -679,7 +763,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.12 Updating contact properties
+##1.15 Updating contact properties
 ###dev/api/contacts/add/property
 Method: POST 
 
@@ -707,7 +791,7 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.13 Change contact owner
+##1.16 Change contact owner
 ###dev/api/contacts/change-owner
 Method: POST 
 
@@ -724,7 +808,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.14 Add Contact to a Campaign
+##1.17 Add Contact to a Campaign
 ###dev/api/campaigns/enroll/email
 Method: POST
 
@@ -743,7 +827,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
-##1.15 Remove Contact from a Campaign
+##1.18 Remove Contact from a Campaign
 ###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
 Method: DELETE
 
