@@ -495,7 +495,7 @@ If there is no ID, it will considered as a new contact.
 Method: PUT 
 
 
-We can update a required field of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
 
 - Note : Send only required properties data to update contact. No need to send all data of a contact.
 
