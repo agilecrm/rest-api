@@ -2,9 +2,9 @@ Things to know:
 ---------------
 
 ###Authentication :
-This is HTTPS-only API. Authentication will be performed based on the email address of the user and the respective API Key.
+This is an HTTPS-only API. Authentications are performed based on the email address of the user and the respective API Key.
 
-Email and API key should pass HTTP Basic Authentication. (Use email address as username and the respective API Key as password)
+The Email and API key should pass basic HTTP Authentication. For this, use email address as the username and the respective API Key as the password)
 
 ###API Key
 - You may access the API Key from Admin Settings -> API & Analytics -> API Key
@@ -15,20 +15,20 @@ Email and API key should pass HTTP Basic Authentication. (Use email address as u
 ###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
-Note: All the data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered as two different words.
+Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
 1. Contacts  & Companies API
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
-|id|Unique id is generated  when contact is created|integer|Yes|Yes, to update and delete calls.|N/A|
+|id|Unique id is generated  when contact is created|Long|Yes|Yes, to update and delete calls.|N/A|
 |type|Type distinguishes a contact and a company.|string|No|No.|Defaults to "PERSON" if not mentioned."PERSON" or "COMPANY"|
 |tags|Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies.|list|no|no| Tag name should start with an alphabet and can not contain special characters other than underscore and space.|
 |lead_score|Score of contact. This is not applicable for companies.|integer|no|no|Any positive integer|
-|contact_company_id|This field should be added in the Contact object only, to specify that the contact is working in the given company.|Long|No|No|We should give the company id. It will accept long values only.|
+|contact_company_id|This field should only be added in the Contact object to specify that the contact works for the given company.|Long|No|No|Company ID can be provided here. Only long values are accepted.|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|short|no|no|0 to 5|
 |properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|
-|campaignStatus|Information about the campaigns ran on that contact like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
+|campaignStatus|Information about campaigns running on a contact, like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |emailBounceStatus|Information about the email bounce and spam while running the campaign|List of JOSNObjects|Yes|Only if this conatct has campaigns|N/A|
 
@@ -372,7 +372,7 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 {      
 "star_value": "4",
       "lead_score": "92",
-      "tags": ["Lead","Likely Buyer","You_can-user $special chars"],
+      "tags": ["Lead","Likely Buyer"],
        "properties": [
            {
                "type": "SYSTEM",
@@ -426,7 +426,7 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
 Method: PUT 
 
 
-Accepts contact object with valid id parameter in it, where id  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the fields emailBounceStatus, campaignStatus and unsubscribeStatus in the contact object (The data in these fields should be same as it is in the retrieved contact object). 
+Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the fields emailBounceStatus, campaignStatus and unsubscribeStatus in the contact object (The data in these fields should be same as it is in the retrieved contact object). 
 
 ###Acceptable request Representation:
 ```javascript
@@ -434,7 +434,7 @@ Accepts contact object with valid id parameter in it, where id  refers to th
 	"id":8573489754593
 "star_value": "4",
       "lead_score": "92",
-      "tags": ["Lead","Likely Buyer","You_can-user $special chars"],
+      "tags": ["Lead","Likely Buyer"],
        "properties": [
            {
                "type": "SYSTEM",
@@ -507,14 +507,14 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/xml"
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json"
 -H "Content-Type :application/x-www-form-urlencoded" 
--d email_ids=["notifications@basecamp.com"]
+-d ‘email_ids=["notifications@basecamp.com"]’
 -v -u {email}:{apikey} -X POST
 ```
 
 ###Response:
-- Status 200: Gives the Contact as JSON object in the above format. If email doesnt match, it will return an empty object.
+- Status 200: Gives the Contact as JSON object in the above format. If email doesn’t match, it will return an empty object.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
@@ -549,7 +549,7 @@ Method: POST
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/xml"
 -H "Content-Type :application/x-www-form-urlencoded" 
--d email=notifications@basecamp.com&tags=["testing"]
+-d ‘email=notifications@basecamp.com&tags=["testing"]’
 -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -567,7 +567,7 @@ Method: POST
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept: application/xml"
 -H "Content-Type :application/x-www-form-urlencoded" 
--d email=notifications@basecamp.com&tags=["testing"]
+-d ‘email=notifications@basecamp.com&tags=["testing"]’
 -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -584,7 +584,7 @@ Method: POST
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d email=notifications@basecamp.com&score=5 -v -u {email}:{apikey} -X POST
+-d ‘email=notifications@basecamp.com&score=5’ -v -u {email}:{apikey} -X POST
 ```
 ###Response:
 - Status 200: Score changed successfully and it returns the Contact object.
@@ -599,7 +599,7 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/xml" -v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/json" -v -u {email}:{apikey}
 ```
 ###Response:
 - Status 200: Returns the tasks list related to the contact.
@@ -728,15 +728,15 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 ###dev/api/campaigns/enroll/email
 Method: POST
 
-- This is used when a campaign needs to be added to a contact (with an email address)
+- This is used when a contact added to campaign (with an email address)
 
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+-d 'email=tester@gmail.com&workflow-id = 5727517264576512' -v -u {email}:{apikey} -X POST
 ```
 
-- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
 
 ###Response:
 - Status 200: Campaign added successfully to the Contact.
@@ -744,21 +744,20 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 400: If the input is in the wrong format
 
 ##1.15 Remove Contact from a Campaign
-###dev/api/campaigns/unsubscribe
-Method: POST
+###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
+Method: DELETE
 
-- This is used when a contact needs to be taken off a campaign with the contact's email address. In other words, to unsubscribe a contact from a campaign.
+- This is used when a contact needs to be taken off a campaign with the contact's contact_id. In other words, to unsubscribe a contact from a campaign.
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d email=tester@gmail.com&workflow-id = 5727517264576512 -v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id} -H "Accept : application/json" -v -u {email} : {API Key} -X DELETE
 ```
 
-- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/api/TestAPI.md#7-list-of-campaigns)
+- [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
 
 ###Response:
-- Status 200: Campaign removed successfully from the Contact.
+- Status 204: Campaign removed successfully from the Contact.
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
@@ -766,7 +765,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/unsubscribe -H "Accept: app
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
 |:----|:----------|:-----|:-----|:-------|:---------|
-|id|Unique id is assigned to every deal, when it is created| integer|no|Yes, if request is to update an existing deal|N/A|
+|id|Unique id is assigned to every deal, when it is created| Long|no|Yes, if request is to update an existing deal|N/A|
 |name|Name of the deal|string|no|Yes|N/A|
 |description|Brief description about deal.|string|no|No|N/A|
 |expected_value|Estimated value of a deal.|double|no|Yes|Max up to  1000000000000|
@@ -989,7 +988,7 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d {\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"} 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response - Statuses:
 - Status 200: Deal added successfully and it returns the newly created deal as JSON in response.
@@ -1004,7 +1003,7 @@ Method: PUT
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\",\"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"id\":\"5688952451235840\",\"name\":\"lamron\",\"owner_id\":\"6263975862861824\",\"expected_value\":\"600\",\"probability\":\"80\",\"close_date\":1446143400,\"pipeline_id\":\"5730082031140864\",\"milestone\":\"New\",\"deal_source_id\":\"5199959955603456\",\"description\":\"\",\"contact_ids\":[\"5647731502612480\"],\"notes\":[\"5708746210672640\",\"5668065354186752\"],\"custom_data\":[{\"name\":\"dealTester\",\"value\":\"deal -confirmed123\"},{\"name\":\"dealAddedDate\",\"value\":\"10/08/2015\"}]}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
 ```
 ###Response - Statuses:
 - Status 200: Deal updated successfully and it returns the updated deal as JSON in response.
@@ -1019,7 +1018,7 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d {"name" : "deal", "owner_id" : "516", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"} 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"name" : "deal", "owner_id" : "516", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 	Creates a deal for the contact with the given email address. If there is no contact, it will not create any deal.
 
@@ -1051,7 +1050,7 @@ Method: POST
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: application/x-www-form-urlencoded" -d {"ids" : ["123", "234", "235"]} -v -u {email}:{API Key} -X POST
+curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: application/x-www-form-urlencoded" -d ‘{"ids" : ["123", "234", "235"]}’ -v -u {email}:{API Key} -X POST
 ```
 ###Response - Statuses:
 - Status 200: Deal deleted successfully.
@@ -1516,17 +1515,17 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accep
 {
 	id : "445",
 	created_time : 1356315843
-	
+	…
 }
 ...
      ]
-	
+	…
    },
   {
 	"id" :		   850,
 	"name"	 :	   "Product Design",
 	"created_time"	 : "1357794282",
-	
+…	
   },
    ...
 ]
@@ -1556,7 +1555,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 {
 	id : "445",
 	created_time : 1356315843
-	
+	…
 }
 ...
      ]
@@ -1566,7 +1565,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 	"id" :		   850,
 	"name"	 :	   "Product Design",
 	"created_time"	 : "1357794282",
-	
+…	
   },
    ...
 ]
@@ -1598,7 +1597,7 @@ Method: POST
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/notes/ -H "Content-Type : application/json" -H "Accept : application/json" -d {"subject" : " Note subject" , "description" : "Note description", "contact_ids" : ["721001", "722001"] } -v -u {email} : {APi Key} -X POST
+	curl https://{domain}.agilecrm.com/dev/api/notes/ -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"subject" : " Note subject" , "description" : "Note description", "contact_ids" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
 ```
 ###Example response : 	
 ```javascript
@@ -1627,7 +1626,7 @@ Method: POST
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: application/xml"
 -H "Content-Type :application/x-www-form-urlencoded" 
--d email=notifications@basecamp.com&note={"subject":"test","description":"testing description"} -v -u {email}:{apikey} -X POST
+-d ‘email=notifications@basecamp.com&note={"subject":"test","description":"testing description"}’ -v -u {email}:{apikey} -X POST
 ```
 ###Response:
 - Status 204: Note added successfully.
@@ -1692,10 +1691,10 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 |due|Due date of the task. It should be specified as Epoch Time.|Long|no|yes|Epoch time|
 |created_time|Creation time of task|Long|yes|no|Epoch time|
 |is_complete|Determines whether the task is completed or not. If completed, then true. Else, false.|Boolean|no|no|true/false|
-|contacts|List of contacts related to the task. While saving, the contact ids have to be given as a string array to relate them to the task.|String array|no|no|IDs of the contacts.|
+|contacts|List of contacts related to the task. While saving, the contact ids have to be given as a string array to relate them to the task.|String array|no|no|ID’s of the contacts.|
 |subject|Subject of the task.|String|no|yes|N/A|
-|entity_type|It is a read only variable. Its value is task always.|String|yes|no|task|
-|notes|It is the list of notes related to this task. While adding or editing a task, the list of note ids has to be sent as a string array in order to save them.|String array|no|no|N/A|
+|entity_type|It is a read only variable. Its value is ‘task’ always.|String|yes|no|task|
+|notes|It is the list of notes related to this task. While adding or editing a task, the list of note id’s has to be sent as a string array in order to save them.|String array|no|no|N/A|
 |progress|It is used to determine the progress of the task. (0-100%)|Int|no|no|0 to 100|
 |status|Determines the status of the task. |String|no|no|YET_TO_START, IN_PROGRESS, COMPLETED. These are case sensitive.
 |taskOwner|It has the information about the owner of the task.|JSON object|yes|no|N/A|
@@ -1862,7 +1861,7 @@ Method: GET
 ###dev/api/tasks/pending/{num-days}
 Method: GET
 
-	- Retrieve the pending tasks of all the users which are num-days days away from the due date. It will return the list of tasks as a JSON Array.
+	- Retrieve the pending tasks of all the users which are ‘num-days’ days away from the due date. It will return the list of tasks as a JSON Array.
 
 ###Using curl
 ```sh	
@@ -2016,7 +2015,7 @@ Method: GET
 ###dev/api/tasks/based
 Method: GET
 
-	- Retrives the list of tasks based on the given filters. The filters available are type, owner, pending, start_time, end_time and page_size. These should be sent as a query parameters in the URL. Filters 'start_time' and 'end_time' are the epoch time and these will filter by the due date of the task.
+	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters 'start_time' and 'end_time' are the epoch time and these will filter by the due date of the task.
 
 	Paging can be applied using the page_size and cursor query parameters. Count of the tasks will be in the first task and Cursor for the next page will be in the last task of the list. If there is no cursor, it means that it is the end of list.
 
@@ -2147,7 +2146,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d {"subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654} 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response:
 - Status 200: Task added successfully and it returns the newly created task as JSON in response.
@@ -2196,7 +2195,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Content-Type: application/json" -d {"subject" : "test", "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654} 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"subject" : "test", "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response:
 - Status 200: Task added successfully and it returns the newly created task as JSON in response.
@@ -2245,7 +2244,7 @@ Method: PUT
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d {"id" : 5149503652888576", "subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654} 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT 
+curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"id" : 5149503652888576", "subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT 
 ```
 ###Response:
 - Status 200: Task updated successfully and it returns the newly updated task as JSON in response.
@@ -2310,7 +2309,7 @@ Method: DELETE
 |id|Unique id generated  when event is created||Long|no|no|N/A|
 |created_time|Creation time of Event|Long|yes|no|Epoch time|
 |allDay|Determines whether the event lasts for the whole day or not.|Boolean|no|no|true / false|
-|contacts|List of contacts related to the event. While saving, the contact ids have to be given as a string array to relate them to the event.|String array|no|no|IDs of the contacts|
+|contacts|List of contacts related to the event. While saving, the contact ids have to be given as a string array to relate them to the event.|String array|no|no|ID’s of the contacts|
 |title|Title of the event|String|no|yes|N/A|
 |color|Color states the priority of the event.|The colors are case sensitive. All of them should be specified in the same case.|String|no|no|High = red, Normal = #36C, Low = green.|
 |start|Start time of Event in epoch time format.|Long|no|yes|epoch time|
@@ -2425,7 +2424,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H 
             {
                 "id": 5716606839685120,
                 "type": "PERSON",
-   ...                 
+   …...                 
             }
         ]
     }
@@ -2440,7 +2439,7 @@ Method: POST
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d {"title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] } -v -u {email} : {APi Key} -X POST
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contacts" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X POST
 ```
 ###Example response : 	
 ```javascript
@@ -2476,7 +2475,7 @@ Method: PUT
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d {"id": 5758048710688768, "title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contact_ids" : ["721001", "722001"] } -v -u {email} : {APi Key} -X PUT
+	curl https://{domain}.agilecrm.com/dev/api/events -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5758048710688768, "title" : "Today Test event" , "allDay" : true, "color" : "red" , "start":1409682600,"end":1409768100, "contacts" : ["721001", "722001"] }’ -v -u {email} : {APi Key} -X PUT
 ```
 
 ###Example response : 	
@@ -2562,7 +2561,7 @@ Method: POST
 
 ###Using curl : 
 ```sh`
-	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d {"name" : "Test" , "milestone" : "Open,New,Prospect,Proposal,Won,Lost" } -v -u {email} : {APi Key} -X POST
+	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"name" : "Test" , "milestones" : "Open,New,Prospect,Proposal,Won,Lost" }’ -v -u {email} : {APi Key} -X POST
 ```
 ###Example Response:
 ```javascript
@@ -2585,8 +2584,8 @@ Method: PUT
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d {"id": 5146448186310656,
- "name" : "Test" , "milestone" : "Open,New,Prospect,Proposal,Won,Lost" } -v -u {email} : {APi Key} -X PUT
+	curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Content-Type : application/json" -H "Accept : application/json" -d ‘{"id": 5146448186310656,
+ "name" : "Test" , "milestones" : "Open,New,Prospect,Proposal,Won,Lost" }’ -v -u {email} : {APi Key} -X PUT
 ```
 
 ###Example Response:
