@@ -533,7 +533,7 @@ We can update a required field of the contact using this call. It is used to add
 Method: PUT 
 
 
-We can update lead score of a contact using this call. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update lead score of a contact using this call. It accepts lead score and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
 
 ###Acceptable request Representation:
 ```javascript
@@ -553,7 +553,7 @@ We can update lead score of a contact using this call. It accepts property objec
 Method: PUT 
 
 
-We can update star value of a contact using this call. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update star value of a contact using this call. It accepts star value and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
 
 ###Acceptable request Representation:
 ```javascript
