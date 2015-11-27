@@ -1070,9 +1070,11 @@ Method: POST
 - Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
 Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
 
+- Note : expected_value is mandatory field.
+
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",\"expected_value\":\"5000\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response - Statuses:
 - Status 200: Deal added successfully and it returns the newly created deal as JSON in response.
