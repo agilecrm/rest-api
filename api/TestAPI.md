@@ -568,7 +568,30 @@ We can update star value of a contact using this call. It accepts star value and
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.8 Delete single contact
+##1.8 Updat tags value by id
+###dev/api/contacts/edit/tags
+Method: PUT 
+
+
+We can add tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "4584963487825920",
+    "tags": [
+        "test1",
+        "test2"
+    ]
+}
+```
+
+###Response:
+- Status 200: tags value added/updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.9 Delete single contact
 ###dev/api/contacts/{id}
 Method: DELETE
 - Deletes contact based on the id of the contact, which is  sent in request url path.
@@ -583,7 +606,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 - Status 204: Contact deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.9 Search Contact by Email
+##1.10 Search Contact by Email
 ###dev/api/contacts/search/email
 Method: POST
 
@@ -602,7 +625,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
-##1.10 Search Contacts/Companies 
+##1.11 Search Contacts/Companies 
 ###dev/api/search
 Method: GET 
 
@@ -623,7 +646,7 @@ curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPAN
 - Status 200: Gives the list of Companies/Contacts.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.11 Adding Tags to a contact based on Email:
+##1.12 Adding Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/add
 Method: POST
 
@@ -641,7 +664,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: a
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.12 Delete Tags to a contact based on Email:
+##1.13 Delete Tags to a contact based on Email:
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
@@ -659,7 +682,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.13 Add Score to a Contact using Email-ID:
+##1.14 Add Score to a Contact using Email-ID:
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -675,7 +698,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##1.14 Get Tasks related to Contact:
+##1.15 Get Tasks related to Contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -763,7 +786,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.15 Updating contact properties
+##1.16 Updating contact properties
 ###dev/api/contacts/add/property
 Method: POST 
 
@@ -791,7 +814,7 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.16 Change contact owner
+##1.17 Change contact owner
 ###dev/api/contacts/change-owner
 Method: POST 
 
@@ -808,7 +831,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.17 Add Contact to a Campaign
+##1.18 Add Contact to a Campaign
 ###dev/api/campaigns/enroll/email
 Method: POST
 
@@ -827,7 +850,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
-##1.18 Remove Contact from a Campaign
+##1.19 Remove Contact from a Campaign
 ###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
 Method: DELETE
 
@@ -1096,7 +1119,38 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##2.4 Create Deal to a contact using Email Id
+##2.5 Update Deal (Partial update)
+###dev/api/opportunity/partial-update
+Method: PUT 
+
+
+We can update deal using this call. It accepts Deal JSON. Id parameter of the deal should be specified. It indicates the deal to be updated with the new data sent. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in wrong case, it will not be shown in the milestone view.). This will not effect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "5631693742407680",
+    "expected_value": "1000",
+    "probability": "20",
+    "contact_ids": [
+        "5629703511605248",
+        "5744178885558278"
+    ],
+    "custom_data": [
+        {
+            "name": "dealTester",
+            "value": "hello hello2"
+        }
+    ]
+}
+```
+
+###Response:
+- Status 200: Deal updated successfully. Returns the updated deal object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##2.6 Create Deal to a contact using Email Id
 ###dev/api/opportunity/email/{email}
 Method: POST
 - Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
@@ -1114,7 +1168,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Con
 - Status 400: If the input is in wrong format
 
 
-##2.5 Delete Deal
+##2.7 Delete Deal
 ###dev/api/opportunity/{id}
 Method: DELETE 
 
@@ -1128,7 +1182,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/{id} -H "Content-Type: ap
 - Status 200: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.6 Bulk Delete 
+##2.8 Bulk Delete 
 ###dev/api/opportunity/bulk
 Method: POST 
 
@@ -1142,7 +1196,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: ap
 - Status 200: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.7 Get Deals from Default track grouped by milestones:
+##2.9 Get Deals from Default track grouped by milestones:
 ###dev/api/opportunity/byMilestone
 Method: GET 
 
@@ -1348,7 +1402,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.8 Get Deals for a particular Track (grouped by Milestone).
+##2.10 Get Deals for a particular Track (grouped by Milestone).
 ###dev/api/opportunity/byPipeline/based
 Method: GET 
 
@@ -1465,7 +1519,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 
 
 
-##2.9 Get Deals from particular track:
+##2.11 Get Deals from particular track:
 ###dev/api/opportunity/based
 Method: GET 
 
@@ -1580,7 +1634,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.10 Get Deals Related To Specific Contact
+##2.12 Get Deals Related To Specific Contact
 ###dev/api/contacts/{id}/deals
 Method: GET 
 
@@ -1620,7 +1674,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accep
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.11 Get Deals of Current user (my deals)
+##2.13 Get Deals of Current user (my deals)
 ###dev/api/opportunity/my/deals
 Method: GET 
 
@@ -2370,6 +2424,32 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
           ...
     }
 ```
+
+##4.10 Update a task (Partial update)
+###dev/api/tasks/partial-update
+Method: PUT 
+
+
+We can update task using this call. It accepts task JSON. Id parameter of the task should be specified. This will not effect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "6097891487645696",
+    "subject": "sample",
+    "type": "EMAIL"
+    "due": 1448941500,
+    "contacts": [
+        "5700328880078848",
+        "6487118603878400"
+    ]
+}
+```
+
+###Response:
+- Status 200: Deal updated successfully. Returns the updated deal object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
 
 ##4.10 Delete a task based on ID:
 ###dev/api/tasks/{id}
