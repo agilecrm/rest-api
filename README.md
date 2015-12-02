@@ -495,7 +495,7 @@ If there is no ID, it will considered as a new contact.
 Method: PUT 
 
 
-We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
 
 - Note : Send only required properties data to update contact. No need to send all data of a contact.
 
@@ -533,7 +533,7 @@ We can update  required property fields of the contact using this call. It is us
 Method: PUT 
 
 
-We can update lead score of a contact using this call. It accepts lead score and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update lead score of a contact using this call. It accepts lead score and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
 
 ###Acceptable request Representation:
 ```javascript
@@ -553,7 +553,7 @@ We can update lead score of a contact using this call. It accepts lead score and
 Method: PUT 
 
 
-We can update star value of a contact using this call. It accepts star value and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can update star value of a contact using this call. It accepts star value and contact id of contact with valid parameter. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
 
 ###Acceptable request Representation:
 ```javascript
@@ -568,12 +568,12 @@ We can update star value of a contact using this call. It accepts star value and
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.8 Updat tags value by id
+##1.8 Update tags value by id
 ###dev/api/contacts/edit/tags
 Method: PUT 
 
 
-We can add tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it. This will not effect other fields.
+We can add tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
 
 ###Acceptable request Representation:
 ```javascript
@@ -1124,7 +1124,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 Method: PUT 
 
 
-We can update deal using this call. It accepts Deal JSON. Id parameter of the deal should be specified. It indicates the deal to be updated with the new data sent. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in wrong case, it will not be shown in the milestone view.). This will not effect other fields.
+We can update deal using this call. It accepts Deal JSON. Id parameter of the deal should be specified. It indicates the deal to be updated with the new data sent. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in wrong case, it will not be shown in the milestone view.). This will not affect other fields.
 
 ###Acceptable request Representation:
 ```javascript
@@ -2430,7 +2430,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
 Method: PUT 
 
 
-We can update task using this call. It accepts task JSON. Id parameter of the task should be specified. This will not effect other fields.
+We can update task using this call. It accepts task JSON. Id parameter of the task should be specified. This will not affect other fields.
 
 ###Acceptable request Representation:
 ```javascript
