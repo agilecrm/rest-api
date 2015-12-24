@@ -2155,13 +2155,16 @@ Method: GET
 ###dev/api/tasks/based
 Method: GET
 
-	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘start_time’, ‘end_time’ and ‘page_size’. These should be sent as a query parameters in the URL. Filters 'start_time' and 'end_time' are the epoch time and these will filter by the due date of the task.
-
+	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘criteria’, and ‘page_size’. These should be sent as a query parameters in the URL.
+	- There are two criteria can be use using this api and each has its own type.
+	- criteria = CATEGORY has these type (EMAIL,CALL,FOLLOW_UP,MEETING,MILESTONE,SEND,TWEET,OTHER)
+	- criteria = STATUS has these type (IN_PROGRESS,YET_TO_START,COMPLETED)
+	
 	Paging can be applied using the page_size and cursor query parameters. Count of the tasks will be in the first task and Cursor for the next page will be in the last task of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl
 ```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks/based?pending=true&type=EMAIL&page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
+	curl https:{domain}.agilecrm.com/dev/api/tasks/based?pending=true&criteria=CATEGORY&type=EMAIL&page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Response:
 - Status 200: Gets the list of tasks.
