@@ -2156,9 +2156,10 @@ Method: GET
 Method: GET
 
 	- Retrives the list of tasks based on the given filters. The filters available are ‘type’, ‘owner’, ’pending’, ‘criteria’, and ‘page_size’. These should be sent as a query parameters in the URL.
-	- There are two criteria can be use using this api and each has its own type.
+	- There are three criteria can be use using this api and each has its own type.
 	- criteria = CATEGORY has these type (EMAIL,CALL,FOLLOW_UP,MEETING,MILESTONE,SEND,TWEET,OTHER)
 	- criteria = STATUS has these type (IN_PROGRESS,YET_TO_START,COMPLETED)
+	- criteria = PRIORITY has these type (HIGH,NORMAL,LOW)
 	
 	Paging can be applied using the page_size and cursor query parameters. Count of the tasks will be in the first task and Cursor for the next page will be in the last task of the list. If there is no cursor, it means that it is the end of list.
 
