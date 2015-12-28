@@ -682,7 +682,25 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.14 Add Score to a Contact using Email-ID:
+##1.14 Delete Tags to a contact based on contact id:
+###dev/api/bulk/update?action_type=REMOVE_TAG
+Method: POST
+
+- Searches for the contact based on the given contact id and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags. Tags should be sent as an array. Contact id array and tags (tags) array should be sent as a form parameter(Content-Type: application/x-www-form-urlencoded )
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/bulk/update?action_type=REMOVE_TAG -H
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d ‘contact_ids=["5744541323755520"]&tags=["test1","test2"]’
+-v -u {email}:{apikey} -X POST
+```
+###Response:
+- Status 204: Tags deleted successfully.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+##1.15 Add Score to a Contact using Email-ID:
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -698,7 +716,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: applic
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##1.15 Get Tasks related to Contact:
+##1.16 Get Tasks related to Contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -786,7 +804,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.16 Updating contact properties
+##1.17 Updating contact properties
 ###dev/api/contacts/add/property
 Method: POST 
 
@@ -814,7 +832,7 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.17 Change contact owner
+##1.18 Change contact owner
 ###dev/api/contacts/change-owner
 Method: POST 
 
@@ -831,7 +849,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.18 Add Contact to a Campaign
+##1.19 Add Contact to a Campaign
 ###dev/api/campaigns/enroll/email
 Method: POST
 
@@ -850,7 +868,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
-##1.19 Remove Contact from a Campaign
+##1.20 Remove Contact from a Campaign
 ###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
 Method: DELETE
 
