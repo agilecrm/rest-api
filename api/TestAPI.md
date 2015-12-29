@@ -596,7 +596,7 @@ We can add tag values of a contact using this call. It accepts tag values and co
 Method: PUT 
 
 
-We can delete tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.This call searches for the contact based on the given contact id and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags.
+We can delete tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it.This call searches for the contact based on the given contact id and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags.
 
 ###Acceptable request Representation:
 ```javascript
@@ -610,7 +610,7 @@ We can delete tag values of a contact using this call. It accepts tag values and
 ```
 
 ###Response:
-- Status 200: tags value deleted successfully. Returns the updated contact object in the response.
+- Status 200: tags value deleted successfully. Returns the tag list in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
