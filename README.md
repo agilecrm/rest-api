@@ -1122,7 +1122,6 @@ Milestone name should be same as the the one in the website and it is case sensi
 ```javascript
 {
     "name": "Deal-Tomato",
-    "owner_id": "6263975862861824",
     "expected_value": "500",
     "probability": "75",
     "close_date": 1455042600,
@@ -1141,7 +1140,7 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",\"expected_value\":\"5000\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",\"expected_value\":\"5000\",  \"contact_ids\" : [\"5758948741218304\", \"5758948741218366\"] ,\"pipeline_id\" :\"43535822\", \"milestone\" : \"New\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 ###Response - Statuses:
 - Status 200: Deal added successfully and it returns the newly created deal as JSON in response.
