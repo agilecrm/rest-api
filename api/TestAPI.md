@@ -591,12 +591,12 @@ We can add tag values of a contact using this call. It accepts tag values and co
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.9 Delete tags value by contact id
+##1.9 Delete tags value by id
 ###dev/api/contacts/delete/tags
 Method: PUT 
 
 
-We can delete tag values of a contact using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it.This call searches for the contact based on the given contact id and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags.
+We can delete tag values of a contact or company using this call. It accepts tag values and contact id of contact with valid json format. We need to send the Contact-Id of the contact to identify it.This call searches for the contact based on the given contact id and searches for the given tag in the contact's tag list. If there is a match, then it deletes that tag. You can delete multiple tags.
 
 ###Acceptable request Representation:
 ```javascript
@@ -1117,6 +1117,27 @@ Method: POST
 Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
 
 - Note : expected_value is mandatory field.
+
+###Acceptable request Representation:
+```javascript
+{
+    "name": "Deal-Tomato",
+    "owner_id": "6263975862861824",
+    "expected_value": "500",
+    "probability": "75",
+    "close_date": 1455042600,
+    "milestone": "Proposal",
+    "contact_ids": [
+        "5758948741218304"
+    ],
+    "custom_data": [
+        {
+            "name": "Group Size",
+            "value": "10"
+        }
+    ]
+}
+```
 
 ###Using curl
 ```sh
