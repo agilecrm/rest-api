@@ -1118,6 +1118,27 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 - Note : expected_value is mandatory field.
 
+###Acceptable request Representation:
+```javascript
+{
+    "name": "Deal-Tomato",
+    "owner_id": "6263975862861824",
+    "expected_value": "500",
+    "probability": "75",
+    "close_date": 1455042600,
+    "milestone": "Proposal",
+    "contact_ids": [
+        "5758948741218304"
+    ],
+    "custom_data": [
+        {
+            "name": "Group Size",
+            "value": "10"
+        }
+    ]
+}
+```
+
 ###Using curl
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",\"expected_value\":\"5000\",  \"contact_ids\" : [\"2358\", \"2356\"] , \"owner_id\" : \"516\", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
