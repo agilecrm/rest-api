@@ -5,36 +5,6 @@ Table of contents
   * [Authentication](#authentication-)
   * [API Key](#api-key)
   * [Endpoints](#endpoints)
-
-**[Contacts](#1-contacts---companies-api)**
-
-  * [Contacts & Companies Fields](#1-contacts---companies-api)
-  * [Properties JSON](#properties-json)
-  * [Contact JSON Example](#contact-json-example)
-  * [Contact APIs](#11-listing-contacts-)
-    * [1 Listing Contacts](#11-listing-contacts-)
-    * [2 Get contact by id](#12-get-contact-by-id)
-    * [3 Creating a contact](#13-creating-a-contact)
-    * [4 Updating contact](#14-updating-contact)
-    * [5 Partial update](#15-update-properties-of-a-contact-by-id-partial-update)
-    * [6 Update lead score by id](#16-update-lead-score-by-id)
-    * [7 Update star value by id](#17-update-star-value-by-id)
-    * [8 Update tags value by id](#18-update-tags-value-by-id)
-    * [9 Delete tags value by id](#19-delete-tags-value-by-id)
-    * [10 Delete single contact](#110-delete-single-contact)
-    * [11 Search Contact by Email](#111-search-contact-by-email)
-    * [12 Search Contacts/Companies](#112-search-contactscompanies)
-    * [13 Adding Tags to a contact based on Email](#113-adding-tags-to-a-contact-based-on-email)
-    * [14 Delete Tags to a contact based on Email](#114-delete-tags-to-a-contact-based-on-email)
-    * [15 Add Score to a Contact using Email-ID](#115-add-score-to-a-contact-using-email-id)
-    * [16 Get Tasks related to Contact](#116-get-tasks-related-to-contact)
-    * [17 Updating contact properties](#117-updating-contact-properties)
-    * [18 Change contact owner](#118-change-contact-owner)
-    * [19 Add Contact to a Campaign](#119-add-contact-to-a-campaign)
-    * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
-    
-  **[Deals](#2-deals-api)**
-
 **[Contacts](#1-contacts---companies-api)**
   * [Contacts & Companies Fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
