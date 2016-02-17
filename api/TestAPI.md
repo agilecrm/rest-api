@@ -1,18 +1,20 @@
 Table of contents
 =================
 
-  * [Things to know](#things-to-know)
-    * [Authentication](#authentication-)
-    * [API Key](#api-key)
-    * [Endpoints](#endpoints)
-  * [1. Contacts](#1-contacts---companies-api)
-    * [Contacts & Companies Fields](#1-contacts---companies-api)
-    * [Properties JSON](#properties-json)
-    * [Contact JSON Example](#contact-json-example)
-      *[1.1 Listing Contacts](#11-listing-contacts-)
-      *[1.2 Get contact by id](#12-get-contact-by-id)
-      *[1.3 Creating a contact](#13-creating-a-contact)
-      *[1.4 Updating contact](#14-updating-contact)
+**[Things to know](#things-to-know)**
+  * [Authentication](#authentication-)
+  * [API Key](#api-key)
+  * [Endpoints](#endpoints)
+
+**[Contacts](#1-contacts---companies-api)**
+  * [Contacts & Companies Fields](#1-contacts---companies-api)
+  * [Contacts & Companies Fields](#1-contacts---companies-api)
+  * [Properties JSON](#properties-json)
+  * [Contact JSON Example](#contact-json-example)
+    *[1.1 Listing Contacts](#11-listing-contacts-)
+    *[1.2 Get contact by id](#12-get-contact-by-id)
+    *[1.3 Creating a contact](#13-creating-a-contact)
+    *[1.4 Updating contact](#14-updating-contact)
     
 
 Things to know:
