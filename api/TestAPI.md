@@ -7,7 +7,7 @@ Table of contents
   * [Endpoints](#endpoints)
 
 **[Contacts](#1-contacts---companies-api)**
-  * [Contacts & Companies Fields](#1-contacts---companies-api)
+  * [Contact & Companie Fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
   * [Contact JSON Example](#contact-json-example)
   * [Contact APIs](#11-listing-contacts-)
@@ -33,7 +33,7 @@ Table of contents
     * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
 
 **[Deals](#2-deals-api)**
-  * [Deals Fields](#2-deals-api)
+  * [Deal Fields](#2-deals-api)
   * [Deal JSON Example](#deal-json-example)
   * [Deal APIs](#21-listing-deals)
     * [1 Listing deals](#21-listing-deals)
@@ -73,13 +73,28 @@ Table of contents
     * [10 Update a task (Partial update)](#410-update-a-task-partial-update)
     * [11 Delete a task based on ID](#411-delete-a-task-based-on-id)
 
-**[Notes](#3-notes-api)**
-  * [Note Fields](#3-notes-api)
-  * [Note APIs](#21-listing-deals)
-    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
-    * [2 Add Note to a Contact using Email-ID](#32-add-note-to-a-contact-using-email-id)
-    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
-    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
+**[Events](#5-events-api)**
+  * [Event Fields](#5-events-api)
+  * [Event APIs](#51-get-list-of-events)
+    * [1 Get List of Events](#51-get-list-of-events)
+    * [2 Get Events related to Contact](#52-get-events-related-to-contact)
+    * [3 Create Event](#53-create-event)
+    * [4 Update Event](#54-update-event)
+    * [5 Delete an Event](#55-delete-an-event)
+
+**[Track / Milestones](#6-track--milestones-api)**
+  * [Track Fields](#6-track--milestones-api)
+  * [Track / Milestones APIs](#61-get-all-the-tracks)
+    * [1 Get all the Tracks](#61-get-all-the-tracks)
+    * [2 Create a Track](#62-create-a-track)
+    * [3 Update a Track](#63-update-a-track)
+    * [4 Delete a Track](#64-delete-a-track)
+
+**[Campaigns](#7-list-of-campaigns)**
+  * [List of Campaigns](#7-list-of-campaigns)
+
+**[Videos Reference](#8-youtube)**
+  * [List of Campaigns](#8-list-of-campaigns)
 
 
 Things to know:
@@ -2944,3 +2959,11 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 ###Response - Statuses:
 - Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorized. (When the user name and password fields are wrong.)
+
+##8 Youtube Links for Rest APIs.
+
+	1. [Create Contac](https://www.youtube.com/watch?v=8-zQMprfDgE)
+	2. [Update Contac](https://www.youtube.com/watch?v=mrAoR7_K4v0)
+	3. [Create Contac](https://www.youtube.com/watch?v=8-zQMprfDgE)
+	4. [Update tags by contact ID](https://www.youtube.com/watch?v=xlid69VOUxE)
+	5. [Create Deal](https://www.youtube.com/watch?v=otxmAuuHeDA)
