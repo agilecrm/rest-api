@@ -50,6 +50,38 @@ Table of contents
     * [12 Get Deals Related To Specific Contact](#212-get-deals-related-to-specific-contact)
     * [13 Get Deals of Current user (my deals)](#213-get-deals-of-current-user-my-deals)
 
+**[Notes](#3-notes-api)**
+  * [Note Fields](#3-notes-api)
+  * [Note APIs](#21-listing-deals)
+    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
+    * [2 Add Note to a Contact using Email-ID](#32-add-note-to-a-contact-using-email-id)
+    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
+    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
+
+**[Tasks](#4-tasks-api)**
+  * [Task Fields](#4-tasks-api)
+  * [Task APIs](#41-get-the-list-of-pending-tasks)
+    * [1 Get the list of pending tasks](#41-get-the-list-of-pending-tasks)
+    * [2 Get all tasks](#42-get-all-tasks)
+    * [3 Get the list of pending tasks depending on the number of pending days](#43-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
+    * [4 Get the list of tasks of current user](#44-get-the-list-of-tasks-of-current-user)
+    * [5 Get the list of tasks based on given filters](#45-get-the-list-of-tasks-based-on-given-filters)
+    * [6 Get the task based on ID](#46-get-the-task-based-on-id)
+    * [7 Create a task](#47-create-a-task)
+    * [8 Create a task based on Contact email](#48-create-a-task-based-on-contact-email)
+    * [9 Update a task](#49-update-a-task)
+    * [10 Update a task (Partial update)](#410-update-a-task-partial-update)
+    * [11 Delete a task based on ID](#411-delete-a-task-based-on-id)
+
+**[Notes](#3-notes-api)**
+  * [Note Fields](#3-notes-api)
+  * [Note APIs](#21-listing-deals)
+    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
+    * [2 Add Note to a Contact using Email-ID](#32-add-note-to-a-contact-using-email-id)
+    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
+    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
+
+
 Things to know:
 ---------------
 
@@ -2550,7 +2582,7 @@ We can update task using this call. It accepts task JSON. Id parameter of the ta
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##4.10 Delete a task based on ID:
+##4.11 Delete a task based on ID:
 ###dev/api/tasks/{id}
 Method: DELETE
 
