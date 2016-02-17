@@ -5,6 +5,7 @@ Table of contents
   * [Authentication](#authentication-)
   * [API Key](#api-key)
   * [Endpoints](#endpoints)
+
 **[Contacts](#1-contacts---companies-api)**
   * [Contacts & Companies Fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
