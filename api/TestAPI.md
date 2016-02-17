@@ -9,11 +9,11 @@ Table of contents
     * [Contacts & Companies Fields](#1-contacts---companies-api)
     * [Properties JSON](#properties-json)
     * [Contact JSON Example](#contact-json-example)
-    * *[1.1 Listing Contacts](#11-listing-contacts-)
-    * *[1.2 Get contact by id](#12-get-contact-by-id)
-    * *[1.3 Creating a contact](#13-creating-a-contact)
-    * *[1.4 Updating contact](#14-updating-contact)
-    * 
+      *[1.1 Listing Contacts](#11-listing-contacts-)
+      *[1.2 Get contact by id](#12-get-contact-by-id)
+      *[1.3 Creating a contact](#13-creating-a-contact)
+      *[1.4 Updating contact](#14-updating-contact)
+    
 
 Things to know:
 ---------------
