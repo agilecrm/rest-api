@@ -1,3 +1,17 @@
+Table of contents
+=================
+
+  * [Things to know](#things-to-know)
+    * [Authentication](#authentication-)
+    * [API Key](#api-key)
+    * [Endpoints](#endpoints)
+  * [Contacts](#1-contacts---companies-api)
+    * [Contacts & Companies ](#stdin)
+    * [Local files](#local-files)
+    * [Remote files](#remote-files)
+    * [Multiple files](#multiple-files)
+    * [Combo](#combo)
+
 Things to know:
 ---------------
 
