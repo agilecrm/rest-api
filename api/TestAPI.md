@@ -35,15 +35,13 @@ Table of contents
     
   **[Deals](#2-deals-api)**
 
-Table of contents
-=================
 **[Contacts](#1-contacts---companies-api)**
-  * [gh-md-toc](#gh-md-toc)
-  * [Table of contents](#table-of-contents)
-  * [Installation](#installation)
-  * [Usage](#usage)
-    * [STDIN](#stdin)
-    * [Local files](#local-files)
+  * [Contacts & Companies Fields](#1-contacts---companies-api)
+  * [Properties JSON](#properties-json)
+  * [Contact JSON Example](#contact-json-example)
+  * [Contact APIs](#11-listing-contacts-)
+    * [1 Listing Contacts](#11-listing-contacts-)
+    * [2 Get contact by id](#12-get-contact-by-id)
     * [Remote files](#remote-files)
     * [Multiple files](#multiple-files)
     * [Combo](#combo)    
