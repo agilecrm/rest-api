@@ -7,6 +7,7 @@ Table of contents
   * [Endpoints](#endpoints)
 
 **[Contacts](#1-contacts---companies-api)**
+
   * [Contacts & Companies Fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
   * [Contact JSON Example](#contact-json-example)
@@ -36,7 +37,7 @@ Table of contents
 
 Table of contents
 =================
-
+**[Contacts](#1-contacts---companies-api)**
   * [gh-md-toc](#gh-md-toc)
   * [Table of contents](#table-of-contents)
   * [Installation](#installation)
