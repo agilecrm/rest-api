@@ -30,7 +30,25 @@ Table of contents
     * [17 Updating contact properties](#117-updating-contact-properties)
     * [18 Change contact owner](#118-change-contact-owner)
     * [19 Add Contact to a Campaign](#119-add-contact-to-a-campaign)
-    * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)   
+    * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
+
+**[Deals](#2-deals-api)**
+  * [Deals Fields](#2-deals-api)
+  * [Deal JSON Example](#deal-json-example)
+  * [Deal APIs](#21-listing-deals)
+    * [1 Listing deals](#21-listing-deals)
+    * [2 Get deal by its id](#22-get-deal-by-its-id)
+    * [3 Create Deal](#23-create-deal)
+    * [4 Update Deal](#24-update-deal)
+    * [5 Partial update](#25-update-deal-partial-update)
+    * [6 Create Deal to a contact using Email Id](#26-create-deal-to-a-contact-using-email-id)
+    * [7 Delete Deal](#27-delete-deal)
+    * [8 Bulk Delete](#28-bulk-delete)
+    * [9 Get Deals from Default track grouped by milestones](#29-get-deals-from-default-track-grouped-by-milestones)
+    * [10 Get Deals for a particular Track (grouped by Milestone)](#210-get-deals-for-a-particular-track-grouped-by-milestone)
+    * [11 Get Deals from particular track](#211-get-deals-from-particular-track)
+    * [12 Get Deals Related To Specific Contact](#212-get-deals-related-to-specific-contact)
+    * [13 Get Deals of Current user (my deals)](#213-get-deals-of-current-user-my-deals)
 
 Things to know:
 ---------------
