@@ -1,3 +1,105 @@
+Table of contents
+=================
+
+**[Things to know](#things-to-know)**
+  * [Authentication](#authentication-)
+  * [API Key](#api-key)
+  * [Endpoints](#endpoints)
+
+**[Contacts](#1-contacts---companies-api)**
+  * [Contact & Companie Fields](#1-contacts---companies-api)
+  * [Properties JSON](#properties-json)
+  * [Contact JSON Example](#contact-json-example)
+  * [Contact APIs](#11-listing-contacts-)
+    * [1 Listing Contacts](#11-listing-contacts-)
+    * [2 Get contact by id](#12-get-contact-by-id)
+    * [3 Creating a contact](#13-creating-a-contact)
+    * [4 Updating contact](#14-updating-contact)
+    * [5 Partial update](#15-update-properties-of-a-contact-by-id-partial-update)
+    * [6 Update lead score by id](#16-update-lead-score-by-id)
+    * [7 Update star value by id](#17-update-star-value-by-id)
+    * [8 Update tags value by id](#18-update-tags-value-by-id)
+    * [9 Delete tags value by id](#19-delete-tags-value-by-id)
+    * [10 Delete single contact](#110-delete-single-contact)
+    * [11 Search Contact by Email](#111-search-contact-by-email)
+    * [12 Search Contacts/Companies](#112-search-contactscompanies)
+    * [13 Adding Tags to a contact based on Email](#113-adding-tags-to-a-contact-based-on-email)
+    * [14 Delete Tags to a contact based on Email](#114-delete-tags-to-a-contact-based-on-email)
+    * [15 Add Score to a Contact using Email-ID](#115-add-score-to-a-contact-using-email-id)
+    * [16 Get Tasks related to Contact](#116-get-tasks-related-to-contact)
+    * [17 Updating contact properties](#117-updating-contact-properties)
+    * [18 Change contact owner](#118-change-contact-owner)
+    * [19 Add Contact to a Campaign](#119-add-contact-to-a-campaign)
+    * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
+
+**[Deals](#2-deals-api)**
+  * [Deal Fields](#2-deals-api)
+  * [Deal JSON Example](#deal-json-example)
+  * [Deal APIs](#21-listing-deals)
+    * [1 Listing deals](#21-listing-deals)
+    * [2 Get deal by its id](#22-get-deal-by-its-id)
+    * [3 Create Deal](#23-create-deal)
+    * [4 Update Deal](#24-update-deal)
+    * [5 Partial update](#25-update-deal-partial-update)
+    * [6 Create Deal to a contact using Email Id](#26-create-deal-to-a-contact-using-email-id)
+    * [7 Delete Deal](#27-delete-deal)
+    * [8 Bulk Delete](#28-bulk-delete)
+    * [9 Get Deals from Default track grouped by milestones](#29-get-deals-from-default-track-grouped-by-milestones)
+    * [10 Get Deals for a particular Track (grouped by Milestone)](#210-get-deals-for-a-particular-track-grouped-by-milestone)
+    * [11 Get Deals from particular track](#211-get-deals-from-particular-track)
+    * [12 Get Deals Related To Specific Contact](#212-get-deals-related-to-specific-contact)
+    * [13 Get Deals of Current user (my deals)](#213-get-deals-of-current-user-my-deals)
+
+**[Notes](#3-notes-api)**
+  * [Note Fields](#3-notes-api)
+  * [Note APIs](#21-listing-deals)
+    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
+    * [2 Add Note to a Contact using Email-ID](#32-add-note-to-a-contact-using-email-id)
+    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
+    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
+
+**[Tasks](#4-tasks-api)**
+  * [Task Fields](#4-tasks-api)
+  * [Task APIs](#41-get-the-list-of-pending-tasks)
+    * [1 Get the list of pending tasks](#41-get-the-list-of-pending-tasks)
+    * [2 Get all tasks](#42-get-all-tasks)
+    * [3 Get the list of pending tasks depending on the number of pending days](#43-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
+    * [4 Get the list of tasks of current user](#44-get-the-list-of-tasks-of-current-user)
+    * [5 Get the list of tasks based on given filters](#45-get-the-list-of-tasks-based-on-given-filters)
+    * [6 Get the task based on ID](#46-get-the-task-based-on-id)
+    * [7 Create a task](#47-create-a-task)
+    * [8 Create a task based on Contact email](#48-create-a-task-based-on-contact-email)
+    * [9 Update a task](#49-update-a-task)
+    * [10 Update a task (Partial update)](#410-update-a-task-partial-update)
+    * [11 Delete a task based on ID](#411-delete-a-task-based-on-id)
+
+**[Events](#5-events-api)**
+  * [Event Fields](#5-events-api)
+  * [Event APIs](#51-get-list-of-events)
+    * [1 Get List of Events](#51-get-list-of-events)
+    * [2 Get Events related to Contact](#52-get-events-related-to-contact)
+    * [3 Create Event](#53-create-event)
+    * [4 Update Event](#54-update-event)
+    * [5 Delete an Event](#55-delete-an-event)
+
+**[Track / Milestones](#6-track--milestones-api)**
+  * [Track Fields](#6-track--milestones-api)
+  * [Track / Milestones APIs](#61-get-all-the-tracks)
+    * [1 Get all the Tracks](#61-get-all-the-tracks)
+    * [2 Create a Track](#62-create-a-track)
+    * [3 Update a Track](#63-update-a-track)
+    * [4 Delete a Track](#64-delete-a-track)
+
+**[Campaigns](#7-list-of-campaigns)**
+  * [List of Campaigns](#7-list-of-campaigns)
+
+**[Videos Reference](#8-youtube-links-for-rest-apis)**
+  * [Create Contact Test](#create-contact)
+  * [Update Contact Test](#update-contact)
+  * [Update Tag by ID Test](#update-tag-by-id)
+  * [Create Deal Test](#create-deal)
+
+
 Things to know:
 ---------------
 
@@ -2498,7 +2600,7 @@ We can update task using this call. It accepts task JSON. Id parameter of the ta
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##4.10 Delete a task based on ID:
+##4.11 Delete a task based on ID:
 ###dev/api/tasks/{id}
 Method: DELETE
 
@@ -2860,3 +2962,27 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 ###Response - Statuses:
 - Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorized. (When the user name and password fields are wrong.)
+
+##8 Youtube Links for Rest APIs.
+
+###Create Contact:
+
+<a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Update Contact:
+
+<a href="https://www.youtube.com/watch?v=mrAoR7_K4v0" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Update Tag by ID:
+
+<a href="https://www.youtube.com/watch?v=xlid69VOUxE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateTags.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Create Deal:
+
+<a href="https://www.youtube.com/watch?v=otxmAuuHeDA" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+
