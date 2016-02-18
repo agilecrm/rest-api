@@ -2962,11 +2962,24 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 
 ##8 Youtube Links for Rest APIs.
 
-<a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+###Create Contact:
 
 <a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
-	1. <a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+###Update Contact:
+
+<a href="https://www.youtube.com/watch?v=mrAoR7_K4v0" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Update Tag by ID:
+
+<a href="https://www.youtube.com/watch?v=xlid69VOUxE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateTags.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Create Deal:
+
+<a href="https://www.youtube.com/watch?v=otxmAuuHeDA" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+
