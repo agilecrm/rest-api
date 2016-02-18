@@ -93,8 +93,11 @@ Table of contents
 **[Campaigns](#7-list-of-campaigns)**
   * [List of Campaigns](#7-list-of-campaigns)
 
-**[Videos Reference](#8-youtube)**
-  * [List of Campaigns](#8-list-of-campaigns)
+**[Videos Reference](#8-youtube-links-for-rest-apis)**
+  * [Create Contact Test](#create-contact)
+  * [Update Contact Test](#update-contact)
+  * [Update Tag by ID Test](#update-tag-by-id)
+  * [Create Deal Test](#create-deal)
 
 
 Things to know:
