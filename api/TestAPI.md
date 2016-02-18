@@ -2961,9 +2961,12 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 - Status 401: Unauthorized. (When the user name and password fields are wrong.)
 
 ##8 Youtube Links for Rest APIs.
-	1. [Create Contac](<a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>)
-	2. [Update Contac](https://www.youtube.com/watch?v=mrAoR7_K4v0)
-	3. [Create Contac](https://www.youtube.com/watch?v=8-zQMprfDgE)
-	4. [Update tags by contact ID](https://www.youtube.com/watch?v=xlid69VOUxE)
-	5. [Create Deal](https://www.youtube.com/watch?v=otxmAuuHeDA)
+
+<a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+<a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+	1. <a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
