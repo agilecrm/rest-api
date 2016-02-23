@@ -993,6 +993,26 @@ curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{w
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
+##1.21 Get contact by phone number
+###dev/api/contacts/search/phonenumber/{id}
+Method: GET 
+
+- Returns contact object which is associated with given id
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "Accept :application/json" 
+-v -u {email}:{apikey}
+```
+###Example Response
+
+- Returns created contact object with all parameters in it as mentioned in the above example. 
+
+###Other available Responses:
+- Status 200: Gives the above JSON object in above format.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
