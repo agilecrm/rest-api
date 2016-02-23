@@ -1,3 +1,8 @@
+Agile CRM REST API
+---------------
+
+Agile CRM is a new breed CRM software with sales and marketing automation. You can sign up @ [AgileCRM.com](https://www.agilecrm.com/).
+
 Table of contents
 =================
 
