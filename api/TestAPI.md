@@ -731,7 +731,27 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 - Status 204: Contact deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.11 Search Contact by Email
+##1.11.1 Search Contact by Email
+###dev/api/contacts/search/email/{email}
+Method: GET 
+
+- Returns contact object which is associated with given email
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email/{email} -H "Accept :application/json" 
+-v -u {email}:{apikey}
+```
+###Example Response
+
+- Returns created contact object with all parameters in it as mentioned in the above example. 
+
+###Other available Responses:
+- Status 200: Gives the above JSON object in above format.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.11.2 Search Contact by Email
 ###dev/api/contacts/search/email
 Method: POST
 
@@ -994,10 +1014,10 @@ curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{w
 - Status 400: If the input is in the wrong format
 
 ##1.21 Get contact by phone number
-###dev/api/contacts/search/phonenumber/{id}
+###dev/api/contacts/search/phonenumber/{phone-number}
 Method: GET 
 
-- Returns contact object which is associated with given id
+- Returns contact object which is associated with given phone number
 
 ###Using curl
 ```sh
@@ -1012,6 +1032,126 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "
 - Status 200: Gives the above JSON object in above format.
 - Status 204: No contact with the specified phone number in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.22 Creating a company
+###dev/api/contacts
+Method: POST 
+
+- Accepts contact JSON as post data along with the credentials of domain User (User name and API Key).
+
+###Acceptable request Representation:
+```javascript
+{
+    "type": "COMPANY",
+    "star_value": 4,
+    "lead_score": 120,
+    "tags": [
+        "Permanent",
+        "USA",
+        "Hongkong",
+        "Japan"
+    ],
+    "properties": [
+        {
+            "name": "Company Type",
+            "type": "CUSTOM",
+            "value": "MNC Inc"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "value": "Spicejet"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "url",
+            "value": "http://www.spicejet.com/"
+        },
+        {
+            "name": "email",
+            "value": "care@spicejet.com",
+            "subtype": ""
+        },
+        {
+            "name": "phone",
+            "value": "45500000",
+            "subtype": ""
+        },
+        {
+            "name": "website",
+            "value": "http://www.linkedin.com/company/agile-crm",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"MS 35, 440 N Wolfe Road\",\"city\":\"Sunnyvale\",\"state\":\"CA\",\"zip\":\"94085\",\"country\":\"US\"}",
+            "subtype": "office"
+        }
+    ]
+}
+```
+###Example Response
+
+- Returns created contact object with all parameters in it as mentioned in the above example. 
+
+###Other available Responses:
+- Status Status 200: Contact added successfully. Returns the newly added contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+- Status 406: If the limit of the contacts is exceeded.
+
+##1.22 Updating a company
+###dev/api/contacts/edit-properties
+Method: PUT 
+
+- We can update required property fields of the company using this call. It is used to add the new property or update the existing property. It accepts property object of company with valid parameter in it. We need to send the Company-Id of the company to identify it. This will not affect other fields.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id":5651082298523648,
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "value": "Spicejet"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "url",
+            "value": "http://www.spicejet.com/"
+        },
+        {
+            "name": "email",
+            "value": "care@spicejet.com",
+            "subtype": ""
+        },
+        {
+            "name": "phone",
+            "value": "45500000",
+            "subtype": ""
+        },
+        {
+            "name": "website",
+            "value": "http://www.linkedin.com/company/agile-crm",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"MS 35, 440 N Wolfe Road\",\"city\":\"Sunnyvale\",\"state\":\"CA\",\"zip\":\"94085\",\"country\":\"US\"}",
+            "subtype": "office"
+        }
+    ]
+}
+```
+###Example Response
+
+- Returns created contact object with all parameters in it as mentioned in the above example. 
+
+###Other available Responses:
+- Status Status 200: Contact updated successfully. Returns the updated contact object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
 
 2. Deals API
 -----------
