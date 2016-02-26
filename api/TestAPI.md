@@ -22,6 +22,7 @@ Table of contents
     * [9 Delete tags value by id](#19-delete-tags-value-by-id)
     * [10 Delete single contact](#110-delete-single-contact)
     * [11 Search Contact by Email](#111-search-contact-by-email)
+      * [11 Search Contact by Email](#111-search-contact-by-email)
     * [12 Search Contacts/Companies](#112-search-contactscompanies)
     * [13 Adding Tags to a contact based on Email](#113-adding-tags-to-a-contact-based-on-email)
     * [14 Delete Tags to a contact based on Email](#114-delete-tags-to-a-contact-based-on-email)
