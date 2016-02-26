@@ -22,7 +22,8 @@ Table of contents
     * [9 Delete tags value by id](#19-delete-tags-value-by-id)
     * [10 Delete single contact](#110-delete-single-contact)
     * [11 Search Contact by Email](#111-search-contact-by-email)
-      * [11 Search Contact by Email](#111-search-contact-by-email)
+      * [11.A Search Contact by Email](#1111-search-contact-by-email)
+      * [11.B Search Contact by Email](#1112-search-contact-by-email)
     * [12 Search Contacts/Companies](#112-search-contactscompanies)
     * [13 Adding Tags to a contact based on Email](#113-adding-tags-to-a-contact-based-on-email)
     * [14 Delete Tags to a contact based on Email](#114-delete-tags-to-a-contact-based-on-email)
@@ -32,7 +33,15 @@ Table of contents
     * [18 Change contact owner](#118-change-contact-owner)
     * [19 Add Contact to a Campaign](#119-add-contact-to-a-campaign)
     * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
+    * [21 Get contact by phone number](#121-get-contact-by-phone-number)
 
+**[Companies](#122-creating-a-company)**
+  * [1 Creating a company](#122-creating-a-company)
+  * [2 Updating a company](#122-updating-a-company)
+  * [3 Get list of companies](#123-get-list-of-companies)
+  * [4 Get company by id](#124-get-company-by-id)
+  * [5 Delete single company](#125-delete-single-company)
+ 
 **[Deals](#2-deals-api)**
   * [Deal Fields](#2-deals-api)
   * [Deal JSON Example](#deal-json-example)
@@ -1025,12 +1034,9 @@ Method: GET
 curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "Accept :application/json" 
 -v -u {email}:{apikey}
 ```
-###Example Response
-
-- Returns created contact object with all parameters in it as mentioned in the above example. 
 
 ###Other available Responses:
-- Status 200: Gives the above JSON object in above format.
+- Status 200: Returns contact json data.
 - Status 204: No contact with the specified phone number in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
@@ -1038,7 +1044,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "
 ###dev/api/contacts
 Method: POST 
 
-- Accepts contact JSON as post data along with the credentials of domain User (User name and API Key).
+- Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
 
 ###Acceptable request Representation:
 ```javascript
@@ -1093,10 +1099,10 @@ Method: POST
 ```
 ###Example Response
 
-- Returns created contact object with all parameters in it as mentioned in the above example. 
+- Returns created company object with all parameters in it as mentioned in the above example. 
 
 ###Other available Responses:
-- Status Status 200: Contact added successfully. Returns the newly added contact object in the response.
+- Status Status 200: Company added successfully. Returns the newly added company object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 - Status 406: If the limit of the contacts is exceeded.
@@ -1147,10 +1153,10 @@ Method: PUT
 ```
 ###Example Response
 
-- Returns created contact object with all parameters in it as mentioned in the above example. 
+- Returns updated company object with all parameters in it as mentioned in the above example. 
 
 ###Other available Responses:
-- Status Status 200: Contact updated successfully. Returns the updated contact object in the response.
+- Status Status 200: Company updated successfully. Returns the updated contact object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
