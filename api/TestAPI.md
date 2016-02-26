@@ -770,7 +770,7 @@ Method: POST
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json"
 -H "Content-Type :application/x-www-form-urlencoded" 
--d ‘email_ids=["notifications@basecamp.com"]’
+-d 'email_ids=["notifications@basecamp.com"]'
 -v -u {email}:{apikey} -X POST
 ```
 
@@ -2247,22 +2247,51 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/710002/notes -H "Accept : ap
 ###Example response :
 ```sh	
 [
-{
-		"id" : 79001,
-		"created_time" : 1360561958,
-		"subject" : "Note subject1",
-		"description" : "Note description1",
-		"contacts" : ["721002"],
-"entity_type" : "note"
-},
-{
-"id" : 80001
-		"created_time" : 1360561722,
-		"subject" : "Note subject2",
-		"description" : "Note description2",
-		"contacts" : ["721002"],
-"entity_type" : "note"
-}
+    {
+        "count": 2,
+        "id": 5757434010271744,
+        "created_time": 1456469393,
+        "subject": "Tata",
+        "description": "Product Famous in India",
+        "contact_ids": [
+            "5748927693324288"
+        ],
+        "contacts": [
+            {
+                "id": 5748927693324288,
+                "type": "PERSON",
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "olay"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5725589243691008,
+        "created_time": 1456469284,
+        "subject": "toyta",
+        "description": "Product's related to worldwide.",
+        "contact_ids": [
+            "5748927693324288"
+        ],
+        "contacts": [
+            {
+                "id": 5748927693324288,
+                "type": "PERSON",
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "olay"
+                    }
+                ]
+            }
+        ]
+    }
 ]
 ```
 	
@@ -2280,6 +2309,111 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
+##3.5 Create Note to a Deal
+###dev/api/opportunity/deals/notes
+Method: POST
+- Accepts note JSON as data in Post request to the url specified above, which creates new note and returns the note JSON with id field generated when new note is created.
+
+###Acceptable request Representation:
+```javascript
+{
+    "subject": "Deal From Albany",
+    "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+    "deal_ids": [
+        "5088304026353664"
+    ]
+}
+```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :application/json" -H "Content-Type: application/json" -d '{"subject": "Deal From Albany","description": "This deal came directly from customer. No advertisement and hence very important for us.","deal_ids": ["5088304026353664"]}' -v -u {email}:{apikey} -X POST 
+```
+
+###Response - Statuses:
+- Status 200: Note added successfully and it returns the deal as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+##3.6 Update Note to a Deal
+###dev/api/opportunity/deals/notes
+Method: PUT
+- Accepts note JSON as data in Post request to the url specified above, which update note and returns the deal JSON with id field generated when new note is created.
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "5714548224950272",
+    "subject": "Deal From Albany edit",
+    "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+    "deal_ids": [
+        "5088304026353664"
+    ]
+}
+```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :application/json" -H "Content-Type: application/json" -d '{"id": "5714548224950272","subject": "Deal From Albany Edit","description": "This deal came directly from customer. No advertisement and hence very important for us.","deal_ids": ["5088304026353664"]}' -v -u {email}:{apikey} -X PUT
+```
+
+###Response - Statuses:
+- Status 200: Note updated successfully and it returns the deal as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+##3.7 Gets notes related to specific deal :
+###/dev/api/opportunity/5088304026353664/notes
+Method: GET
+
+- Returns list of note JSONs related to the contact. 
+
+###Using curl :
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/opportunity/5088304026353664/notes -H "Accept : application/json" -v -u {email} : {API Key}
+```
+###Example response :
+```sh	
+[
+    {
+        "id": 5702534932987904,
+        "created_time": 1456467295,
+        "subject": "Deal From Albany",
+        "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+        "entity_type": "note"
+    },
+    {
+        "id": 5714548224950272,
+        "created_time": 1456468655,
+        "subject": "Deal From Albany edit 1234",
+        "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+        "contact_ids": [],
+        "deal_ids": []
+    }
+]
+```
+###Response:
+- Status 200: Returned list od notes
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+
+##3.8 Delete notes from specific deal :
+###/dev/api/contacts/notes/bulk
+Method: POST
+	- Deletes notes of the specific deal.
+
+###Using curl : 
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: application/json"
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d 'ids=["5641751750508544"]'
+-v -u {email}:{apikey} -X POST
+```
+###Response:
+- Status 204: Note removed successfully.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
 
 4. Tasks API
 ---------
