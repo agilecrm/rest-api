@@ -171,7 +171,7 @@ Note: There will be subtypes for custom fields. User should specify the above me
 
 ```javascript
 {
-    	"id": 27001,
+    	"id": 5711946548510720,
     	"type": "PERSON",
     	"created_time": 1349974226,
     	"updated_time": 1364483386,
@@ -259,77 +259,8 @@ Method: GET
 
 - returns list of contacts in domain which are ordered by creation time.
 
-For the Response in the XML format, add the header 'Accept' as application/xml. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
+For the Response in the Json format, add the header 'Accept' as application/json. By default, the response will be in XML format. Paging can be applied using the page_size and cursor query parameters. Count of the contacts will be in the first contact and Cursor for the next page will be in the last contact of the list. If there is no cursor, it means that it is the end of list.
 
-###Using curl
-```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H "Accept : application/xml" -v -u {email}:{apikey}```
-
-###Example XML response
-```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contacts>
-  <contact>
-    	<id>40002</id>
-    	<type>PERSON</type>
-    	<created_time>1356589886</created_time>
-    	<updated_time>1357107323</updated_time>
-    	<star_value>0</star_value>
-    	<lead_score>93</lead_score>
-    	<tags>sales</tags>
-    	<tags>bruik</tags>
-    	<tags>walt</tags>
-    	<tags>los</tags>
-    	<tags>vo</tags>
-    	<tags>steady</tags>
-    	<properties>
-      		<type>SYSTEM</type>
-      		<name>first_name</name>
-      		<value>Los </value>
-    	</properties>
-    <properties>
-      	<type>SYSTEM</type>
-      	<name>last_name</name>
-      	<value>Bruikheilmer</value>
-    </properties>
-    <properties>
-     	<type>SYSTEM</type>
-      	<name>company</name>
-      	<value>steady.inc</value>
-    </properties>
-    <properties>
-      	<type>SYSTEM</type>
-      	<name>title</name>
-      	<value>VP Sales</value>
-    </properties>
-    <properties>
-      	<type>SYSTEM</type>
-      	<name>email</name>
-      	<subtype>work<subtype/>
-      	<value>bruik@walt.inc</value>
-    </properties>
-   <properties>
-      	<type>SYSTEM</type>
-      	<name>address</name>
-      	<value>{"address":"","city":"","state":"","zip":"","country":""}</value>
-    </properties>
-    <domainUser>
-<id>106010</id>
-      	<domain>yaswanth</domain>
-      	<email>praveen@invox.com</email>
-      	<is_admin>true</is_admin>
-      	<is_account_owner>true</is_account_owner>
-      	<is_disabled>false</is_disabled>
-      	<name>yaswanth</name>
-      	<password>PASSWORD</password>
-<info_json_string>
-{"logged_in_time":1359434638,"created_time":1358831084}
-</info_json_string>
-    </domainUser>
-   </contact>
-</contacts>
-```
-For the Response in the JSON format, add the header 'Accept' as application/json.
 
 ###Using curl
 ```sh
@@ -340,8 +271,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
 ```javascript
 [
       {
-        "count": "9",
-        "id": "40002",
+        "id": "5073269292007424",
         "type": "PERSON",
         "created_time": "1356589886",
         "updated_time": "1357107323",
@@ -396,7 +326,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
         }
       },
       {
-        "id": "41002",
+        "id": "5086805955182592",
         "type": "PERSON",
         "created_time": "1356590542",
         "updated_time": "1359367255",
