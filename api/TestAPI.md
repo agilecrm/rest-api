@@ -34,13 +34,12 @@ Table of contents
     * [19 Add Contact to a Campaign](#119-add-contact-to-a-campaign)
     * [20 Remove Contact from a Campaign](#120-remove-contact-from-a-campaign)
     * [21 Get contact by phone number](#121-get-contact-by-phone-number)
-
-**[Companies](#122-creating-a-company)**
-  * [1 Creating a company](#122-creating-a-company)
-  * [2 Updating a company](#122-updating-a-company)
-  * [3 Get list of companies](#123-get-list-of-companies)
-  * [4 Get company by id](#124-get-company-by-id)
-  * [5 Delete single company](#125-delete-single-company)
+  * [Company APIs](#122-creating-a-company)
+    * [1 Creating a company](#122-creating-a-company)
+    * [2 Updating a company](#122-updating-a-company)
+    * [3 Get list of companies](#123-get-list-of-companies)
+    * [4 Get company by id](#124-get-company-by-id)
+    * [5 Delete single company](#125-delete-single-company)
  
 **[Deals](#2-deals-api)**
   * [Deal Fields](#2-deals-api)
