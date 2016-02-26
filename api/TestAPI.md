@@ -1153,6 +1153,156 @@ Method: PUT
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
+##1.23 Get list of companies
+###dev/api/contacts/companies/list
+Method: GET 
+
+- Fetches list of companies. Page_size,global_sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of list.
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/companies/list -H "Accept: application/json"
+-H "Content-Type :application/x-www-form-urlencoded" 
+-d 'page_size=25&global_sort_key=-created_time&cursor=ClMKFgoMY3JlYXRlZF90aW1lEgYI-rbWrgUSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAkNv0nQoMogEJZ2hhbnNoeWFtGAAgAQ'
+-v -u {email}:{apikey} -X POST
+```
+###Example Response :
+```javascript
+[
+    {
+        "id": 5638758711951360,
+        "type": "COMPANY",
+        "created_time": 1439390694,
+        "updated_time": 0,
+        "last_contacted": 0,
+        "last_emailed": 0,
+        "last_campaign_emaild": 0,
+        "last_called": 0,
+        "viewed_time": 0,
+        "viewed": {
+            "viewed_time": 0
+        },
+        "star_value": 0,
+        "lead_score": 0,
+        "tags": [],
+        "tagsWithTime": [],
+        "properties": [
+            {
+                "type": "SYSTEM",
+                "name": "name",
+                "value": "infosys"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "name_lower",
+                "value": "infosys"
+            }
+        ]
+    },
+    {
+        "id": 5689143912824832,
+        "type": "COMPANY",
+        "created_time": 1438784350,
+        "updated_time": 0,
+        "last_contacted": 0,
+        "last_emailed": 0,
+        "last_campaign_emaild": 0,
+        "last_called": 0,
+        "viewed_time": 0,
+        "viewed": {
+            "viewed_time": 0
+        },
+        "star_value": 0,
+        "lead_score": 0,
+        "tags": [],
+        "tagsWithTime": [],
+        "properties": [
+            {
+                "type": "SYSTEM",
+                "name": "name",
+                "value": "lead"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "name_lower",
+                "value": "lead"
+            }
+        ]
+    }
+]
+ ```
+ 
+ ###Response - Statuses:
+- Status 200: Successfully retrieved the companies list. 
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+
+##1.24 Get company by id
+###dev/api/contacts/{id}
+Method: GET 
+
+- Returns company object which is associated with given company id
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application/json" 
+-v -u {email}:{apikey}
+```
+###Example Response
+
+```javascript
+{
+    "id": 5638758711951360,
+    "type": "COMPANY",
+    "created_time": 1439390694,
+    "updated_time": 0,
+    "last_contacted": 0,
+    "last_emailed": 0,
+    "last_campaign_emaild": 0,
+    "last_called": 0,
+    "viewed_time": 0,
+    "viewed": {
+        "viewed_time": 0
+    },
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "tagsWithTime": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "value": "infosys"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "name_lower",
+            "value": "infosys"
+        }
+    ]
+}
+ ```
+
+###Other available Responses:
+- Status 200: Gives the above JSON object in above format.
+- Status 204: No contact with the specified ID in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.25 Delete single company
+###dev/api/contacts/{id}
+Method: DELETE
+- Deletes company based on the id of the company, which is  sent in request url path.
+	
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
+-v -u {email}:{apikey} -X DELETE
+```
+
+###Response:
+- Status 204: Company deleted successfully.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
 2. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
