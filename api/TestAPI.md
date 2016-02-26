@@ -66,6 +66,10 @@ Table of contents
     * [2 Add Note to a Contact using Email-ID](#32-add-note-to-a-contact-using-email-id)
     * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
     * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
+    * [5 Create Note to a Deal](#35-create-note-to-a-deal)
+    * [6 Update Note to a Deal](#36-update-note-to-a-deal)
+    * [7 Gets notes related to specific deal](#37-gets-notes-related-to-specific-deal-)
+    * [8 Delete notes from specific deal](#38-delete-notes-from-specific-deal-)
 
 **[Tasks](#4-tasks-api)**
   * [Task Fields](#4-tasks-api)
