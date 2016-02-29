@@ -127,7 +127,7 @@ The Email and API key should pass basic HTTP Authentication. For this, use email
 
 ![Finding API Key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key_New.jpg)
 
-###End points:
+###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
