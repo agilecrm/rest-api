@@ -19,99 +19,96 @@ Table of contents
     * [1 Listing contacts](#11-listing-contacts-)
     * [2 Get contact by ID](#12-get-contact-by-id)
     * [3 Creating a contact](#13-creating-a-contact)
-    * [4 Updating contact](#14-updating-contact)
-    * [5 Partial update](#15-update-properties-of-a-contact-by-id-partial-update)
-    * [6 Update lead score by ID](#16-update-lead-score-by-id)
-    * [7 Update star value by ID](#17-update-star-value-by-id)
-    * [8 Update tags value by ID](#18-update-tags-value-by-id)
-    * [9 Delete tags value by ID](#19-delete-tags-value-by-id)
-    * [10 Delete single contact](#110-delete-single-contact)
-    * [11 Search contact by email](#111-search-contact-by-email)
-      * [11.A Search contact by email](#1111-search-contact-by-email)
-      * [11.B Search contact by email](#1112-search-contact-by-email)
-    * [12 Search contacts/companies](#112-search-contactscompanies)
-    * [13 Adding tags to a contact based on email](#113-adding-tags-to-a-contact-based-on-email)
-    * [14 Delete tags to a contact based on email](#114-delete-tags-to-a-contact-based-on-email)
-    * [15 Add score to a contact using email ID](#115-add-score-to-a-contact-using-email-id)
-    * [16 Get tasks related to contact](#116-get-tasks-related-to-contact)
-    * [17 Updating contact properties](#117-updating-contact-properties)
-    * [18 Change contact owner](#118-change-contact-owner)
-    * [19 Add contact to a campaign](#119-add-contact-to-a-campaign)
-    * [20 Remove contact from a campaign](#120-remove-contact-from-a-campaign)
-    * [21 Get contact by phone number](#121-get-contact-by-phone-number)
-  * [Company APIs](#122-creating-a-company)
-    * [1 Creating a company](#122-creating-a-company)
-    * [2 Updating a company](#122-updating-a-company)
-    * [3 Get list of companies](#123-get-list-of-companies)
-    * [4 Get company by id](#124-get-company-by-id)
-    * [5 Delete single company](#125-delete-single-company)
+    * [4 Updating contact](#14-update-properties-of-a-contact-by-id-partial-update)
+    * [5 Update lead score by ID](#15-update-lead-score-by-id)
+    * [6 Update star value by ID](#16-update-star-value-by-id)
+    * [7 Update tags value by ID](#17-update-tags-value-by-id)
+    * [8 Delete tags value by ID](#18-delete-tags-value-by-id)
+    * [9 Delete single contact](#110-delete-single-contact)
+    * [10 Search contact by email](#1101-search-contact-by-email)
+      * [10.A Search contact by email](#1102-search-contact-by-email)
+      * [10.B Search contact by email](#1112-search-contact-by-email)
+    * [11 Search contacts/companies](#111-search-contactscompanies)
+    * [12 Adding tags to a contact based on email](#112-adding-tags-to-a-contact-based-on-email)
+    * [13 Delete tags to a contact based on email](#113-delete-tags-to-a-contact-based-on-email)
+    * [14 Add score to a contact using email ID](#114-add-score-to-a-contact-using-email-id)
+    * [15 Get tasks related to contact](#115-get-tasks-related-to-contact)
+    * [16 Updating contact properties](#116-updating-contact-properties)
+    * [17 Change contact owner](#117-change-contact-owner)
+    * [18 Add contact to a campaign](#118-add-contact-to-a-campaign)
+    * [19 Remove contact from a campaign](#119-remove-contact-from-a-campaign)
+    * [20 Get contact by phone number](#120-get-contact-by-phone-number)
+  * [Company APIs](#21-creating-a-company)
+    * [1 Creating a company](#21-creating-a-company)
+    * [2 Updating a company](#22-updating-a-company)
+    * [3 Get list of companies](#23-get-list-of-companies)
+    * [4 Get company by id](#24-get-company-by-id)
+    * [5 Delete single company](#25-delete-single-company)
  
-**[Deals](#2-deals-api)**
-  * [Deal fields](#2-deals-api)
+**[Deals](#3-deals-api)**
+  * [Deal fields](#3-deals-api)
   * [Deal JSON Example](#deal-json-example)
   * [Deal APIs](#21-listing-deals)
-    * [1 Listing deals](#21-listing-deals)
-    * [2 Get deal by its ID](#22-get-deal-by-its-id)
-    * [3 Create deal](#23-create-deal)
-    * [4 Update deal](#24-update-deal)
-    * [5 Partial update](#25-update-deal-partial-update)
-    * [6 Create deal to a contact using email ID](#26-create-deal-to-a-contact-using-email-id)
-    * [7 Delete deal](#27-delete-deal)
-    * [8 Bulk delete](#28-bulk-delete)
-    * [9 Get deals from default track grouped by milestones](#29-get-deals-from-default-track-grouped-by-milestones)
-    * [10 Get deals for a particular drack (grouped by milestone)](#210-get-deals-for-a-particular-track-grouped-by-milestone)
-    * [11 Get deals from particular track](#211-get-deals-from-particular-track)
-    * [12 Get deals related to specific contact](#212-get-deals-related-to-specific-contact)
-    * [13 Get deals of current user (my deals)](#213-get-deals-of-current-user-my-deals)
+    * [1 Listing deals](#31-listing-deals)
+    * [2 Get deal by its ID](#32-get-deal-by-its-id)
+    * [3 Create deal](#33-create-deal)
+    * [4 Partial update](#34-update-deal-partial-update)
+    * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
+    * [6 Delete deal](#36-delete-deal)
+    * [7 Bulk delete](#37-bulk-delete)
+    * [8 Get deals from default track grouped by milestones](#38-get-deals-from-default-track-grouped-by-milestones)
+    * [9 Get deals for a particular drack (grouped by milestone)](#39-get-deals-for-a-particular-track-grouped-by-milestone)
+    * [10 Get deals from particular track](#310-get-deals-from-particular-track)
+    * [11 Get deals related to specific contact](#311-get-deals-related-to-specific-contact)
+    * [12 Get deals of current user (my deals)](#312-get-deals-of-current-user-my-deals)
 
-**[Notes](#3-notes-api)**
+**[Notes](#4-notes-api)**
   * [Note fields](#3-notes-api)
   * [Note APIs](#21-listing-deals)
-    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
-    * [2 Add note to a contact using email ID](#32-add-note-to-a-contact-using-email-id)
-    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
-    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
-    * [5 Create note to a deal](#35-create-note-to-a-deal)
-    * [6 Update note to a deal](#36-update-note-to-a-deal)
-    * [7 Gets notes related to specific deal](#37-gets-notes-related-to-specific-deal-)
-    * [8 Delete notes from specific deal](#38-delete-notes-from-specific-deal-)
+    * [1 Create a note and relate that to contacts](#41-create-a-note-and-relate-that-to-contacts-)
+    * [2 Add note to a contact using email ID](#42-add-note-to-a-contact-using-email-id)
+    * [3 Gets notes related to specific contact](#43-gets-notes-related-to-specific-contact-)
+    * [4 Delete a specific note from specific contact](#44-delete-a-specific-note-from-specific-contact-)
+    * [5 Create note to a deal](#45-create-note-to-a-deal)
+    * [6 Update note to a deal](#46-update-note-to-a-deal)
+    * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal-)
+    * [8 Delete notes from specific deal](#48-delete-notes-from-specific-deal-)
 
-**[Tasks](#4-tasks-api)**
-  * [Task fields](#4-tasks-api)
-  * [Task APIs](#41-get-the-list-of-pending-tasks)
-    * [1 Get the list of pending tasks](#41-get-the-list-of-pending-tasks)
-    * [2 Get all tasks](#42-get-all-tasks)
-    * [3 Get the list of pending tasks depending on the number of pending days](#43-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
-    * [4 Get the list of tasks of current user](#44-get-the-list-of-tasks-of-current-user)
-    * [5 Get the list of tasks based on given filters](#45-get-the-list-of-tasks-based-on-given-filters)
-    * [6 Get the task based on ID](#46-get-the-task-based-on-id)
-    * [7 Create a task](#47-create-a-task)
-    * [8 Create a task based on Contact email](#48-create-a-task-based-on-contact-email)
-    * [9 Update a task](#49-update-a-task)
-    * [10 Update a task (Partial update)](#410-update-a-task-partial-update)
-    * [11 Delete a task based on ID](#411-delete-a-task-based-on-id)
+**[Tasks](#5-tasks-api)**
+  * [Task fields](#5-tasks-api)
+  * [Task APIs](#51-get-the-list-of-pending-tasks)
+    * [1 Get the list of pending tasks](#51-get-the-list-of-pending-tasks)
+    * [2 Get all tasks](#52-get-all-tasks)
+    * [3 Get the list of pending tasks depending on the number of pending days](#53-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
+    * [4 Get the list of tasks of current user](#54-get-the-list-of-tasks-of-current-user)
+    * [5 Get the list of tasks based on given filters](#55-get-the-list-of-tasks-based-on-given-filters)
+    * [6 Get the task based on ID](#56-get-the-task-based-on-id)
+    * [7 Create a task](#57-create-a-task)
+    * [8 Create a task based on Contact email](#58-create-a-task-based-on-contact-email)
+    * [9 Update a task (Partial update)](#59-update-a-task-partial-update)
+    * [10 Delete a task based on ID](#510-delete-a-task-based-on-id)
 
-**[Events](#5-events-api)**
-  * [Event fields](#5-events-api)
-  * [Event APIs](#51-get-list-of-events)
-    * [1 Get list of events](#51-get-list-of-events)
-    * [2 Get events related to contact](#52-get-events-related-to-contact)
-    * [3 Create event](#53-create-event)
-    * [4 Update event](#54-update-event)
-    * [5 Delete an event](#55-delete-an-event)
+**[Events](#6-events-api)**
+  * [Event fields](#6-events-api)
+  * [Event APIs](#61-get-list-of-events)
+    * [1 Get list of events](#61-get-list-of-events)
+    * [2 Get events related to contact](#62-get-events-related-to-contact)
+    * [3 Create event](#63-create-event)
+    * [4 Update event](#64-update-event)
+    * [5 Delete an event](#65-delete-an-event)
 
-**[Track / Milestones](#6-track--milestones-api)**
-  * [Track fields](#6-track--milestones-api)
-  * [Track / Milestones APIs](#61-get-all-the-tracks)
-    * [1 Get all the tracks](#61-get-all-the-tracks)
-    * [2 Create a track](#62-create-a-track)
-    * [3 Update a track](#63-update-a-track)
-    * [4 Delete a Track](#64-delete-a-track)
+**[Track / Milestones](#7-track--milestones-api)**
+  * [Track fields](#7-track--milestones-api)
+  * [Track / Milestones APIs](#71-get-all-the-tracks)
+    * [1 Get all the tracks](#71-get-all-the-tracks)
+    * [2 Create a track](#72-create-a-track)
+    * [3 Update a track](#73-update-a-track)
+    * [4 Delete a Track](#74-delete-a-track)
 
-**[Campaigns](#7-list-of-campaigns)**
-  * [List of campaigns](#7-list-of-campaigns)
+**[Campaigns](#8-list-of-campaigns)**
+  * [List of campaigns](#8-list-of-campaigns)
 
-**[Video references](#8-youtube-links-for-rest-apis)**
+**[Video references](#9-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
@@ -553,7 +550,7 @@ We can update  required property fields of the contact using this call. It is us
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit-properties \
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit-properties \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -566,7 +563,7 @@ curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit-properties \
         }
     ]
 }' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -591,14 +588,14 @@ We can update lead score of a contact using this call. It accepts lead score and
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit/lead-score \
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/lead-score \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
     "id": "5725836472745984",
     "lead_score": 150
 }' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -623,14 +620,14 @@ We can update star value of a contact using this call. It accepts star value and
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit/add-star \
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/add-star \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
     "id": "5725836472745984",
     "star_value": 2
 }' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -658,7 +655,7 @@ We can add tag values of a contact using this call. It accepts tag values and co
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit/tags \
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/tags \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -668,7 +665,7 @@ curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit/tags \
         "test2"
     ]
 }' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -696,7 +693,7 @@ We can delete tag values of a contact or company using this call. It accepts tag
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/delete/tags \
+curl https://{domain}.agilecrm.com/dev/api/contacts/delete/tags \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -706,7 +703,7 @@ curl https://ghanshyam.agilecrm.com/dev/api/contacts/delete/tags \
         "test2"
     ]
 }' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -758,10 +755,10 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json" \
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email_ids=["samson@walt.ltd"]' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X POST
+-v -u sample@agilecrm.com:123456 -X POST
 ```
 
 ###Response:
@@ -798,10 +795,10 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/json" \
+curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&tags=["testingtesto"]' \
--v -u ghanshyam.raut@agilecrm.com:123456 -X POST
+-v -u sample@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 204: Tags added successfully.
@@ -834,7 +831,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/json" \
+curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'email=samson@walt.ltd&score=100' \
 -v -u ghanshyam.raut@agilecrm.com:123456 -X POST
@@ -941,7 +938,7 @@ We can update a single field of the contact using this call. It is used to add t
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/add/property?email=samson@walt.ltd \
+curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=samson@walt.ltd \
 -H "Content-Type: application/json" \
 -d '{
     "type": "SYSTEM",
@@ -1107,7 +1104,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts \
+curl https://{domain}.agilecrm.com/dev/api/contacts \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -1213,7 +1210,7 @@ Method: PUT
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/edit-properties \
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit-properties \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -1255,7 +1252,7 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/contacts/companies/list \
+curl https://{domain}.agilecrm.com/dev/api/contacts/companies/list \
 -H "Accept: application/json" \
 -H "Content-Type :application/x-www-form-urlencoded" \
 -d 'page_size=25&global_sort_key=-created_time&cursor=ClMKFgoMY3JlYXRlZF90aW1lEgYI-rbWrgUSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAkNv0nQoMogEJZ2hhbnNoeWFtGAAgAQ' \
@@ -1647,7 +1644,7 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/opportunity \
+curl https://{domain}.agilecrm.com/dev/api/opportunity \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -1702,7 +1699,7 @@ We can update deal using this call. It accepts Deal JSON. Id parameter of the de
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/opportunity/partial-update \
+curl https://{domain}.agilecrm.com/dev/api/opportunity/partial-update \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -1731,7 +1728,7 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/opportunity/email/samson@walt.ltd \
+curl https://{domain}.agilecrm.com/dev/api/opportunity/email/samson@walt.ltd \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -3072,7 +3069,7 @@ Method: POST
 ```
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/tasks \
+curl https://{domain}.agilecrm.com/dev/api/tasks \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -3136,7 +3133,7 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/tasks/email/samson@walt.ltd \
+curl https://{domain}.agilecrm.com/dev/api/tasks/email/samson@walt.ltd \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
@@ -3212,7 +3209,7 @@ We can update task using this call. It accepts task JSON. Id parameter of the ta
 ###Using curl
 
 ```sh
-curl https://ghanshyam.agilecrm.com/dev/api/tasks/partial-update \
+curl https://{domain}.agilecrm.com/dev/api/tasks/partial-update \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
