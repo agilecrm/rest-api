@@ -28,7 +28,7 @@ Table of contents
     * [10 Delete single contact](#110-delete-single-contact)
     * [11 Search contact by email](#111-search-contact-by-email)
       * [11.A Search contact by email](#1111-search-contact-by-email)
-      * [11.B Search contact by wmail](#1112-search-contact-by-email)
+      * [11.B Search contact by email](#1112-search-contact-by-email)
     * [12 Search contacts/companies](#112-search-contactscompanies)
     * [13 Adding tags to a contact based on email](#113-adding-tags-to-a-contact-based-on-email)
     * [14 Delete tags to a contact based on email](#114-delete-tags-to-a-contact-based-on-email)
