@@ -273,115 +273,150 @@ curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIIC
 ####Example JSON response
 ```javascript
 [
-      {
-        "id": "5073269292007424",
+    {
+        "id": 5073269292007424,
         "type": "PERSON",
-        "created_time": "1356589886",
-        "updated_time": "1357107323",
-        "star_value": "0",
-        "lead_score": "93",
+        "created_time": 1445941332,
+        "updated_time": 1451545213,
+        "star_value": 0,
+        "lead_score": 0,
         "tags": [
-          "sales",  "bruik", "walt", "los",  "vo",  "steady"
+            "Sample based",
+            "tag1",
+            "tag3",
+            "tag2"
+        ],
+        "tagsWithTime": [
+            {
+                "tag": "Sample based",
+                "createdTime": 1449716452263,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag1",
+                "createdTime": 1449716779882,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag3",
+                "createdTime": 1449716997174,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag2",
+                "createdTime": 1449716997174,
+                "availableCount": 0,
+                "entity_type": "tag"
+            }
         ],
         "properties": [
-          {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "value": "Los "
-          },
-          {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "value": "Bruikheilmer"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "steady.inc"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "VP Sales"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": "work",
-            "value": "bruik@walt.inc"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "address",
-            "value": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"\"}"
-          }
-        ],
-        "domainUser": {
-          "id": "106010",
-          "domain": "yaswanth",
-          "email": "praveen@invox.com",
-          "is_admin": "true",
-          "is_account_owner": "true",
-          "is_disabled": "false",
-          "name": "yaswanth",
-          "password": "PASSWORD",
-          "info_json_string": "{\"logged_in_time\":1359434638,\"created_time\":1358831084}"
-        }
-      },
-      {
-        "id": "5086805955182592",
+            {
+                "type": "CUSTOM",
+                "name": "text sample test",
+                "value": "text custom"
+            },
+            {
+                "type": "CUSTOM",
+                "name": "TeamNumbers",
+                "value": "5"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "first_name",
+                "value": "April"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "last_name",
+                "value": "Woodlif"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "email",
+                "subtype": "",
+                "value": "pinkpp@hotmail.com"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "phone",
+                "value": "6767678982"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "phone",
+                "subtype": "home",
+                "value": "6767678982"
+            }
+        ]
+    },
+    {
+        "cursor": "CjsSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICA8MTNhAkMogEJZ2hhbnNoeWFtGAAgAA",
+        "id": 5086805955182592,
         "type": "PERSON",
-        "created_time": "1356590542",
-        "updated_time": "1359367255",
-        "star_value": "4",
-        "lead_score": "92",
+        "created_time": 1448516471,
+        "star_value": 4,
+        "lead_score": 92,
         "tags": [
-          "president",
-          "john",
-          "doe",
-          "cruzzetech"
+            "Lead",
+            "Likely Buyer"
+        ],
+        "tagsWithTime": [
+            {
+                "tag": "Lead",
+                "createdTime": 1448516471573,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "Likely Buyer",
+                "createdTime": 1448516471573,
+                "availableCount": 0,
+                "entity_type": "tag"
+            }
         ],
         "properties": [
-          {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "value": "John"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "value": "Doe"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "cruzzetech.com"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "email",
-            "value": "john@cruzzetech.com"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "President"
-          }
-        ],
-"tags_with_time_json": "{\"president\":1359365229885,\"john\":1359365229885,\"doe\":1359365229885,\"cruzzetech\":1359365229885}",
-        "domainUser": {
-          "id": "106010",
-          "domain": "yaswanth",
-          "email": "praveen@invox.com",
-          "is_admin": "true",
-          "is_account_owner": "true",
-          "is_disabled": "false",
-          "name": "yaswanth",
-          "password": "PASSWORD",
-          "info_json_string": "{\"logged_in_time\":1359434638,\"created_time\":1358831084}"
-        }
-      }
-    ]
+            {
+                "type": "SYSTEM",
+                "name": "first_name",
+                "value": "Los "
+            },
+            {
+                "type": "SYSTEM",
+                "name": "last_name",
+                "value": "Bruikheilmer"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "company",
+                "value": "steady.inc"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "title",
+                "value": "VP Sales"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "email",
+                "subtype": "work",
+                "value": "bruik@walt.ltd"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "address",
+                "value": "{\"address\":\"MIG-106\",\"city\":\"Hyderabad\",\"state\":\"Telangana\",\"zip\":\"500032\",\"country\":\"India\"}"
+            },
+            {
+                "type": "CUSTOM",
+                "name": "My Custom Field",
+                "value": "Custom value"
+            }
+        ]
+    }
+]
 ```
 
 ###Other available responses:
