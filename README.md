@@ -127,7 +127,7 @@ The Email and API key should pass basic HTTP Authentication. For this, use email
 - You may access the API Key from Admin Settings -> API & Analytics -> API Key
 - Use the first one (API Key for REST client) for all the REST API calls.
 
-![Finding API Key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key_New.jpg)
+![Finding API Key, domain and email] (https://raw.githubusercontent.com/agilecrm/rest-api/master/api/AgileCRMapi.png)
 
 ###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
