@@ -6,6 +6,14 @@ Agile CRM REST API
 Table of contents
 =================
 
+**[Rest API implementation](#)**
+  * [Java API](https://github.com/agilecrm/java-api)
+  * [Python API](https://github.com/agilecrm/python-api)
+  * [PHP API](https://github.com/agilecrm/php-api)
+  * [.NET C# API](https://github.com/agilecrm/c-sharp-api)
+  * [Node.js API](https://github.com/agilecrm/nodejs)
+  * [Ruby on Rails API](https://github.com/agilecrm/ruby-on-rails)
+
 **[Things to know](#things-to-know)**
   * [Authentication](#authentication-)
   * [API key](#api-key)
@@ -26,8 +34,8 @@ Table of contents
     * [8 Delete tags value by ID](#18-delete-tags-value-by-id)
     * [9 Delete single contact](#110-delete-single-contact)
     * [10 Search contact by email](#1101-search-contact-by-email)
-      * [10.A Search contact by email](#1102-search-contact-by-email)
-      * [10.B Search contact by email](#1112-search-contact-by-email)
+      * [10.A Search contact by email](#1101-search-contact-by-email)
+      * [10.B Search contact by email](#1102-search-contact-by-email)
     * [11 Search contacts/companies](#111-search-contactscompanies)
     * [12 Adding tags to a contact based on email](#112-adding-tags-to-a-contact-based-on-email)
     * [13 Delete tags to a contact based on email](#113-delete-tags-to-a-contact-based-on-email)
@@ -3083,23 +3091,32 @@ Method: GET
 Method: POST
 
 	- Creates a new task.
+	- Acceptable value for below field :
+	 progress (0 to 100), is_complete (true or false), type (CALL, EMAIL, FOLLOW_UP, MEETING, MILESTONE, SEND, TWEET, OTHER),
+	 priority_type (HIGH, NORMAL, LOW), status (YET_TO_START, IN_PROGRESS, COMPLETED)
 
 ###Acceptable request Representation:
 ```javascript
 {
     "progress": "0",
     "is_complete": "false",
-    "subject": "Need to contact",
-    "type": "EMAIL",
-    "due": 1456986600,
+    "subject": "Need to contact vendor",
+    "type": "MEETING",
+    "due": 1459319400,
     "task_ending_time": "12:00",
     "owner_id": "6263975862861824",
     "priority_type": "HIGH",
     "status": "YET_TO_START",
+    "taskDescription": "This is very important. We need to discuss with few vendors about the product.",
     "contacts": [
-        "5725836472745984"
+        "5719430394806272"
     ],
-    "deal_ids": []
+    "notes": [
+        "5715549623418880"
+    ],
+    "deal_ids": [
+        "5715549623415649"
+    ]
 }
 ```
 ###Using curl
@@ -3635,10 +3652,9 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 <a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
 alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
-###Update contact:
+###Update contact partial:
 
-<a href="https://www.youtube.com/watch?v=mrAoR7_K4v0" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+WIP
 
 ###Update tag by ID:
 
