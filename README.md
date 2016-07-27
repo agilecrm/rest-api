@@ -1289,7 +1289,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/edit-properties \
 
 ##2.3 Get list of companies
 ###dev/api/contacts/companies/list
-Method: GET 
+Method: POST 
 
 - Fetches list of companies. Page_size,global_sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of list.
 
