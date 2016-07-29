@@ -23,6 +23,7 @@ Table of contents
   * [Contact & companie fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
   * [Contact JSON example](#contact-json-example)
+  * [Properties JSON Complete Example](#properties-json-complete-example)
   * [Contact APIs](#11-listing-contacts-)
     * [1 Listing contacts](#11-listing-contacts-)
     * [2 Get contact by ID](#12-get-contact-by-id)
@@ -177,89 +178,216 @@ The below are the subtypes for respective property fields.
 
 Note: There will be subtypes for custom fields. User should specify the above mentioned subtype for those respective properties only.
 
+###Properties JSON Complete Example:
+```javascript
+"properties": [
+        {
+            "name": "Text field test",
+            "type": "CUSTOM",
+            "value": "I am text field test."
+        },
+        {
+            "name": "Text Area Test",
+            "type": "CUSTOM",
+            "value": "I am text area field test. I am CEO of Uptake Technologies. I like Agile Chrome Extension. You can add leads from LinkedIn, Twitter, Facebook, Gmail etc."
+        },
+        {
+            "name": "Date of Joining",
+            "type": "CUSTOM",
+            "value": 1279132200
+        },
+        {
+            "name": "Please select checkbox to accept term and condition",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "Please select one product from list",
+            "type": "CUSTOM",
+            "value": "tomato"
+        },
+        {
+            "name": "Please add what are the companies you worked",
+            "type": "CUSTOM",
+            "value": "[\"5694691248963584\",\"5646962099486720\"]"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Brad"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Keywell"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "image",
+            "value": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkpAAAAJDY4ZDg2OTU3LTVhOTAtNGRlOC1hNjAxLTgwNGUyMzc0MDc2Mg.jpg"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "company",
+            "value": "Uptake Technologies"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "value": "‎Co-Founder and CEO"
+        },
+        {
+            "name": "email",
+            "value": "brad.keywell@yopmail.com",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888888",
+            "subtype": "work"
+        },
+        {
+            "name": "website",
+            "value": "https://www.linkedin.com/in/bradkeywell",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "https://www.youtube.com/watch?v=8-zQMprfDgE",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"Motor City 120 street\",\"city\":\"Detroit\",\"state\":\"Michigan\",\"zip\":\"48201\",\"country\":\"US\",\"countryname\":\"United States\"}"
+        }
+    ]
+```
+
 ###Contact JSON example
 
 ```javascript
 {
-    	"id": 5711946548510720,
-    	"type": "PERSON",
-    	"created_time": 1349974226,
-    	"updated_time": 1364483386,
-    	"star_value": 0,
-    	"lead_score": 0,
-    	"tags": [
-        	"Buyer",
-        	"Deal Closed"
-    	],
-    	"properties": [
-        	{
-            	"type": "SYSTEM",
-            	"name": "first_name",
-            	"value": "Adam"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "last_name",
-            	"value": "Smith"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "company",
-            	"value": "Invox"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "title",
-            	"value": "Evangelist"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "email",
-            	"subtype": "",
-            	"value": "jagan@clickdesk.com"
-        	},
-        	{
-            	"type": "CUSTOM",
-            	"name": "My Custom Field",
-            	"value": "Custom value"
-        	}
-    	],
-		"campaignStatus": [
-			{
-				"start_time": 1418204274,
-				"end_time": 1418204293,
-				"campaign_id": "5338160762454016",
-				"campaign_name": "Send Email",
-				"status": "5338160762454016-DONE"
-			}
-		],
-		 "unsubscribeStatus": [
-			{
-				"campaign_id": "5338160762454016",
-				"unsubscribeType": "CURRENT"
-			}
-		],
-		"emailBounceStatus": [
-			{
-				"email": "hard_bounce@test.mandrillapp.com",
-				"emailBounceType": "HARD_BOUNCE",
-				"time": 1418204263,
-				"campaign_id": "5338160762454016"
-			}
-		],
-    	"widget_properties": "{\"Twitter\":\"11458852\"}",
-    	"domainUser": {
-        	"id": 314001,
-        	"domain": "mycompany",
-        	"email": "crm-user@mycompany.com",
-        	"is_admin": true,
-        	"is_account_owner": false,
-        	"is_disabled": false,
-        	"name": "angel",
-        	"password": "PASSWORD",
-        	"info_json_string": "{\"logged_in_time\":1364879569,\"created_time\":1361958281}",
-        	"hashedString": "81dc9bdb52d04dc20036dbd8313ed055"
-    	}
+    "id": "5629585249009664",
+    "type": "PERSON",
+    "created_time": "1469170109",
+    "updated_time": 1469764466,
+    "last_contacted": 0,
+    "last_emailed": 0,
+    "last_campaign_emaild": 0,
+    "last_called": 0,
+    "viewed_time": 0,
+    "viewed": {
+        "viewed_time": 1469764498855,
+        "viewer_id": 6263975862861824
+    },
+    "star_value": 4,
+    "lead_score": 5,
+    "tags": [],
+    "tagsWithTime": [
+        {
+            "tag": "dummyTestTag",
+            "createdTime": 1469510469602,
+            "availableCount": 0,
+            "entity_type": "tag"
+        }
+    ],
+    "properties": [
+        {
+            "name": "Text field test",
+            "type": "CUSTOM",
+            "value": "I am text field test."
+        },
+        {
+            "name": "Text Area Test",
+            "type": "CUSTOM",
+            "value": "I am text area field test. I am CEO of Uptake Technologies. I like Agile Chrome Extension. You can add leads from LinkedIn, Twitter, Facebook, Gmail etc."
+        },
+        {
+            "name": "Date of Joining",
+            "type": "CUSTOM",
+            "value": 1279132200
+        },
+        {
+            "name": "Please select checkbox to accept term and condition",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "Please select one product from list",
+            "type": "CUSTOM",
+            "value": "tomato"
+        },
+        {
+            "name": "Please add what are the companies you worked",
+            "type": "CUSTOM",
+            "value": "[\"5694691248963584\",\"5646962099486720\"]"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Brad"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Keywell"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "image",
+            "value": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkpAAAAJDY4ZDg2OTU3LTVhOTAtNGRlOC1hNjAxLTgwNGUyMzc0MDc2Mg.jpg"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "company",
+            "value": "Uptake Technologies"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "value": "‎Co-Founder and CEO"
+        },
+        {
+            "name": "email",
+            "value": "brad.keywell@yopmail.com",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888888",
+            "subtype": "work"
+        },
+        {
+            "name": "website",
+            "value": "https://www.linkedin.com/in/bradkeywell",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "https://www.youtube.com/watch?v=8-zQMprfDgE",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"Motor City 120 street\",\"city\":\"Detroit\",\"state\":\"Michigan\",\"zip\":\"48201\",\"country\":\"US\",\"countryname\":\"United States\"}"
+        }
+    ],
+    "campaignStatus": [],
+    "entity_type": "contact_entity",
+    "contact_company_id": "5649189358796800",
+    "unsubscribeStatus": [],
+    "emailBounceStatus": [],
+    "formId": 0,
+    "owner": {
+        "id": 6263975862861824,
+        "domain": "ghanshyam",
+        "email": "ghanshyam.raut@agilecrm.com",
+        "name": "Ghanshyam",
+        "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/25.png",
+        "schedule_id": "Ghanshyam",
+        "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+        "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+    }
 }
 ```
 
