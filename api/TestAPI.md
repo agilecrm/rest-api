@@ -142,7 +142,89 @@ Note: All data is case-sensitive. Emails, names and other values are case sensit
 |lead_score|Score of contact. This is not applicable for companies.|Integer|no|no|Any positive integer|
 |contact_company_id|This field should only be added in the Contact object to specify that the contact works for the given company.|Long|No|No|Company ID can be provided here. Only long values are accepted.|
 |star_value|Rating of contact (Max value 5). This is not applicable for companies.|Short|no|no|0 to 5|
-|properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|test teeee
+|properties|Contact properties are represented by list of JSON objects, each JSON object should follow the prototype shown.  Custom fields will have type as CUSTOM and others will have type as SYSTEM.|List of JSON objects|no|first_name is mandatory|```javascript
+{
+    	"id": 5711946548510720,
+    	"type": "PERSON",
+    	"created_time": 1349974226,
+    	"updated_time": 1364483386,
+    	"star_value": 0,
+    	"lead_score": 0,
+    	"tags": [
+        	"Buyer",
+        	"Deal Closed"
+    	],
+    	"properties": [
+        	{
+            	"type": "SYSTEM",
+            	"name": "first_name",
+            	"value": "Adam"
+        	},
+        	{
+            	"type": "SYSTEM",
+            	"name": "last_name",
+            	"value": "Smith"
+        	},
+        	{
+            	"type": "SYSTEM",
+            	"name": "company",
+            	"value": "Invox"
+        	},
+        	{
+            	"type": "SYSTEM",
+            	"name": "title",
+            	"value": "Evangelist"
+        	},
+        	{
+            	"type": "SYSTEM",
+            	"name": "email",
+            	"subtype": "",
+            	"value": "jagan@clickdesk.com"
+        	},
+        	{
+            	"type": "CUSTOM",
+            	"name": "My Custom Field",
+            	"value": "Custom value"
+        	}
+    	],
+		"campaignStatus": [
+			{
+				"start_time": 1418204274,
+				"end_time": 1418204293,
+				"campaign_id": "5338160762454016",
+				"campaign_name": "Send Email",
+				"status": "5338160762454016-DONE"
+			}
+		],
+		 "unsubscribeStatus": [
+			{
+				"campaign_id": "5338160762454016",
+				"unsubscribeType": "CURRENT"
+			}
+		],
+		"emailBounceStatus": [
+			{
+				"email": "hard_bounce@test.mandrillapp.com",
+				"emailBounceType": "HARD_BOUNCE",
+				"time": 1418204263,
+				"campaign_id": "5338160762454016"
+			}
+		],
+    	"widget_properties": "{\"Twitter\":\"11458852\"}",
+    	"domainUser": {
+        	"id": 314001,
+        	"domain": "mycompany",
+        	"email": "crm-user@mycompany.com",
+        	"is_admin": true,
+        	"is_account_owner": false,
+        	"is_disabled": false,
+        	"name": "angel",
+        	"password": "PASSWORD",
+        	"info_json_string": "{\"logged_in_time\":1364879569,\"created_time\":1361958281}",
+        	"hashedString": "81dc9bdb52d04dc20036dbd8313ed055"
+    	}
+}
+```
 |campaignStatus|Information about campaigns running on a contact, like name, status, start time, end time of campaign|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |unsubscribeStatus|Information about the campaign from which the contact is unsubscribed.|List of JSONObjects|Yes|Only if this contact has campaigns|N/A|
 |emailBounceStatus|Information about the email bounce and spam while running the campaign|List of JOSNObjects|Yes|Only if this conatct has campaigns|N/A|
