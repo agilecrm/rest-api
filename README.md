@@ -1587,25 +1587,44 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 
 ###Deal JSON Example
 ```javascript
-	{
-    		"id" :			 "822",
-    		"name" :		 "Game development",
-    		"description" :		 "Visual 3D based Online Game.",
-    		"expected_value" :	 "50000",
-		"pipeline_id" :			 "43535822",
-    		"milestone" :		 "progress",
-    		"probability ": 		 "70",
-    		"close_date" :  	"1349980200",
-    		"created_time" : 	"1356325843",
-    		"entity_type" : 		"deal",
-    		"Prefs": {
-        			"id" : 		     "984",
-        			"template" : 	     "blue",
-        			"currency" : 	     "USD",
-        			"signature" : 	     "- Powered by AgileCRM",
-        			"task_reminder" :  "true"
-		}
-    	}
+{
+    "name": "Carz008",
+    "owner_id": "6263975862861824",
+    "expected_value": "85000",
+    "probability": "89",
+    "pipeline_milestone": "5730082031140864_Prospect",
+    "close_date": 1472581800,
+    "pipeline_id": "5730082031140864",
+    "milestone": "Prospect",
+    "deal_source_id": "5762909909024768",
+    "color1": "#0000ff",
+    "lost_reason_id": "",
+    "relates_to": "",
+    "description": "This is deal description",
+    "archived": false,
+    "contact_ids": [
+        "5698320831873024"
+    ],
+    "custom_data": [
+        {
+            "name": "Deal greetings",
+            "value": "Welcome to Deal greeting custom field"
+        },
+        {
+            "name": "Deal From",
+            "value": "This Deal from Zapan"
+        }
+    ],
+    "colorName": "BLUE",
+    "tagsWithTime": [
+        {
+            "tag": "intersted"
+        },
+        {
+            "tag": "developer"
+        }
+    ]
+}
 ```
 
 ##3.1 Listing deals
