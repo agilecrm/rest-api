@@ -122,8 +122,8 @@ Table of contents
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
   * [Create deal test](#create-deal)
-  * [Get list of contacts example 1](#create-deal)
-  * [Get list of contacts example 2](#create-deal)
+  * [Get list of contacts example 1](#get-list-of-contact-example-1)
+  * [Get list of contacts example 2](#get-list-of-contact-example-2)
 
 
 Things to know:
