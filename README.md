@@ -122,6 +122,8 @@ Table of contents
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
   * [Create deal test](#create-deal)
+  * [Get list of contacts example 1](#create-deal)
+  * [Get list of contacts example 2](#create-deal)
 
 
 Things to know:
@@ -3811,4 +3813,14 @@ alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 ###Create deal:
 
 <a href="https://www.youtube.com/watch?v=otxmAuuHeDA" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Get list of contact example 1:
+
+<a href="https://www.youtube.com/watch?v=2Yui9HJXAOE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Get list of contact example 2:
+
+<a href="https://www.youtube.com/watch?v=jJAAZKqybQ4" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
 alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
