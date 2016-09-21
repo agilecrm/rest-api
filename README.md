@@ -70,7 +70,7 @@ Table of contents
     * [10 Get deals from particular track](#310-get-deals-from-particular-track)
     * [11 Get deals related to specific contact](#311-get-deals-related-to-specific-contact)
     * [12 Get deals of current user (my deals)](#312-get-deals-of-current-user-my-deals)
-    * [13 Remove contacts of a deal](#312-remove-contacts-of-a-deal)
+    * [13 Remove contacts of a deal](#313-remove-contacts-of-a-deal)
 
 **[Notes](#4-notes-api)**
   * [Note fields](#3-notes-api)
