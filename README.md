@@ -70,6 +70,7 @@ Table of contents
     * [10 Get deals from particular track](#310-get-deals-from-particular-track)
     * [11 Get deals related to specific contact](#311-get-deals-related-to-specific-contact)
     * [12 Get deals of current user (my deals)](#312-get-deals-of-current-user-my-deals)
+    * [13 Remove contacts of a deal](#312-remove-contacts-of-a-deal)
 
 **[Notes](#4-notes-api)**
   * [Note fields](#3-notes-api)
@@ -2502,7 +2503,43 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
+##3.13 Remove contacts of a deal
+###dev/api/opportunity/partial-update/delete-contact
+Method: PUT 
 
+
+We can update deal using this call. It accepts Deal JSON. Id parameter of the deal should be specified. This will not affect other fields.
+
+###Acceptable request representation:
+```javascript
+{
+      "id": "6429943999234048",
+      "contact_ids": [
+          "4930210138947584",
+	  "4600356650614784"
+      ]
+  }
+```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/opportunity/partial-update/delete-contact \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+      "id": "6429943999234048",
+      "contact_ids": [
+          "4930210138947584",
+	  "4600356650614784"
+      ]
+  }' \
+-v -u ghanshyam.raut@agilecrm.com:your_rest_api -X PUT
+```
+
+###Response:
+- Status 200: Deal updated successfully. Returns the updated deal object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
 
 4. Notes API
 ------------
