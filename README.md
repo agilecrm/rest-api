@@ -87,16 +87,13 @@ Table of contents
 **[Tasks](#5-tasks-api)**
   * [Task fields](#5-tasks-api)
   * [Task APIs](#51-get-the-list-of-pending-tasks)
-    * [1 Get the list of pending tasks](#51-get-the-list-of-pending-tasks)
-    * [2 Get all tasks](#52-get-all-tasks)
-    * [3 Get the list of pending tasks depending on the number of pending days](#53-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
-    * [4 Get the list of tasks of current user](#54-get-the-list-of-tasks-of-current-user)
-    * [5 Get the list of tasks based on given filters](#55-get-the-list-of-tasks-based-on-given-filters)
-    * [6 Get the task based on ID](#56-get-the-task-based-on-id)
-    * [7 Create a task](#57-create-a-task)
-    * [8 Create a task based on Contact email](#58-create-a-task-based-on-contact-email)
-    * [9 Update a task (Partial update)](#59-update-a-task-partial-update)
-    * [10 Delete a task based on ID](#510-delete-a-task-based-on-id)
+    * [1 Get the list of pending tasks depending on the number of pending days](#51-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
+    * [2 Get the list of tasks based on given filters](#55-get-the-list-of-tasks-based-on-given-filters)
+    * [3 Get the task based on ID](#53-get-the-task-based-on-id)
+    * [4 Create a task](#54-create-a-task)
+    * [5 Create a task based on Contact email](#55-create-a-task-based-on-contact-email)
+    * [6 Update a task (Partial update)](#56-update-a-task-partial-update)
+    * [7 Delete a task based on ID](#57-delete-a-task-based-on-id)
 
 **[Events](#6-events-api)**
   * [Event fields](#6-events-api)
