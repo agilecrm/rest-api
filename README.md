@@ -47,6 +47,9 @@ Table of contents
     * [18 Add contact to a campaign](#118-add-contact-to-a-campaign)
     * [19 Remove contact from a campaign](#119-remove-contact-from-a-campaign)
     * [20 Get contact by phone number](#120-get-contact-by-phone-number)
+    * [21 Get contacts by dynamic filter](#121-get-contacts-by-dynamic-filter)
+      * [21.A Get contacts by tag filter](#1211-get-contacts-by-tag-filter)
+      * [21.B Get contacts by custom field](#1212-search-contacts-by-custom-field)
   * [Company APIs](#21-creating-a-company)
     * [1 Creating a company](#21-creating-a-company)
     * [2 Updating a company](#22-updating-a-company)
@@ -1208,6 +1211,44 @@ Method: GET
 curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} \
 -H "Accept :application/json" \
 -v -u {email}:{apikey}
+```
+
+###Other available responses:
+- Status 200: Returns contact json data.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.21.1 Get contacts by dynamic filter
+###dev/api/filters/filter/dynamic-filter
+Method: POST 
+
+- Returns contacts or companies object which is associated with given filter
+
+###Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"tags","CONDITION":"EQUALS","RHS":"linkedin prospect"}],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+###Other available responses:
+- Status 200: Returns contact json data.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##1.21.2 Get contacts by dynamic filter
+###dev/api/filters/filter/dynamic-filter
+Method: POST 
+
+- Returns contacts or companies object which is associated with given filter
+
+###Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"EmployeeDataCustom","CONDITION":"EQUALS","RHS":"prospect001"}],"contact_type":"PERSON"}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 
 ###Other available responses:
