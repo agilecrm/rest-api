@@ -91,7 +91,7 @@ Table of contents
   * [Task fields](#5-tasks-api)
   * [Task APIs](#51-get-the-list-of-pending-tasks)
     * [1 Get the list of pending tasks depending on the number of pending days](#51-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
-    * [2 Get the list of tasks based on given filters](#55-get-the-list-of-tasks-based-on-given-filters)
+    * [2 Get the list of tasks based on given filters](#52-get-the-list-of-tasks-based-on-given-filters)
     * [3 Get the task based on ID](#53-get-the-task-based-on-id)
     * [4 Create a task](#54-create-a-task)
     * [5 Create a task based on Contact email](#55-create-a-task-based-on-contact-email)
