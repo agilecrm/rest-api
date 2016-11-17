@@ -603,28 +603,18 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
         {
             "type": "SYSTEM",
             "name": "first_name",
-            "value": "Los "
+            "value": "Samson"
         },
         {
             "type": "SYSTEM",
             "name": "last_name",
-            "value": "Bruikheilmer"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "steady.inc"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "VP Sales"
+            "value": "Nolan"
         },
         {
             "type": "SYSTEM",
             "name": "email",
             "subtype": "work",
-            "value": "clinton@walt.ltd"
+            "value": "samson@walt.ltd"
         },
         {
             "type": "SYSTEM",
@@ -632,9 +622,54 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
             "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
         },
         {
+            "name": "phone",
+            "value": "8888888889",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888889",
+            "subtype": "home"
+        },
+        {
+            "name": "website",
+            "value": "www.youtube.com",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "website",
+            "value": "www.linkedin.com",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "www.mywebsite.com",
+            "subtype": "URL"
+        },
+        {
+            "name": "My custom field of type text",
             "type": "CUSTOM",
-            "name": "My Custom Field",
-            "value": "Custom value"
+            "value": "My name is ghanshyam"
+        },
+        {
+            "name": "My custom field of type date",
+            "type": "CUSTOM",
+            "value": 1479580200
+        },
+        {
+            "name": "My custom field of type checkbox",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "My custom field of type list",
+            "type": "CUSTOM",
+            "value": "lemon"
+        },
+        {
+            "name": "My custom field of type companies",
+            "type": "CUSTOM",
+            "value": "[\"5767466600890368\",\"5114076984246272\",\"5746725247516672\"]"
         }
     ]
 }
@@ -691,6 +726,9 @@ Method: PUT
 
 
 We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
+
+Using this API you can not delete properties.If subtype is same for phone,website or email then value can be overridden.
+Lead score, star value and tags can not be updated using this API. follow the below API for editing lead score,star value and tags.
 
 ###Acceptable request representation:
 ```javascript
