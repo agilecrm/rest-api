@@ -948,7 +948,7 @@ Method: GET
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/contacts/search/email/{email} \
 -H "Accept :application/json" \
--v -u {email}:{apikey} -X DELETE
+-v -u {email}:{apikey} -X GET
 ```
 ###Example response
 
