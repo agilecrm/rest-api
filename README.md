@@ -348,7 +348,7 @@ Note: There will be subtypes for custom fields. User should specify the above me
         {
             "type": "SYSTEM",
             "name": "title",
-            "value": "‎Co-Founder and CEO"
+            "value": "Co-Founder and CEO"
         },
         {
             "name": "email",
@@ -2035,7 +2035,7 @@ Method: DELETE
 curl https://{domain}.agilecrm.com/dev/api/opportunity/{id} -H "Content-Type: application/json" -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X DELETE
 ```
 ###Response - statuses:
-- Status 200: Deal deleted successfully.
+- Status 204: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 ##3.7 Bulk delete 
