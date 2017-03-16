@@ -122,8 +122,13 @@ Table of contents
   * [1 Get documents related to specific contact](#91-get-documents-related-to-specific-contact)
   * [2 Create a document to a contact](#92-create-a-document-to-a-contact)
   * [3 Update a document to a contact](#91-update-a-document-to-a-contact)
+  
+**[Help Desk](#10-help desk-api)**
+  * [1 Get all tickets](#101-get-all-tickets)
+  * [2 Create a ticket](#102-create-a-ticket)
+  * [3 Delete a ticket](#103-delete-a-ticket)  
 
-**[Video references](#10-youtube-links-for-rest-apis)**
+**[Video references](#11-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
@@ -3686,7 +3691,7 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 ### dev/api/documents/contact/{contact_id}/docs
 Method: GET
 
-- Returns list of note JSONs related to the contact. 
+- Returns list of documents JSONs related to the contact. 
 
 ### Using curl :
 ```sh	
@@ -4054,7 +4059,550 @@ curl https://{domain}.agilecrm.com/dev/api/documents \
 - Status 400: If the input is in wrong format
 
 
-## 10 Youtube links for Rest APIs.
+## 10 Help Desks API.
+
+## 10.1 Get all tickets :
+### dev/api/tickets/filter
+Method: GET
+
+- Returns list of tickets JSONs. 
+
+### Using curl :
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=5632682255974400&custom_filters=%5B%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22NEW%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22OPEN%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22PENDING%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22CLOSED%22%7D%5D&page_size=25&global_sort_key=-last_updated_time -H "Accept : application/json" -v -u {email} : {API Key}
+```
+### Example response :
+```sh
+[
+    {
+        "id": 5,
+        "groupID": 5756098678095872,
+        "group": {
+            "id": 5756098678095872,
+            "group_name": "Support",
+            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+        },
+        "assigned_to_group": true,
+        "assigneeID": 6263975862861824,
+        "assigned_time": 1489653298291,
+        "assignee": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "ghanshyam.raut@agilecrm.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "requester_name": "ghanshyam ",
+        "requester_email": "ghanshyam.agile@gmail.com",
+        "contactID": 5723745293434880,
+        "subject": "Test not working 11??",
+        "cc_emails": [
+            "narayanrupraut1691@gmail.com"
+        ],
+        "created_time": 1489653298291,
+        "last_updated_time": 1489653298291,
+        "last_updated_by": "REQUESTER",
+        "last_customer_replied_time": 1489653298291,
+        "first_notes_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "last_reply_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "is_compressed": false,
+        "status": "OPEN",
+        "type": "PROBLEM",
+        "priority": "LOW",
+        "source": "EMAIL",
+        "created_by": "CUSTOMER",
+        "user_replies_count": 1,
+        "no_of_reopens": 0,
+        "attachments_exists": false,
+        "is_favorite": false,
+        "is_spam": false,
+        "requester_ip_address": "",
+        "html_text": "",
+        "entity_type": "tickets",
+        "attachments_list": [],
+        "labels": [],
+        "contact_ids": [],
+        "last_ticket_notes": {
+            "id": 6247474712805376,
+            "plain_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+            "created_time": 1489653178798,
+            "ticket_notes_assinee": {
+                "id": 6263975862861824,
+                "domain": "ghanshyam",
+                "email": "ghanshyam.raut@agilecrm.com",
+                "phone": "",
+                "name": "Ghanshyam",
+                "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                "schedule_id": "Ghanshyam",
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            }
+        },
+        "contact": {
+            "id": 5723745293434880,
+            "type": "PERSON",
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "value": "ghanshyam"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "value": ""
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "name",
+                    "value": ""
+                }
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "groupID": 5756098678095872,
+        "group": {
+            "id": 5756098678095872,
+            "group_name": "Support",
+            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+        },
+        "assigned_to_group": true,
+        "assigneeID": 6263975862861824,
+        "assigned_time": 1489653242528,
+        "assignee": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "ghanshyam.raut@agilecrm.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "requester_name": "ghanshyam ",
+        "requester_email": "ghanshyam.agile@gmail.com",
+        "contactID": 5723745293434880,
+        "subject": "Test not working ??",
+        "cc_emails": [
+            "narayanrupraut1691@gmail.com"
+        ],
+        "created_time": 1489653242528,
+        "last_updated_time": 1489653242528,
+        "last_updated_by": "REQUESTER",
+        "last_customer_replied_time": 1489653242528,
+        "first_notes_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "last_reply_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "is_compressed": false,
+        "status": "OPEN",
+        "type": "PROBLEM",
+        "priority": "LOW",
+        "source": "EMAIL",
+        "created_by": "CUSTOMER",
+        "user_replies_count": 1,
+        "no_of_reopens": 0,
+        "attachments_exists": false,
+        "is_favorite": false,
+        "is_spam": false,
+        "requester_ip_address": "",
+        "html_text": "",
+        "entity_type": "tickets",
+        "attachments_list": [],
+        "labels": [],
+        "contact_ids": [],
+        "last_ticket_notes": {
+            "id": 6005534641618944,
+            "plain_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+            "created_time": 1489653122960,
+            "ticket_notes_assinee": {
+                "id": 6263975862861824,
+                "domain": "ghanshyam",
+                "email": "ghanshyam.raut@agilecrm.com",
+                "phone": "",
+                "name": "Ghanshyam",
+                "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                "schedule_id": "Ghanshyam",
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            }
+        },
+        "contact": {
+            "id": 5723745293434880,
+            "type": "PERSON",
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "value": "ghanshyam"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "value": ""
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "name",
+                    "value": ""
+                }
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "groupID": 5756098678095872,
+        "group": {
+            "id": 5756098678095872,
+            "group_name": "Support",
+            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+        },
+        "assigned_to_group": true,
+        "assigneeID": 6263975862861824,
+        "assigned_time": 1489649282800,
+        "assignee": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "ghanshyam.raut@agilecrm.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "requester_name": "ghanshyam ",
+        "requester_email": "ghanshyam.agile@gmail.com",
+        "contactID": 5723745293434880,
+        "subject": "Test not working ??",
+        "cc_emails": [
+            "narayanrupraut1691@gmail.com"
+        ],
+        "created_time": 1489649282800,
+        "last_updated_time": 1489649282800,
+        "last_updated_by": "REQUESTER",
+        "last_customer_replied_time": 1489649282800,
+        "first_notes_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "last_reply_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "is_compressed": false,
+        "status": "OPEN",
+        "type": "PROBLEM",
+        "priority": "LOW",
+        "source": "EMAIL",
+        "created_by": "CUSTOMER",
+        "user_replies_count": 1,
+        "no_of_reopens": 0,
+        "attachments_exists": false,
+        "is_favorite": false,
+        "is_spam": false,
+        "requester_ip_address": "",
+        "html_text": "",
+        "entity_type": "tickets",
+        "attachments_list": [],
+        "labels": [],
+        "contact_ids": [],
+        "last_ticket_notes": {
+            "id": 5766442402185216,
+            "plain_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+            "created_time": 1489649163240,
+            "ticket_notes_assinee": {
+                "id": 6263975862861824,
+                "domain": "ghanshyam",
+                "email": "ghanshyam.raut@agilecrm.com",
+                "phone": "",
+                "name": "Ghanshyam",
+                "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                "schedule_id": "Ghanshyam",
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            }
+        },
+        "contact": {
+            "id": 5723745293434880,
+            "type": "PERSON",
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "value": "ghanshyam"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "value": ""
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "name",
+                    "value": ""
+                }
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "groupID": 5756098678095872,
+        "group": {
+            "id": 5756098678095872,
+            "group_name": "Support",
+            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+        },
+        "assigned_to_group": true,
+        "assigneeID": 6263975862861824,
+        "assigned_time": 1489648321029,
+        "assignee": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "ghanshyam.raut@agilecrm.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "requester_name": "ghanshyam ",
+        "requester_email": "ghanshyam.agile@gmail.com",
+        "contactID": 5723745293434880,
+        "subject": "Test not working ??",
+        "cc_emails": [
+            "narayanrupraut1691@gmail.com"
+        ],
+        "created_time": 1489648321029,
+        "last_updated_time": 1489648321029,
+        "last_updated_by": "REQUESTER",
+        "last_customer_replied_time": 1489648321029,
+        "first_notes_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "last_reply_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+        "is_compressed": false,
+        "status": "OPEN",
+        "type": "PROBLEM",
+        "priority": "LOW",
+        "source": "EMAIL",
+        "created_by": "CUSTOMER",
+        "user_replies_count": 1,
+        "no_of_reopens": 0,
+        "attachments_exists": false,
+        "is_favorite": false,
+        "is_spam": false,
+        "requester_ip_address": "",
+        "html_text": "",
+        "entity_type": "tickets",
+        "attachments_list": [],
+        "labels": [],
+        "contact_ids": [],
+        "last_ticket_notes": {
+            "id": 5386771856621568,
+            "plain_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+            "created_time": 1489648201476,
+            "ticket_notes_assinee": {
+                "id": 6263975862861824,
+                "domain": "ghanshyam",
+                "email": "ghanshyam.raut@agilecrm.com",
+                "phone": "",
+                "name": "Ghanshyam",
+                "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                "schedule_id": "Ghanshyam",
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            }
+        },
+        "contact": {
+            "id": 5723745293434880,
+            "type": "PERSON",
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "value": "ghanshyam"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "value": ""
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "name",
+                    "value": ""
+                }
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "groupID": 5756098678095872,
+        "group": {
+            "id": 5756098678095872,
+            "group_name": "Support",
+            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+        },
+        "assigned_to_group": false,
+        "assigneeID": 6263975862861824,
+        "assigned_time": 1489647974608,
+        "assignee": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "ghanshyam.raut@agilecrm.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "requester_name": "ghanshyam ",
+        "requester_email": "ghanshyam.agile@gmail.com",
+        "contactID": 5723745293434880,
+        "subject": "Help Desk Ticket",
+        "cc_emails": [
+            "narmada@invox.com"
+        ],
+        "created_time": 1489647899863,
+        "last_updated_time": 1489647974419,
+        "last_updated_by": "AGENT",
+        "first_replied_time": 1489647974608,
+        "last_agent_replied_time": 1489647974419,
+        "last_customer_replied_time": 1489647899863,
+        "first_notes_text": "Hello test body of message",
+        "last_reply_text": "We will check and let you know\r\n\r\nThanks<br />Ghanshyam Raut",
+        "is_compressed": false,
+        "status": "PENDING",
+        "type": "PROBLEM",
+        "priority": "MEDIUM",
+        "source": "EMAIL",
+        "created_by": "CUSTOMER",
+        "user_replies_count": 2,
+        "no_of_reopens": 0,
+        "attachments_exists": false,
+        "is_favorite": false,
+        "is_spam": false,
+        "requester_ip_address": "",
+        "html_text": "",
+        "entity_type": "tickets",
+        "attachments_list": [],
+        "labels": [],
+        "contact_ids": [],
+        "last_ticket_notes": {
+            "id": 5447141916934144,
+            "plain_text": "We will check and let you know\r\n\r\nThanks<br />Ghanshyam Raut",
+            "created_time": 1489647914834,
+            "ticket_notes_assinee": {
+                "id": 6263975862861824,
+                "domain": "ghanshyam",
+                "email": "ghanshyam.raut@agilecrm.com",
+                "phone": "",
+                "name": "Ghanshyam",
+                "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                "schedule_id": "Ghanshyam",
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            }
+        },
+        "contact": {
+            "id": 5723745293434880,
+            "type": "PERSON",
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "value": "ghanshyam"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "value": ""
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "name",
+                    "value": ""
+                }
+            ]
+        }
+    }
+]
+```
+
+## 10.2 Create a ticket
+### dev/api/tickets/new-ticket
+Method: POST
+
+	- Creates a new ticket.
+	- All field are mandatory .
+
+
+### Acceptable request Representation:
+```javascript
+{
+    "contact_id": "5723745293434880",
+    "requester_name": "ghanshyam ",
+    "requester_email": "ghanshyam.agile@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "email_input": "",
+    "subject": "Test not working ??",
+    "priority": "LOW",
+    "status": "OPEN",
+    "groupID": "5756098678095872",
+    "html_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+    "cc_emails": [
+        "narayanrupraut1691@gmail.com"
+    ],
+    "labels": null,
+    "assigneeID": 6263975862861824
+}
+```
+### Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/tickets/new-ticket \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "contact_id": "5723745293434880",
+    "requester_name": "ghanshyam ",
+    "requester_email": "ghanshyam.agile@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "email_input": "",
+    "subject": "Test not working ??",
+    "priority": "LOW",
+    "status": "OPEN",
+    "groupID": "5756098678095872",
+    "html_text": "Hello I am testing your docs and find that Test is not working. Please help me",
+    "cc_emails": [
+        "narayanrupraut1691@gmail.com"
+    ],
+    "labels": null,
+    "assigneeID": 6263975862861824
+}' \
+-v -u sample@agilecrm.com:123456 -X POST
+```
+### Response:
+- Status 200: Ticket added successfully and it returns the newly created ticket as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+## 10.3 Delete a ticket:
+### dev/api/tickets/{id}
+Method: DELETE
+
+- Deletes the ticket with the particular id. The id passed in the url will be used to identify the ticket.
+
+### Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tickets/100 -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+```
+### Response:
+- Status 200: {"status":"success"}
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+## 11 Youtube links for Rest APIs.
 
 ### Create contact:
 
