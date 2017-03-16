@@ -123,8 +123,8 @@ Table of contents
   * [2 Create a document to a contact](#92-create-a-document-to-a-contact)
   * [3 Update a document to a contact](#91-update-a-document-to-a-contact)
   
-**[Help Desk](#10-help-desk-api)**
-  * [1 Get all tickets](#101-get-all-tickets)
+**[Help Desks](#10-help-desks-api)**
+  * [1 Get all tickets](#101-get-all-tickets-)
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket)  
 
