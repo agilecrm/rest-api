@@ -117,8 +117,13 @@ Table of contents
 
 **[Campaigns](#8-list-of-campaigns)**
   * [List of campaigns](#8-list-of-campaigns)
+  
+**[Documents](#9-documents-api)**
+  * [1 Get documents related to specific contact](#91-get-documents-related-to-specific-contact)
+  * [2 Create a document to a contact](#92-create-a-document-to-a-contact)
+  * [3 Update a document to a contact](#91-update-a-document-to-a-contact)
 
-**[Video references](#9-youtube-links-for-rest-apis)**
+**[Video references](#10-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
@@ -3675,7 +3680,383 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 - Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorized. (When the user name and password fields are wrong.)
 
-##9 Youtube links for Rest APIs.
+**[Documents](#9-documents-api)**
+  * [1 Get documents related to specific contact](#91-get-documents-related-to-specific-contact)
+##9 Documents API.
+
+##9.1 Get documents related to specific contact :
+###/dev/api/documents/contact/{contact_id}/docs
+Method: GET
+
+- Returns list of note JSONs related to the contact. 
+
+###Using curl :
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/documents/contact/5668302869233664/docs -H "Accept : application/json" -v -u {email} : {API Key}
+```
+###Example response :
+```sh	
+[
+    {
+        "count": 2,
+        "id": 5757434010271744,
+        "created_time": 1456469393,
+        "subject": "Tata",
+        "description": "Product Famous in India",
+[
+    {
+        "id": 5765788359196672,
+        "name": "tester",
+        "dummy_name": "tester",
+        "uploaded_time": 1489466749,
+        "extension": "getcontactlogs.PNG",
+        "doc_type": "ATTACHMENT",
+        "text": "",
+        "template_type": "",
+        "size": 92293,
+        "network_type": "S3",
+        "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489466715191/getcontactlogs.PNG?id=uploadDocumentForm",
+        "entity_type": "document",
+        "contact_ids": [
+            "5668302869233664"
+        ],
+        "case_ids": [],
+        "deal_ids": [],
+        "owner": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "sample@*****.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "relatedContacts": [
+            {
+                "id": 5668302869233664,
+                "type": "PERSON",
+                "created_time": 1488774702,
+                "updated_time": 1489549911,
+                "last_contacted": 0,
+                "last_emailed": 0,
+                "last_campaign_emaild": 0,
+                "last_called": 0,
+                "viewed_time": 0,
+                "viewed": {
+                    "viewed_time": 1489549676825,
+                    "viewer_id": 6263975862861824
+                },
+                "star_value": 0,
+                "lead_score": 0,
+                "klout_score": "",
+                "tags": [],
+                "tagsWithTime": [],
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "Make"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "last_name",
+                        "value": "hiksn"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "email",
+                        "value": "make@hikson"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "title",
+                        "value": "Developer"
+                    }
+                ],
+                "campaignStatus": [],
+                "entity_type": "contact_entity",
+                "source": "manual",
+                "unsubscribeStatus": [],
+                "emailBounceStatus": [],
+                "formId": 0,
+                "browserId": [],
+                "lead_source_id": 0,
+                "lead_status_id": 0,
+                "is_lead_converted": false,
+                "lead_converted_time": 0,
+                "is_duplicate_existed": false,
+                "owner": {
+                    "id": 6263975862861824,
+                    "domain": "ghanshyam",
+                    "email": "sample@*****.com",
+                    "phone": "",
+                    "name": "Ghanshyam",
+                    "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                    "schedule_id": "Ghanshyam",
+                    "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                    "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+                }
+            }
+        ],
+        "contacts": [
+            {
+                "id": 5668302869233664,
+                "type": "PERSON",
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "make"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "last_name",
+                        "value": "hiksn"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "name",
+                        "value": ""
+                    }
+                ]
+            }
+        ],
+        "deals": []
+    },
+    {
+        "id": 5769954477473792,
+        "name": "Address proof",
+        "dummy_name": "address proof",
+        "uploaded_time": 1489549911,
+        "extension": "chrome-window2.PNG",
+        "doc_type": "ATTACHMENT",
+        "text": "",
+        "template_type": "",
+        "size": 57907,
+        "network_type": "S3",
+        "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489549880850/chrome-window2.PNG?id=uploadDocumentForm",
+        "entity_type": "document",
+        "contact_ids": [
+            "5668302869233664"
+        ],
+        "case_ids": [],
+        "deal_ids": [
+            "6238333076242432"
+        ],
+        "owner": {
+            "id": 6263975862861824,
+            "domain": "ghanshyam",
+            "email": "sample@*****.com",
+            "phone": "",
+            "name": "Ghanshyam",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "schedule_id": "Ghanshyam",
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+        },
+        "relatedContacts": [
+            {
+                "id": 5668302869233664,
+                "type": "PERSON",
+                "created_time": 1488774702,
+                "updated_time": 1489549911,
+                "last_contacted": 0,
+                "last_emailed": 0,
+                "last_campaign_emaild": 0,
+                "last_called": 0,
+                "viewed_time": 0,
+                "viewed": {
+                    "viewed_time": 1489549912557,
+                    "viewer_id": 6263975862861824
+                },
+                "star_value": 0,
+                "lead_score": 0,
+                "klout_score": "",
+                "tags": [],
+                "tagsWithTime": [],
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "Make"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "last_name",
+                        "value": "hiksn"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "email",
+                        "value": "make@hikson"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "title",
+                        "value": "Developer"
+                    }
+                ],
+                "campaignStatus": [],
+                "entity_type": "contact_entity",
+                "source": "manual",
+                "unsubscribeStatus": [],
+                "emailBounceStatus": [],
+                "formId": 0,
+                "browserId": [],
+                "lead_source_id": 0,
+                "lead_status_id": 0,
+                "is_lead_converted": false,
+                "lead_converted_time": 0,
+                "is_duplicate_existed": false,
+                "owner": {
+                    "id": 6263975862861824,
+                    "domain": "ghanshyam",
+                    "email": "sample@*****.com",
+                    "phone": "",
+                    "name": "Ghanshyam",
+                    "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+                    "schedule_id": "Ghanshyam",
+                    "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                    "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+                }
+            }
+        ],
+        "contacts": [
+            {
+                "id": 5668302869233664,
+                "type": "PERSON",
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "make"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "last_name",
+                        "value": "hiksn"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "name",
+                        "value": ""
+                    }
+                ]
+            }
+        ],
+        "deals": [
+            {
+                "id": 6238333076242432,
+                "name": "ghansu deal"
+            }
+        ]
+    }
+]
+```
+
+##9.2 Create a document to a contact:
+###dev/api/documents
+Method: POST
+
+	- Creates a new document with link attach.
+	- url is mandatory filed.You have to provide link of a file it can be your local or server location.
+
+
+###Acceptable request Representation:
+```javascript
+{
+    "extension": "chrome-window2.PNG",
+    "doc_type": "ATTACHMENT",
+    "name": "Address proof",
+    "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489549880850/chrome-window2.PNG?id=uploadDocumentForm",
+    "size": "57907",
+    "network_type": "S3",
+    "contact_ids": [
+        "5735113836986368"
+    ],
+    "deal_ids": [
+        "6238333076242432"
+    ]
+}
+```
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/documents \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "extension": "chrome-window2.PNG",
+    "doc_type": "ATTACHMENT",
+    "name": "Address proof",
+    "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489549880850/chrome-window2.PNG?id=uploadDocumentForm",
+    "network_type": "S3",
+    "contact_ids": [
+        "5668302869233664"
+    ],
+    "deal_ids": [
+        "6238333076242432"
+    ]
+}' \
+-v -u sample@agilecrm.com:123456 -X POST
+```
+###Response:
+- Status 200: Document added successfully and it returns the newly created document as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+##9.3 Update a document to a contact:
+###dev/api/documents
+Method: PUT
+
+	- Update a new document with link attach.
+	- url is mandatory filed.You have to provide link of a file it can be your local or server location.
+
+
+###Acceptable request Representation:
+```javascript
+{
+    "id": "4823318989373440",
+    "extension": "chrome-window2.PNG",
+    "doc_type": "ATTACHMENT",
+    "name": "Address proof3",
+    "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489549880850/chrome-window2.PNG?id=uploadDocumentForm",
+    "contact_ids": [
+        "5735113836986368"
+    ],
+    "deal_ids": [
+        "6238333076242432"
+    ]
+}
+```
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/documents \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "4823318989373440",
+    "extension": "chrome-window2.PNG",
+    "doc_type": "ATTACHMENT",
+    "name": "Address proof3",
+    "url": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/ghanshyam/1489549880850/chrome-window2.PNG?id=uploadDocumentForm",
+    "contact_ids": [
+        "5735113836986368"
+    ],
+    "deal_ids": [
+        "6238333076242432"
+    ]
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
+```
+###Response:
+- Status 200: Document updated successfully and it returns the newly created document as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
+
+
+##10 Youtube links for Rest APIs.
 
 ###Create contact:
 
