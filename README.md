@@ -4611,7 +4611,8 @@ alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
 ### Update contact partial:
 
-WIP
+<a href="https://www.youtube.com/watch?v=M5JcgwCOYpY" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
 ### Update tag by ID:
 
