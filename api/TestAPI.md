@@ -1,5 +1,18 @@
+Agile CRM REST API
+=================
+
+[Agile CRM] (https://www.agilecrm.com/) is a new breed CRM software with sales and marketing automation.
+
 Table of contents
 =================
+
+**[Rest API implementation](#)**
+  * [Java API](https://github.com/agilecrm/java-api)
+  * [Python API](https://github.com/agilecrm/python-api)
+  * [PHP API](https://github.com/agilecrm/php-api)
+  * [.NET C# API](https://github.com/agilecrm/c-sharp-api)
+  * [Node.js API](https://github.com/agilecrm/nodejs)
+  * [Ruby on Rails API](https://github.com/agilecrm/ruby-on-rails)
 
 **[Things to know](#things-to-know)**
   * [Authentication](#authentication-)
@@ -10,107 +23,108 @@ Table of contents
   * [Contact & companie fields](#1-contacts---companies-api)
   * [Properties JSON](#properties-json)
   * [Contact JSON example](#contact-json-example)
+  * [Properties JSON Complete Example](#properties-json-complete-example)
   * [Contact APIs](#11-listing-contacts-)
     * [1 Listing contacts](#11-listing-contacts-)
     * [2 Get contact by ID](#12-get-contact-by-id)
     * [3 Creating a contact](#13-creating-a-contact)
-    * [4 Updating contact](#14-updating-contact)
-    * [5 Partial update](#15-update-properties-of-a-contact-by-id-partial-update)
-    * [6 Update lead score by ID](#16-update-lead-score-by-id)
-    * [7 Update star value by ID](#17-update-star-value-by-id)
-    * [8 Update tags value by ID](#18-update-tags-value-by-id)
-    * [9 Delete tags value by ID](#19-delete-tags-value-by-id)
-    * [10 Delete single contact](#110-delete-single-contact)
-    * [11 Search contact by email](#111-search-contact-by-email)
-      * [11.A Search contact by email](#1111-search-contact-by-email)
-      * [11.B Search contact by wmail](#1112-search-contact-by-email)
-    * [12 Search contacts/companies](#112-search-contactscompanies)
-    * [13 Adding tags to a contact based on email](#113-adding-tags-to-a-contact-based-on-email)
-    * [14 Delete tags to a contact based on email](#114-delete-tags-to-a-contact-based-on-email)
-    * [15 Add score to a contact using email ID](#115-add-score-to-a-contact-using-email-id)
-    * [16 Get tasks related to contact](#116-get-tasks-related-to-contact)
-    * [17 Updating contact properties](#117-updating-contact-properties)
-    * [18 Change contact owner](#118-change-contact-owner)
-    * [19 Add contact to a campaign](#119-add-contact-to-a-campaign)
-    * [20 Remove contact from a campaign](#120-remove-contact-from-a-campaign)
-    * [21 Get contact by phone number](#121-get-contact-by-phone-number)
-  * [Company APIs](#122-creating-a-company)
-    * [1 Creating a company](#122-creating-a-company)
-    * [2 Updating a company](#122-updating-a-company)
-    * [3 Get list of companies](#123-get-list-of-companies)
-    * [4 Get company by id](#124-get-company-by-id)
-    * [5 Delete single company](#125-delete-single-company)
+    * [4 Updating contact](#14-update-properties-of-a-contact-by-id-partial-update)
+    * [5 Update lead score by ID](#15-update-lead-score-by-id)
+    * [6 Update star value by ID](#16-update-star-value-by-id)
+    * [7 Update tags value by ID](#17-update-tags-value-by-id)
+    * [8 Delete tags value by ID](#18-delete-tags-value-by-id)
+    * [9 Delete single contact](#110-delete-single-contact)
+    * [10 Search contact by email](#1101-search-contact-by-email)
+      * [10.A Search contact by email](#1101-search-contact-by-email)
+      * [10.B Search contact by email](#1102-search-contact-by-email)
+    * [11 Search contacts/companies](#111-search-contactscompanies)
+    * [12 Adding tags to a contact based on email](#112-adding-tags-to-a-contact-based-on-email)
+    * [13 Delete tags to a contact based on email](#113-delete-tags-to-a-contact-based-on-email)
+    * [14 Add score to a contact using email ID](#114-add-score-to-a-contact-using-email-id)
+    * [15 Get tasks related to contact](#115-get-tasks-related-to-contact)
+    * [16 Updating contact properties](#116-updating-contact-properties)
+    * [17 Change contact owner](#117-change-contact-owner)
+    * [18 Add contact to a campaign](#118-add-contact-to-a-campaign)
+    * [19 Remove contact from a campaign](#119-remove-contact-from-a-campaign)
+    * [20 Get contact by phone number](#120-get-contact-by-phone-number)
+    * [21 Get contacts by dynamic filter](#121-get-contacts-by-dynamic-filter)
+      * [21.A Get contacts by tag filter](#devapifiltersfilterdynamic-filter)
+      * [21.B Get contacts by custom field](#devapifiltersfilterdynamic-filter-1)
+  * [Company APIs](#21-creating-a-company)
+    * [1 Creating a company](#21-creating-a-company)
+    * [2 Updating a company](#22-updating-a-company)
+    * [3 Get list of companies](#23-get-list-of-companies)
+    * [4 Get company by id](#24-get-company-by-id)
+    * [5 Delete single company](#25-delete-single-company)
  
-**[Deals](#2-deals-api)**
-  * [Deal fields](#2-deals-api)
+**[Deals](#3-deals-api)**
+  * [Deal fields](#3-deals-api)
   * [Deal JSON Example](#deal-json-example)
   * [Deal APIs](#21-listing-deals)
-    * [1 Listing deals](#21-listing-deals)
-    * [2 Get deal by its ID](#22-get-deal-by-its-id)
-    * [3 Create deal](#23-create-deal)
-    * [4 Update deal](#24-update-deal)
-    * [5 Partial update](#25-update-deal-partial-update)
-    * [6 Create deal to a contact using email ID](#26-create-deal-to-a-contact-using-email-id)
-    * [7 Delete deal](#27-delete-deal)
-    * [8 Bulk delete](#28-bulk-delete)
-    * [9 Get deals from default track grouped by milestones](#29-get-deals-from-default-track-grouped-by-milestones)
-    * [10 Get deals for a particular drack (grouped by milestone)](#210-get-deals-for-a-particular-track-grouped-by-milestone)
-    * [11 Get deals from particular track](#211-get-deals-from-particular-track)
-    * [12 Get deals related to specific contact](#212-get-deals-related-to-specific-contact)
-    * [13 Get deals of current user (my deals)](#213-get-deals-of-current-user-my-deals)
+    * [1 Listing deals](#31-listing-deals)
+    * [2 Get deal by its ID](#32-get-deal-by-its-id)
+    * [3 Create deal](#33-create-deal)
+    * [4 Partial update](#34-update-deal-partial-update)
+    * [5 Create deal to a contact using email ID](#35-create-deal-to-a-contact-using-email-id)
+    * [6 Delete deal](#36-delete-deal)
+    * [7 Bulk delete](#37-bulk-delete)
+    * [8 Get deals from default track grouped by milestones](#38-get-deals-from-default-track-grouped-by-milestones)
+    * [9 Get deals for a particular drack (grouped by milestone)](#39-get-deals-for-a-particular-track-grouped-by-milestone)
+    * [10 Get deals from particular track](#310-get-deals-from-particular-track)
+    * [11 Get deals related to specific contact](#311-get-deals-related-to-specific-contact)
+    * [12 Get deals of current user (my deals)](#312-get-deals-of-current-user-my-deals)
+    * [13 Remove contacts of a deal](#313-remove-contacts-of-a-deal)
 
-**[Notes](#3-notes-api)**
+**[Notes](#4-notes-api)**
   * [Note fields](#3-notes-api)
   * [Note APIs](#21-listing-deals)
-    * [1 Create a note and relate that to contacts](#31-create-a-note-and-relate-that-to-contacts-)
-    * [2 Add note to a contact using email ID](#32-add-note-to-a-contact-using-email-id)
-    * [3 Gets notes related to specific contact](#33-gets-notes-related-to-specific-contact-)
-    * [4 Delete a specific note from specific contact](#34-delete-a-specific-note-from-specific-contact-)
-    * [5 Create note to a deal](#35-create-note-to-a-deal)
-    * [6 Update note to a deal](#36-update-note-to-a-deal)
-    * [7 Gets notes related to specific deal](#37-gets-notes-related-to-specific-deal-)
-    * [8 Delete notes from specific deal](#38-delete-notes-from-specific-deal-)
+    * [1 Create a note and relate that to contacts](#41-create-a-note-and-relate-that-to-contacts-)
+    * [2 Add note to a contact using email ID](#42-add-note-to-a-contact-using-email-id)
+    * [3 Gets notes related to specific contact](#43-gets-notes-related-to-specific-contact-)
+    * [4 Delete a specific note from specific contact](#44-delete-a-specific-note-from-specific-contact-)
+    * [5 Create note to a deal](#45-create-note-to-a-deal)
+    * [6 Update note to a deal](#46-update-note-to-a-deal)
+    * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal-)
+    * [8 Delete notes from specific deal](#48-delete-notes-from-specific-deal-)
 
-**[Tasks](#4-tasks-api)**
-  * [Task fields](#4-tasks-api)
-  * [Task APIs](#41-get-the-list-of-pending-tasks)
-    * [1 Get the list of pending tasks](#41-get-the-list-of-pending-tasks)
-    * [2 Get all tasks](#42-get-all-tasks)
-    * [3 Get the list of pending tasks depending on the number of pending days](#43-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
-    * [4 Get the list of tasks of current user](#44-get-the-list-of-tasks-of-current-user)
-    * [5 Get the list of tasks based on given filters](#45-get-the-list-of-tasks-based-on-given-filters)
-    * [6 Get the task based on ID](#46-get-the-task-based-on-id)
-    * [7 Create a task](#47-create-a-task)
-    * [8 Create a task based on Contact email](#48-create-a-task-based-on-contact-email)
-    * [9 Update a task](#49-update-a-task)
-    * [10 Update a task (Partial update)](#410-update-a-task-partial-update)
-    * [11 Delete a task based on ID](#411-delete-a-task-based-on-id)
+**[Tasks](#5-tasks-api)**
+  * [Task fields](#5-tasks-api)
+  * [Task APIs](#51-get-the-list-of-pending-tasks)
+    * [1 Get the list of pending tasks depending on the number of pending days](#51-get-the-list-of-pending-tasks-depending-on-the-number-of-pending-days)
+    * [2 Get the list of tasks based on given filters](#52-get-the-list-of-tasks-based-on-given-filters)
+    * [3 Get the task based on ID](#53-get-the-task-based-on-id)
+    * [4 Create a task](#54-create-a-task)
+    * [5 Create a task based on Contact email](#55-create-a-task-based-on-contact-email)
+    * [6 Update a task (Partial update)](#56-update-a-task-partial-update)
+    * [7 Delete a task based on ID](#57-delete-a-task-based-on-id)
 
-**[Events](#5-events-api)**
-  * [Event fields](#5-events-api)
-  * [Event APIs](#51-get-list-of-events)
-    * [1 Get list of events](#51-get-list-of-events)
-    * [2 Get events related to contact](#52-get-events-related-to-contact)
-    * [3 Create event](#53-create-event)
-    * [4 Update event](#54-update-event)
-    * [5 Delete an event](#55-delete-an-event)
+**[Events](#6-events-api)**
+  * [Event fields](#6-events-api)
+  * [Event APIs](#61-get-list-of-events)
+    * [1 Get list of events](#61-get-list-of-events)
+    * [2 Get events related to contact](#62-get-events-related-to-contact)
+    * [3 Create event](#63-create-event)
+    * [4 Update event](#64-update-event)
+    * [5 Delete an event](#65-delete-an-event)
 
-**[Track / Milestones](#6-track--milestones-api)**
-  * [Track fields](#6-track--milestones-api)
-  * [Track / Milestones APIs](#61-get-all-the-tracks)
-    * [1 Get all the tracks](#61-get-all-the-tracks)
-    * [2 Create a track](#62-create-a-track)
-    * [3 Update a track](#63-update-a-track)
-    * [4 Delete a Track](#64-delete-a-track)
+**[Track / Milestones](#7-track--milestones-api)**
+  * [Track fields](#7-track--milestones-api)
+  * [Track / Milestones APIs](#71-get-all-the-tracks)
+    * [1 Get all the tracks](#71-get-all-the-tracks)
+    * [2 Create a track](#72-create-a-track)
+    * [3 Update a track](#73-update-a-track)
+    * [4 Delete a Track](#74-delete-a-track)
 
-**[Campaigns](#7-list-of-campaigns)**
-  * [List of campaigns](#7-list-of-campaigns)
+**[Campaigns](#8-list-of-campaigns)**
+  * [List of campaigns](#8-list-of-campaigns)
 
-**[Videos reference](#8-youtube-links-for-rest-apis)**
+**[Video references](#9-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
   * [Update contact test](#update-contact)
   * [Update tag by ID test](#update-tag-by-id)
   * [Create deal test](#create-deal)
+  * [Get list of contacts example 1](#get-list-of-contact-example-1)
+  * [Get list of contacts example 2](#get-list-of-contact-example-2)
 
 
 Things to know:
@@ -125,7 +139,7 @@ The Email and API key should pass basic HTTP Authentication. For this, use email
 - You may access the API Key from Admin Settings -> API & Analytics -> API Key
 - Use the first one (API Key for REST client) for all the REST API calls.
 
-![Finding API Key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key_New.jpg)
+![Finding API Key, domain and email] (https://raw.githubusercontent.com/agilecrm/rest-api/master/api/AgileCRMapi.png)
 
 ###Endpoints:
 All API requests should be made to: https://{domain}.agilecrm.com/dev/
@@ -167,89 +181,216 @@ The below are the subtypes for respective property fields.
 
 Note: There will be subtypes for custom fields. User should specify the above mentioned subtype for those respective properties only.
 
+###Properties JSON Complete Example:
+```javascript
+"properties": [
+        {
+            "name": "Text field test",
+            "type": "CUSTOM",
+            "value": "I am text field test."
+        },
+        {
+            "name": "Text Area Test",
+            "type": "CUSTOM",
+            "value": "I am text area field test. I am CEO of Uptake Technologies. I like Agile Chrome Extension. You can add leads from LinkedIn, Twitter, Facebook, Gmail etc."
+        },
+        {
+            "name": "Date of Joining",
+            "type": "CUSTOM",
+            "value": 1279132200
+        },
+        {
+            "name": "Please select checkbox to accept term and condition",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "Please select one product from list",
+            "type": "CUSTOM",
+            "value": "tomato"
+        },
+        {
+            "name": "Please add what are the companies you worked",
+            "type": "CUSTOM",
+            "value": "[\"5694691248963584\",\"5646962099486720\"]"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Brad"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Keywell"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "image",
+            "value": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkpAAAAJDY4ZDg2OTU3LTVhOTAtNGRlOC1hNjAxLTgwNGUyMzc0MDc2Mg.jpg"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "company",
+            "value": "Uptake Technologies"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "value": "‎Co-Founder and CEO"
+        },
+        {
+            "name": "email",
+            "value": "brad.keywell@yopmail.com",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888888",
+            "subtype": "work"
+        },
+        {
+            "name": "website",
+            "value": "https://www.linkedin.com/in/bradkeywell",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "https://www.youtube.com/watch?v=8-zQMprfDgE",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"Motor City 120 street\",\"city\":\"Detroit\",\"state\":\"Michigan\",\"zip\":\"48201\",\"country\":\"US\",\"countryname\":\"United States\"}"
+        }
+    ]
+```
+
 ###Contact JSON example
 
 ```javascript
 {
-    	"id": 5711946548510720,
-    	"type": "PERSON",
-    	"created_time": 1349974226,
-    	"updated_time": 1364483386,
-    	"star_value": 0,
-    	"lead_score": 0,
-    	"tags": [
-        	"Buyer",
-        	"Deal Closed"
-    	],
-    	"properties": [
-        	{
-            	"type": "SYSTEM",
-            	"name": "first_name",
-            	"value": "Adam"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "last_name",
-            	"value": "Smith"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "company",
-            	"value": "Invox"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "title",
-            	"value": "Evangelist"
-        	},
-        	{
-            	"type": "SYSTEM",
-            	"name": "email",
-            	"subtype": "",
-            	"value": "jagan@clickdesk.com"
-        	},
-        	{
-            	"type": "CUSTOM",
-            	"name": "My Custom Field",
-            	"value": "Custom value"
-        	}
-    	],
-		"campaignStatus": [
-			{
-				"start_time": 1418204274,
-				"end_time": 1418204293,
-				"campaign_id": "5338160762454016",
-				"campaign_name": "Send Email",
-				"status": "5338160762454016-DONE"
-			}
-		],
-		 "unsubscribeStatus": [
-			{
-				"campaign_id": "5338160762454016",
-				"unsubscribeType": "CURRENT"
-			}
-		],
-		"emailBounceStatus": [
-			{
-				"email": "hard_bounce@test.mandrillapp.com",
-				"emailBounceType": "HARD_BOUNCE",
-				"time": 1418204263,
-				"campaign_id": "5338160762454016"
-			}
-		],
-    	"widget_properties": "{\"Twitter\":\"11458852\"}",
-    	"domainUser": {
-        	"id": 314001,
-        	"domain": "mycompany",
-        	"email": "crm-user@mycompany.com",
-        	"is_admin": true,
-        	"is_account_owner": false,
-        	"is_disabled": false,
-        	"name": "angel",
-        	"password": "PASSWORD",
-        	"info_json_string": "{\"logged_in_time\":1364879569,\"created_time\":1361958281}",
-        	"hashedString": "81dc9bdb52d04dc20036dbd8313ed055"
-    	}
+    "id": "5629585249009664",
+    "type": "PERSON",
+    "created_time": "1469170109",
+    "updated_time": 1469764466,
+    "last_contacted": 0,
+    "last_emailed": 0,
+    "last_campaign_emaild": 0,
+    "last_called": 0,
+    "viewed_time": 0,
+    "viewed": {
+        "viewed_time": 1469764498855,
+        "viewer_id": 6263975862861824
+    },
+    "star_value": 4,
+    "lead_score": 5,
+    "tags": [],
+    "tagsWithTime": [
+        {
+            "tag": "dummyTestTag",
+            "createdTime": 1469510469602,
+            "availableCount": 0,
+            "entity_type": "tag"
+        }
+    ],
+    "properties": [
+        {
+            "name": "Text field test",
+            "type": "CUSTOM",
+            "value": "I am text field test."
+        },
+        {
+            "name": "Text Area Test",
+            "type": "CUSTOM",
+            "value": "I am text area field test. I am CEO of Uptake Technologies. I like Agile Chrome Extension. You can add leads from LinkedIn, Twitter, Facebook, Gmail etc."
+        },
+        {
+            "name": "Date of Joining",
+            "type": "CUSTOM",
+            "value": 1279132200
+        },
+        {
+            "name": "Please select checkbox to accept term and condition",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "Please select one product from list",
+            "type": "CUSTOM",
+            "value": "tomato"
+        },
+        {
+            "name": "Please add what are the companies you worked",
+            "type": "CUSTOM",
+            "value": "[\"5694691248963584\",\"5646962099486720\"]"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Brad"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "value": "Keywell"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "image",
+            "value": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkpAAAAJDY4ZDg2OTU3LTVhOTAtNGRlOC1hNjAxLTgwNGUyMzc0MDc2Mg.jpg"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "company",
+            "value": "Uptake Technologies"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "value": "Co-Founder and CEO"
+        },
+        {
+            "name": "email",
+            "value": "brad.keywell@yopmail.com",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888888",
+            "subtype": "work"
+        },
+        {
+            "name": "website",
+            "value": "https://www.linkedin.com/in/bradkeywell",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "https://www.youtube.com/watch?v=8-zQMprfDgE",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"Motor City 120 street\",\"city\":\"Detroit\",\"state\":\"Michigan\",\"zip\":\"48201\",\"country\":\"US\",\"countryname\":\"United States\"}"
+        }
+    ],
+    "campaignStatus": [],
+    "entity_type": "contact_entity",
+    "contact_company_id": "5649189358796800",
+    "unsubscribeStatus": [],
+    "emailBounceStatus": [],
+    "formId": 0,
+    "owner": {
+        "id": 6263975862861824,
+        "domain": "ghanshyam",
+        "email": "ghanshyam.raut@agilecrm.com",
+        "name": "Ghanshyam",
+        "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/25.png",
+        "schedule_id": "Ghanshyam",
+        "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+        "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+    }
 }
 ```
 
@@ -264,121 +405,157 @@ For the Response in the Json format, add the header 'Accept' as application/json
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H "Accept : application/json" 
--v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts?page_size=20&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU \
+-H "Accept : application/json" \
+-v -u sample@agilecrm.com:123456 
 ```
 ####Example JSON response
 ```javascript
 [
-      {
-        "id": "5073269292007424",
+    {
+        "id": 5073269292007424,
         "type": "PERSON",
-        "created_time": "1356589886",
-        "updated_time": "1357107323",
-        "star_value": "0",
-        "lead_score": "93",
+        "created_time": 1445941332,
+        "updated_time": 1451545213,
+        "star_value": 0,
+        "lead_score": 0,
         "tags": [
-          "sales",  "bruik", "walt", "los",  "vo",  "steady"
+            "Sample based",
+            "tag1",
+            "tag3",
+            "tag2"
+        ],
+        "tagsWithTime": [
+            {
+                "tag": "Sample based",
+                "createdTime": 1449716452263,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag1",
+                "createdTime": 1449716779882,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag3",
+                "createdTime": 1449716997174,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "tag2",
+                "createdTime": 1449716997174,
+                "availableCount": 0,
+                "entity_type": "tag"
+            }
         ],
         "properties": [
-          {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "value": "Los "
-          },
-          {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "value": "Bruikheilmer"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "steady.inc"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "VP Sales"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": "work",
-            "value": "bruik@walt.inc"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "address",
-            "value": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"\"}"
-          }
-        ],
-        "domainUser": {
-          "id": "106010",
-          "domain": "yaswanth",
-          "email": "praveen@invox.com",
-          "is_admin": "true",
-          "is_account_owner": "true",
-          "is_disabled": "false",
-          "name": "yaswanth",
-          "password": "PASSWORD",
-          "info_json_string": "{\"logged_in_time\":1359434638,\"created_time\":1358831084}"
-        }
-      },
-      {
-        "id": "5086805955182592",
+            {
+                "type": "CUSTOM",
+                "name": "text sample test",
+                "value": "text custom"
+            },
+            {
+                "type": "CUSTOM",
+                "name": "TeamNumbers",
+                "value": "5"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "first_name",
+                "value": "April"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "last_name",
+                "value": "Woodlif"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "email",
+                "subtype": "",
+                "value": "pinkpp@hotmail.com"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "phone",
+                "value": "6767678982"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "phone",
+                "subtype": "home",
+                "value": "6767678982"
+            }
+        ]
+    },
+    {
+        "cursor": "CjsSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICA8MTNhAkMogEJZ2hhbnNoeWFtGAAgAA",
+        "id": 5086805955182592,
         "type": "PERSON",
-        "created_time": "1356590542",
-        "updated_time": "1359367255",
-        "star_value": "4",
-        "lead_score": "92",
+        "created_time": 1448516471,
+        "star_value": 4,
+        "lead_score": 92,
         "tags": [
-          "president",
-          "john",
-          "doe",
-          "cruzzetech"
+            "Lead",
+            "Likely Buyer"
+        ],
+        "tagsWithTime": [
+            {
+                "tag": "Lead",
+                "createdTime": 1448516471573,
+                "availableCount": 0,
+                "entity_type": "tag"
+            },
+            {
+                "tag": "Likely Buyer",
+                "createdTime": 1448516471573,
+                "availableCount": 0,
+                "entity_type": "tag"
+            }
         ],
         "properties": [
-          {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "value": "John"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "value": "Doe"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "cruzzetech.com"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "email",
-            "value": "john@cruzzetech.com"
-          },
-          {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "President"
-          }
-        ],
-"tags_with_time_json": "{\"president\":1359365229885,\"john\":1359365229885,\"doe\":1359365229885,\"cruzzetech\":1359365229885}",
-        "domainUser": {
-          "id": "106010",
-          "domain": "yaswanth",
-          "email": "praveen@invox.com",
-          "is_admin": "true",
-          "is_account_owner": "true",
-          "is_disabled": "false",
-          "name": "yaswanth",
-          "password": "PASSWORD",
-          "info_json_string": "{\"logged_in_time\":1359434638,\"created_time\":1358831084}"
-        }
-      }
-    ]
+            {
+                "type": "SYSTEM",
+                "name": "first_name",
+                "value": "Los "
+            },
+            {
+                "type": "SYSTEM",
+                "name": "last_name",
+                "value": "Bruikheilmer"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "company",
+                "value": "steady.inc"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "title",
+                "value": "VP Sales"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "email",
+                "subtype": "work",
+                "value": "bruik@walt.ltd"
+            },
+            {
+                "type": "SYSTEM",
+                "name": "address",
+                "value": "{\"address\":\"MIG-106\",\"city\":\"Hyderabad\",\"state\":\"Telangana\",\"zip\":\"500032\",\"country\":\"India\"}"
+            },
+            {
+                "type": "CUSTOM",
+                "name": "My Custom Field",
+                "value": "Custom value"
+            }
+        ]
+    }
+]
 ```
 
 ###Other available responses:
@@ -394,8 +571,9 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application/xml" 
--v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts/{id} \
+-H "Accept :application/json" \
+-v -u sample@agilecrm.com:123456
 ```
 ###Example response
 
@@ -425,28 +603,18 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
         {
             "type": "SYSTEM",
             "name": "first_name",
-            "value": "Los "
+            "value": "Samson"
         },
         {
             "type": "SYSTEM",
             "name": "last_name",
-            "value": "Bruikheilmer"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "steady.inc"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "VP Sales"
+            "value": "Nolan"
         },
         {
             "type": "SYSTEM",
             "name": "email",
             "subtype": "work",
-            "value": "clinton@walt.ltd"
+            "value": "samson@walt.ltd"
         },
         {
             "type": "SYSTEM",
@@ -454,33 +622,65 @@ Accepts contact JSON as post data along with the credentials of domain User (Use
             "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
         },
         {
+            "name": "phone",
+            "value": "8888888889",
+            "subtype": "work"
+        },
+        {
+            "name": "phone",
+            "value": "8888888889",
+            "subtype": "home"
+        },
+        {
+            "name": "website",
+            "value": "www.youtube.com",
+            "subtype": "YOUTUBE"
+        },
+        {
+            "name": "website",
+            "value": "www.linkedin.com",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "website",
+            "value": "www.mywebsite.com",
+            "subtype": "URL"
+        },
+        {
+            "name": "My custom field of type text",
             "type": "CUSTOM",
-            "name": "My Custom Field",
-            "value": "Custom value"
+            "value": "My name is ghanshyam"
+        },
+        {
+            "name": "My custom field of type date",
+            "type": "CUSTOM",
+            "value": 1479580200
+        },
+        {
+            "name": "My custom field of type checkbox",
+            "type": "CUSTOM",
+            "value": "on"
+        },
+        {
+            "name": "My custom field of type list",
+            "type": "CUSTOM",
+            "value": "lemon"
+        },
+        {
+            "name": "My custom field of type companies",
+            "type": "CUSTOM",
+            "value": "[\"5767466600890368\",\"5114076984246272\",\"5746725247516672\"]"
         }
     ]
 }
 ```
 
-###Response:
-- Status 200: Contact added successfully. Returns the newly added contact object in the response.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-- Status 400: If the input is in wrong format.
-- Status 406: If the limit of the contacts is exceeded.
-
-##1.4 Updating contact
-###dev/api/contacts
-Method: PUT 
-
-
-Accepts contact object with valid id parameter in it, where ‘id’  refers to the contact that is to be updated. While updating the contact, If that contact is having campaigns, we should include the fields emailBounceStatus, campaignStatus and unsubscribeStatus in the contact object (The data in these fields should be same as it is in the retrieved contact object). 
-
-- Note : Please send all data related to contact.
-
-###Acceptable request representation:
-```javascript
-{
-    "id": "5676477903273984",
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
     "star_value": "4",
     "lead_score": "92",
     "tags": [
@@ -491,58 +691,44 @@ Accepts contact object with valid id parameter in it, where ‘id’  refers to 
         {
             "type": "SYSTEM",
             "name": "first_name",
-            "value": "Losali"
+            "value": "Samson"
         },
         {
             "type": "SYSTEM",
             "name": "last_name",
-            "value": "Bruikheilmer"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "company",
-            "value": "steady.inc"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "value": "VP Sales"
+            "value": "Nolan"
         },
         {
             "type": "SYSTEM",
             "name": "email",
             "subtype": "work",
-            "value": "clinton@walt.ltd"
+            "value": "samson@walt.ltd"
         },
         {
             "type": "SYSTEM",
             "name": "address",
             "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
-        },
-        {
-            "type": "CUSTOM",
-            "name": "My Custom Field",
-            "value": "Custom value"
         }
     ]
-}
+}' \
+-v -u sample@agilecrm.com:123456 -X POST
 ```
 
-If there is no ID, it will considered as a new contact.
-
 ###Response:
-- Status 200: Contact updated successfully. Returns the updated contact object in the response.
+- Status 200: Contact added successfully. Returns the newly added contact object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
+- Status 406: If the limit of the contacts is exceeded.
 
-##1.5 Update properties of a contact by ID (partial update)
+##1.4 Update properties of a contact by ID (partial update)
 ###dev/api/contacts/edit-properties
 Method: PUT 
 
 
 We can update  required property fields of the contact using this call. It is used to add the new property or update the existing property. It accepts property object of contact with valid parameter in it. We need to send the Contact-Id of the contact to identify it. This will not affect other fields.
 
-- Note : Send only required properties data to update contact. No need to send all data of a contact.
+Using this API you can not delete properties.If subtype is same for phone,website or email then value can be overridden.
+Lead score, star value and tags can not be updated using this API. follow the below API for editing lead score,star value and tags.
 
 ###Acceptable request representation:
 ```javascript
@@ -552,20 +738,44 @@ We can update  required property fields of the contact using this call. It is us
         {
             "type": "SYSTEM",
             "name": "first_name",
-            "value": "Losalitest"
+            "value": "Samson"
         },
         {
             "type": "SYSTEM",
             "name": "last_name",
-            "value": "Lee"
+            "value": "Nolan"
         },
         {
-            "type": "CUSTOM",
-            "name": "My Custom Field",
-            "value": "Custom value chane"
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": "work",
+            "value": "samson@walt.ltd"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "address",
+            "value": "{\"address\":\"225 George Street\",\"city\":\"NSW\",\"state\":\"Sydney\",\"zip\":\"2000\",\"country\":\"Australia\"}"
         }
     ]
 }
+```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit-properties \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5725836472745984",
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "value": "Santar"
+        }
+    ]
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
 ```
 
 ###Response:
@@ -573,7 +783,7 @@ We can update  required property fields of the contact using this call. It is us
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.6 Update lead score by ID
+##1.5 Update lead score by ID
 ###dev/api/contacts/edit/lead-score
 Method: PUT 
 
@@ -588,12 +798,24 @@ We can update lead score of a contact using this call. It accepts lead score and
 }
 ```
 
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/lead-score \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5725836472745984",
+    "lead_score": 150
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: Lead score updated successfully. Returns the updated contact object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.7 Update star value by ID
+##1.6 Update star value by ID
 ###dev/api/contacts/edit/add-star
 Method: PUT 
 
@@ -608,12 +830,24 @@ We can update star value of a contact using this call. It accepts star value and
 }
 ```
 
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/add-star \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5725836472745984",
+    "star_value": 2
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: Star value updated successfully. Returns the updated contact object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.8 Update tags value by ID
+##1.7 Update tags value by ID
 ###dev/api/contacts/edit/tags
 Method: PUT 
 
@@ -631,12 +865,27 @@ We can add tag values of a contact using this call. It accepts tag values and co
 }
 ```
 
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit/tags \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5725836472745984",
+    "tags": [
+        "test1",
+        "test2"
+    ]
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: tags value added/updated successfully. Returns the updated contact object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.9 Delete tags value by ID
+##1.8 Delete tags value by ID
 ###dev/api/contacts/delete/tags
 Method: PUT 
 
@@ -654,12 +903,27 @@ We can delete tag values of a contact or company using this call. It accepts tag
 }
 ```
 
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/delete/tags \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5725836472745984",
+    "tags": [
+        "test1",
+        "test2"
+    ]
+}' \
+-v -u sample@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: tags value deleted successfully. Returns the tag list in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.10 Delete single contact
+##1.9 Delete single contact
 ###dev/api/contacts/{id}
 Method: DELETE
 - Deletes contact based on the id of the contact, which is  sent in request url path.
@@ -674,7 +938,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 - Status 204: Contact deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.11.1 Search contact by email
+##1.10.1 Search contact by email
 ###dev/api/contacts/search/email/{email}
 Method: GET 
 
@@ -682,8 +946,9 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/email/{email} -H "Accept :application/json" 
--v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email/{email} \
+-H "Accept :application/json" \
+-v -u {email}:{apikey} -X GET
 ```
 ###Example response
 
@@ -694,7 +959,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email/{email} -H "Acc
 - Status 204: No contact with the specified phone number in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.11.2 Search contact by email
+##1.10.2 Search contact by email
 ###dev/api/contacts/search/email
 Method: POST
 
@@ -702,10 +967,10 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json"
--H "Content-Type :application/x-www-form-urlencoded" 
--d 'email_ids=["notifications@basecamp.com"]'
--v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'email_ids=["samson@walt.ltd"]' \
+-v -u sample@agilecrm.com:123456 -X POST
 ```
 
 ###Response:
@@ -713,7 +978,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/email -H "Accept: app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the email is in wrong format.
 
-##1.12 Search contacts/companies 
+##1.11 Search contacts/companies 
 ###dev/api/search
 Method: GET 
 
@@ -734,7 +999,7 @@ curl https://{domain}.agilecrm.com/dev/api/search?q=ab&page_size=10&type="COMPAN
 - Status 200: Gives the list of Companies/Contacts.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.13 Adding tags to a contact based on email:
+##1.12 Adding tags to a contact based on email:
 ###dev/api/contacts/email/tags/add
 Method: POST
 
@@ -742,17 +1007,17 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/xml"
--H "Content-Type :application/x-www-form-urlencoded" 
--d ‘email=notifications@basecamp.com&tags=["testing"]’
--v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/add -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'email=samson@walt.ltd&tags=["testingtesto"]' \
+-v -u sample@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 204: Tags added successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.14 Delete tags to a contact based on email:
+##1.13 Delete tags to a contact based on email:
 ###dev/api/contacts/email/tags/delete
 Method: POST
 
@@ -760,17 +1025,17 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept: application/xml"
--H "Content-Type :application/x-www-form-urlencoded" 
--d ‘email=notifications@basecamp.com&tags=["testing"]’
--v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/email/tags/delete -H "Accept: application/json"
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'email=samson@walt.ltd&tags=["testingtesto"]' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 204: Tags deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.15 Add score to a contact using email ID:
+##1.14 Add score to a contact using email ID:
 ###dev/api/contacts/add-score
 Method: POST
 
@@ -778,15 +1043,17 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d ‘email=notifications@basecamp.com&score=5’ -v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/add-score -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'email=samson@walt.ltd&score=100' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 200: Score changed successfully and it returns the Contact object.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##1.16 Get tasks related to contact:
+##1.15 Get tasks related to contact:
 ###dev/api/contacts/{contact_id}/tasks/sort
 Method: GET
 
@@ -874,7 +1141,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.17 Updating contact properties
+##1.16 Updating contact properties
 ###dev/api/contacts/add/property
 Method: POST 
 
@@ -883,7 +1150,14 @@ We can update a single field of the contact using this call. It is used to add t
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=test@agile.com -H "Content-Type: application/json" -d '{\"type\" : \"SYSTEM\",  \"name\" : \"first_name\", \"value\" : \"AgileTest\"}' 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/contacts/add/property?email=samson@walt.ltd \
+-H "Content-Type: application/json" \
+-d '{
+    "type": "SYSTEM",
+    "name": "first_name",
+    "value": "hans"
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 
 ###Acceptable request representation:
@@ -902,7 +1176,7 @@ If there is no ID, it will considered as a new contact.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.18 Change contact owner
+##1.17 Change contact owner
 ###dev/api/contacts/change-owner
 Method: POST 
 
@@ -911,7 +1185,10 @@ We can update the owner of the contact using this call. It will take two paramet
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Type: application/x-www-form-urlencoded" -d 'owner_email=test@agilecrm.com&contact_id=5646748928180224' -V -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d 'owner_email=test@agilecrm.com&contact_id=5646748928180224' \
+-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
 ```
 
 ###Response:
@@ -919,7 +1196,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/change-owner -H "Content-Typ
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.19 Add contact to a campaign
+##1.18 Add contact to a campaign
 ###dev/api/campaigns/enroll/email
 Method: POST
 
@@ -927,8 +1204,11 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: application/xml" -H "Content-Type :application/x-www-form-urlencoded" 
--d 'email=tester@gmail.com&workflow-id = 5727517264576512' -v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email \
+-H "Accept: application/json" \ 
+-H "Content-Type :application/x-www-form-urlencoded" \ 
+-d 'email=tester@gmail.com&workflow-id = 5727517264576512' \
+-v -u {email}:{apikey} -X POST
 ```
 
 - [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
@@ -938,7 +1218,7 @@ curl https://{domain}.agilecrm.com/dev/api/campaigns/enroll/email -H "Accept: ap
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
-##1.20 Remove contact from a campaign
+##1.19 Remove contact from a campaign
 ###dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id}
 Method: DELETE
 
@@ -946,7 +1226,9 @@ Method: DELETE
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id} -H "Accept : application/json" -v -u {email} : {API Key} -X DELETE
+curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{workflow-id}/{contact_id} \
+-H "Accept : application/json" \
+-v -u {email} : {API Key} -X DELETE
 ```
 
 - [Workflow-id is the id returned from list of campaign](https://github.com/agilecrm/rest-api/blob/master/README.md#7-list-of-campaigns)
@@ -956,7 +1238,7 @@ curl https://{domain}.agilecrm.com/dev/api/workflows/remove-active-subscriber/{w
 - Status 401: Unauthorized (When the User Name and Password fields are wrong.)
 - Status 400: If the input is in the wrong format
 
-##1.21 Get contact by phone number
+##1.20 Get contact by phone number
 ###dev/api/contacts/search/phonenumber/{phone-number}
 Method: GET 
 
@@ -964,7 +1246,8 @@ Method: GET
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "Accept :application/json" 
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} \
+-H "Accept :application/json" \
 -v -u {email}:{apikey}
 ```
 
@@ -973,7 +1256,46 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} -H "
 - Status 204: No contact with the specified phone number in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.22 Creating a company
+##1.21 Get contacts by dynamic filter
+
+###dev/api/filters/filter/dynamic-filter
+Method: POST 
+
+- Returns contacts or companies object which is associated with given filter
+
+###Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"tags","CONDITION":"EQUALS","RHS":"linkedin prospect"}],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+###Other available responses:
+- Status 200: Returns contact json data.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+
+###dev/api/filters/filter/dynamic-filter
+Method: POST 
+
+- Returns contacts or companies object which is associated with given filter
+
+###Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"EmployeeDataCustom","CONDITION":"EQUALS","RHS":"prospect001"}],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+###Other available responses:
+- Status 200: Returns contact json data.
+- Status 204: No contact with the specified phone number in your account.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+##2.1 Creating a company
 ###dev/api/contacts
 Method: POST 
 
@@ -1030,6 +1352,58 @@ Method: POST
     ]
 }
 ```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "type": "COMPANY",
+    "star_value": 4,
+    "lead_score": 120,
+    "tags": [
+        "Permanent",
+        "USA",
+        "Hongkong",
+        "Japan"
+    ],
+    "properties": [
+        {
+            "name": "Company Type",
+            "type": "CUSTOM",
+            "value": "MNC Inc"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "value": "Spicejet"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "url",
+            "value": "http://www.spicejet.com/"
+        },
+        {
+            "name": "phone",
+            "value": "45500000",
+            "subtype": ""
+        },
+        {
+            "name": "website",
+            "value": "http://www.linkedin.com/company/agile-crm",
+            "subtype": "LINKEDIN"
+        },
+        {
+            "name": "address",
+            "value": "{\"address\":\"MS 35, 440 N Wolfe Road\",\"city\":\"Sunnyvale\",\"state\":\"CA\",\"zip\":\"94085\",\"country\":\"US\"}",
+            "subtype": "office"
+        }
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
+```
+
 ###Example response
 
 - Returns created company object with all parameters in it as mentioned in the above example. 
@@ -1040,7 +1414,7 @@ Method: POST
 - Status 400: If the input is in wrong format.
 - Status 406: If the limit of the contacts is exceeded.
 
-##1.22 Updating a company
+##2.2 Updating a company
 ###dev/api/contacts/edit-properties
 Method: PUT 
 
@@ -1084,6 +1458,34 @@ Method: PUT
     ]
 }
 ```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/edit-properties \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": 5694691248963584,
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "value": "SPICE JET"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "url",
+            "value": "http://www.spicejet.com/"
+        },
+        {
+            "name": "phone",
+            "value": "45500000",
+            "subtype": ""
+        }
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+```
 ###Example response
 
 - Returns updated company object with all parameters in it as mentioned in the above example. 
@@ -1093,18 +1495,19 @@ Method: PUT
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##1.23 Get list of companies
+##2.3 Get list of companies
 ###dev/api/contacts/companies/list
-Method: GET 
+Method: POST 
 
 - Fetches list of companies. Page_size,global_sort_key and cursor should be sent as a form parameter (Content-Type: application/x-www-form-urlencoded ).Paging can be applied using the page_size and cursor form parameters. Cursor for the next page will be in the last company of the list. If there is no cursor, it means that it is the end of list.
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/companies/list -H "Accept: application/json"
--H "Content-Type :application/x-www-form-urlencoded" 
--d 'page_size=25&global_sort_key=-created_time&cursor=ClMKFgoMY3JlYXRlZF90aW1lEgYI-rbWrgUSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAkNv0nQoMogEJZ2hhbnNoeWFtGAAgAQ'
--v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/companies/list \
+-H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&cursor=ClMKFgoMY3JlYXRlZF90aW1lEgYI-rbWrgUSNWoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAkNv0nQoMogEJZ2hhbnNoeWFtGAAgAQ' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Example response :
 ```javascript
@@ -1177,7 +1580,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/companies/list -H "Accept: a
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
-##1.24 Get company by ID
+##2.4 Get company by ID
 ###dev/api/contacts/{id}
 Method: GET 
 
@@ -1228,7 +1631,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id} -H "Accept :application
 - Status 204: No contact with the specified ID in your account.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##1.25 Delete single company
+##2.5 Delete single company
 ###dev/api/contacts/{id}
 Method: DELETE
 - Deletes company based on the id of the company, which is  sent in request url path.
@@ -1243,7 +1646,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 - Status 204: Company deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-2. Deals API
+3. Deals API
 -----------
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
 |:----|:----------|:-----|:-----|:-------|:---------|
@@ -1264,35 +1667,54 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{id}  \
 
 ###Deal JSON Example
 ```javascript
-	{
-    		"id" :			 "822",
-    		"name" :		 "Game development",
-    		"description" :		 "Visual 3D based Online Game.",
-    		"expected_value" :	 "50000",
-		"pipeline_id" :			 "43535822",
-    		"milestone" :		 "progress",
-    		"probability ": 		 "70",
-    		"close_date" :  	"1349980200",
-    		"created_time" : 	"1356325843",
-    		"entity_type" : 		"deal",
-    		"Prefs": {
-        			"id" : 		     "984",
-        			"template" : 	     "blue",
-        			"currency" : 	     "USD",
-        			"signature" : 	     "- Powered by AgileCRM",
-        			"task_reminder" :  "true"
-		}
-    	}
+{
+    "name": "Carz008",
+    "owner_id": "6263975862861824",
+    "expected_value": "85000",
+    "probability": "89",
+    "pipeline_milestone": "5730082031140864_Prospect",
+    "close_date": 1472581800,
+    "pipeline_id": "5730082031140864",
+    "milestone": "Prospect",
+    "deal_source_id": "5762909909024768",
+    "color1": "#0000ff",
+    "lost_reason_id": "",
+    "relates_to": "",
+    "description": "This is deal description",
+    "archived": false,
+    "contact_ids": [
+        "5698320831873024"
+    ],
+    "custom_data": [
+        {
+            "name": "Deal greetings",
+            "value": "Welcome to Deal greeting custom field"
+        },
+        {
+            "name": "Deal From",
+            "value": "This Deal from Zapan"
+        }
+    ],
+    "colorName": "BLUE",
+    "tagsWithTime": [
+        {
+            "tag": "intersted"
+        },
+        {
+            "tag": "developer"
+        }
+    ]
+}
 ```
 
-##2.1 Listing deals
+##3.1 Listing deals
 ###dev/api/opportunity
 Method: GET 
 - Returns list of all "Deals" in the domain in JSON format, which are ordered by created time. Paging can be applied using the page_size and cursor query parameters. Count of the deals will be in the first deal and the cursor for the next page will be in the last deal of the list. If there is no cursor, it means that it is the end of the list.
 
 ###Using curl
 ```sh
-	   curl https:{domain}.agilecrm.com/dev/api/opportunity?page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
+curl https:{domain}.agilecrm.com/dev/api/opportunity?page_size=10&cursor=E-ABAIICNGoRc35hZ2lsZS1jcm0tY2xvdWRyFAsSB0NvbnRhY3QYgICAgKLThAoMogEIcHJhYmF0aGuIAgAU -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ###Example response:
 ```javascript
@@ -1374,13 +1796,13 @@ Method: GET
 ###Other Response - Statuses:
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.2 Get deal by its ID
+##3.2 Get deal by its ID
 ###dev/api/opportunity/{id}
 Method: GET 
 	- Gets the deal with the given ID.
 ###Using curl : 
 ```sh
-	  curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : application/json" -v -u {email}:{API Key}
+curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : application/json" -v -u {email}:{API Key}
 ```
 ###Example response : 
 ```javascript
@@ -1462,7 +1884,7 @@ Method: GET
 ###Other Response - statuses:
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.3 Create deal
+##3.3 Create deal
 ###dev/api/opportunity
 Method: POST
 - Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
@@ -1492,7 +1914,26 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d ‘{\"name\" : \"deal\",\"expected_value\":\"5000\",  \"contact_ids\" : [\"5758948741218304\", \"5758948741218366\"] ,\"pipeline_id\" :\"43535822\", \"milestone\" : \"New\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "Deal-Tomato",
+    "expected_value": "500",
+    "probability": "75",
+    "close_date": 1455042600,
+    "milestone": "Proposal",
+    "contact_ids": [
+        "5694691248963584"
+    ],
+    "custom_data": [
+        {
+            "name": "Group Size",
+            "value": "10"
+        }
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Response - Statuses:
 - Status 200: Deal added successfully and it returns the newly created deal as JSON in response.
@@ -1500,21 +1941,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: applica
 - Status 400: If the input is in wrong format
 
 
-##2.4 Update deal
-###dev/api/opportunity
-Method: PUT 
-- Accepts Deal JSON. Id parameter of the deal should be specified. It indicates the deal to be updated with the new data sent. Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in wrong case, it will not be shown in the milestone view.)
-
-###Using curl
-```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity -H "Content-Type: application/json" -d "{\"id\":\"5688952451235840\",\"name\":\"lamron\",\"owner_id\":\"6263975862861824\",\"expected_value\":\"600\",\"probability\":\"80\",\"close_date\":1446143400,\"pipeline_id\":\"5730082031140864\",\"milestone\":\"New\",\"deal_source_id\":\"5199959955603456\",\"description\":\"\",\"contact_ids\":[\"5647731502612480\"],\"notes\":[\"5708746210672640\",\"5668065354186752\"],\"custom_data\":[{\"name\":\"dealTester\",\"value\":\"deal -confirmed123\"},{\"name\":\"dealAddedDate\",\"value\":\"10/08/2015\"}]}"  -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT
-```
-###Response - statuses:
-- Status 200: Deal updated successfully and it returns the updated deal as JSON in response.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-- Status 400: If the input is in wrong format
-
-##2.5 Update deal (Partial update)
+##3.4 Update deal (Partial update)
 ###dev/api/opportunity/partial-update
 Method: PUT 
 
@@ -1540,12 +1967,30 @@ We can update deal using this call. It accepts Deal JSON. Id parameter of the de
 }
 ```
 
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/opportunity/partial-update \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id":5717827835133952,
+    "name": "Deal-Tomato",
+    "expected_value": "600",
+    "probability": "100",
+    "milestone": "Proposal",
+    "contact_ids": [
+        "5694691248963584"
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: Deal updated successfully. Returns the updated deal object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##2.6 Create deal to a contact using email ID
+##3.5 Create deal to a contact using email ID
 ###dev/api/opportunity/email/{email}
 Method: POST
 - Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
@@ -1553,9 +1998,25 @@ Milestone name should be same as the the one in the website and it is case sensi
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"name" : "deal", "owner_id" : "516", \"pipeline_id\" :\"43535822\", \"milestone\" : \"milestone\"}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity/email/samson@walt.ltd \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "Deal-Tomato",
+    "expected_value": "500",
+    "probability": "75",
+    "close_date": 1455042600,
+    "milestone": "Proposal",
+    "custom_data": [
+        {
+            "name": "Group Size",
+            "value": "10"
+        }
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
-	Creates a deal for the contact with the given email address. If there is no contact, it will not create any deal.
+ Creates a deal for the contact with the given email address. If there is no contact, it will not create any deal.
 
 ###Response - statuses:
 - Status 200: Deal added successfully and it returns the new created deal as JSON in response.
@@ -1563,7 +2024,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/test@agilecrm.com -H "Con
 - Status 400: If the input is in wrong format
 
 
-##2.7 Delete deal
+##3.6 Delete deal
 ###dev/api/opportunity/{id}
 Method: DELETE 
 
@@ -1574,10 +2035,10 @@ Method: DELETE
 curl https://{domain}.agilecrm.com/dev/api/opportunity/{id} -H "Content-Type: application/json" -v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X DELETE
 ```
 ###Response - statuses:
-- Status 200: Deal deleted successfully.
+- Status 204: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.8 Bulk delete 
+##3.7 Bulk delete 
 ###dev/api/opportunity/bulk
 Method: POST 
 
@@ -1585,13 +2046,22 @@ Method: POST
 
 ###Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk -H "Content-Type: application/x-www-form-urlencoded" -d ‘{"ids" : ["123", "234", "235"]}’ -v -u {email}:{API Key} -X POST
+curl https://{domain}.agilecrm.com/dev/api/opportunity/bulk \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d '{
+    "ids": [
+        "123",
+        "234",
+        "235"
+    ]
+}' \
+-v -u {email}:{API Key} -X POST
 ```
 ###Response - statuses:
 - Status 200: Deal deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.9 Get deals from default track grouped by milestones:
+##3.8 Get deals from default track grouped by milestones:
 ###dev/api/opportunity/byMilestone
 Method: GET 
 
@@ -1797,7 +2267,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.10 Get deals for a particular track (grouped by milestone).
+##3.9 Get deals for a particular track (grouped by milestone).
 ###dev/api/opportunity/byPipeline/based
 Method: GET 
 
@@ -1914,7 +2384,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 
 
 
-##2.11 Get deals from particular track:
+##3.10 Get deals from particular track:
 ###dev/api/opportunity/based
 Method: GET 
 
@@ -2029,7 +2499,7 @@ In this above example, Lost, Open, Won, Stage 1 are different milestones. These 
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.12 Get deals related to specific contact
+##3.11 Get deals related to specific contact
 ###dev/api/contacts/{id}/deals
 Method: GET 
 
@@ -2069,7 +2539,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/deals -H "Accep
 - Status 200: Successfully retrieved the deals list. 
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##2.13 Get deals of current user (my deals)
+##3.12 Get deals of current user (my deals)
 ###dev/api/opportunity/my/deals
 Method: GET 
 
@@ -2110,9 +2580,45 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
+##3.13 Remove contacts of a deal
+###dev/api/opportunity/partial-update/delete-contact
+Method: PUT 
 
 
-3. Notes API
+We can update deal using this call. It accepts Deal JSON. Id parameter of the deal should be specified. This will not affect other fields.
+
+###Acceptable request representation:
+```javascript
+{
+      "id": "6429943999234048",
+      "contact_ids": [
+          "4930210138947584",
+	  "4600356650614784"
+      ]
+  }
+```
+
+###Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/opportunity/partial-update/delete-contact \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+      "id": "6429943999234048",
+      "contact_ids": [
+          "4930210138947584",
+	  "4600356650614784"
+      ]
+  }' \
+-v -u ghanshyam.raut@agilecrm.com:your_rest_api -X PUT
+```
+
+###Response:
+- Status 200: Deal updated successfully. Returns the updated deal object in the response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format.
+
+4. Notes API
 ------------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
@@ -2124,7 +2630,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/my/deals -H "Accept : app
 |contact_json|list of contact ids|String array|no|no|N/A|
 
 
-##3.1 Create a note and relate that to contacts :
+##4.1 Create a note and relate that to contacts :
 ###/dev/api/notes
 Method: POST 
 
@@ -2132,7 +2638,18 @@ Method: POST
 
 ###Using curl : 
 ```sh
-	curl https://{domain}.agilecrm.com/dev/api/notes/ -H "Content-Type : application/json" -H "Accept : application/json" -d '{ "subject": " Note subject","description": "Note description","contact_ids": ["5688267051630592","5721389839417344"]}' -v -u {email} : {APi Key} -X POST
+curl https://{domain}.agilecrm.com/dev/api/notes/ \
+-H "Content-Type : application/json" \
+-H "Accept : application/json" \
+-d '{
+    "subject": " Note subject",
+    "description": "Note description",
+    "contact_ids": [
+        "5688267051630592",
+        "5721389839417344"
+    ]
+}' \
+-v -u {email} : {APi Key} -X POST
 ```
 ###Example response : 	
 ```javascript
@@ -2150,7 +2667,7 @@ Method: POST
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##3.2 Add note to a contact using email ID:
+##4.2 Add note to a contact using email ID:
 ###dev/api/contacts/email/note/add
 Method: POST
 
@@ -2158,16 +2675,17 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: application/xml"
--H "Content-Type :application/x-www-form-urlencoded" 
--d 'email=notifications@basecamp.com&note={"subject":"test","description":"testing description"}' -v -u {email}:{apikey} -X POST
+curl https://{domain}.agilecrm.com/dev/api/contacts/email/note/add -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'email=notifications@basecamp.com&note={"subject":"test","description":"testing description"}' \
+-v -u {email}:{apikey} -X POST
 ```
 ###Response:
 - Status 204: Note added successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##3.3 Gets notes related to specific contact :
+##4.3 Gets notes related to specific contact :
 ###/dev/api/contacts/{contact_id}/notes
 Method: GET
 
@@ -2228,7 +2746,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/5688267051630592/notes -H "A
 ]
 ```
 	
-##3.4 Delete a specific note from specific contact :
+##4.4 Delete a specific note from specific contact :
 ###/dev/api/contacts/{contact_id}/notes/{note_id}
 Method: DELETE
 	- Deletes the note of the specific contact. (It will remove the relationship between the note and the contact.)
@@ -2242,7 +2760,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/notes/{note_id}
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##3.5 Create note to a deal
+##4.5 Create note to a deal
 ###dev/api/opportunity/deals/notes
 Method: POST
 - Accepts note JSON as data in Post request to the url specified above, which creates new note and returns the note JSON with id field generated when new note is created.
@@ -2260,7 +2778,17 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :application/json" -H "Content-Type: application/json" -d '{"subject": "Deal From Albany","description": "This deal came directly from customer. No advertisement and hence very important for us.","deal_ids": ["5088304026353664"]}' -v -u {email}:{apikey} -X POST 
+curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  \
+-H "Accept :application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "subject": "Deal From Albany",
+    "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+    "deal_ids": [
+        "5088304026353664"
+    ]
+}' \
+-v -u {email}:{apikey} -X POST 
 ```
 
 ###Response - statuses:
@@ -2268,7 +2796,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##3.6 Update note to a deal
+##4.6 Update note to a deal
 ###dev/api/opportunity/deals/notes
 Method: PUT
 - Accepts note JSON as data in Post request to the url specified above, which update note and returns the deal JSON with id field generated when new note is created.
@@ -2287,7 +2815,18 @@ Method: PUT
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :application/json" -H "Content-Type: application/json" -d '{"id": "5714548224950272","subject": "Deal From Albany Edit","description": "This deal came directly from customer. No advertisement and hence very important for us.","deal_ids": ["5088304026353664"]}' -v -u {email}:{apikey} -X PUT
+curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  \
+-H "Accept :application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5714548224950272",
+    "subject": "Deal From Albany Edit",
+    "description": "This deal came directly from customer. No advertisement and hence very important for us.",
+    "deal_ids": [
+        "5088304026353664"
+    ]
+}' \
+-v -u {email}:{apikey} -X PUT
 ```
 
 ###Response - statuses:
@@ -2295,7 +2834,7 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  -H "Accept :
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##3.7 Gets notes related to specific deal :
+##4.7 Gets notes related to specific deal :
 ###/dev/api/opportunity/5088304026353664/notes
 Method: GET
 
@@ -2331,16 +2870,16 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/5088304026353664/notes -H
 - Status 400: If the input is in wrong format
 
 
-##3.8 Delete notes from specific deal :
+##4.8 Delete notes from specific deal :
 ###/dev/api/contacts/notes/bulk
 Method: POST
 	- Deletes notes of the specific deal.
 
 ###Using curl : 
 ```sh	
-curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: application/json"
--H "Content-Type :application/x-www-form-urlencoded" 
--d 'ids=["5641751750508544"]'
+curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'ids=["5641751750508544"]' \
 -v -u {email}:{apikey} -X POST
 ```
 ###Response:
@@ -2348,7 +2887,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: appli
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-4. Tasks API
+5. Tasks API
 ---------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
@@ -2369,163 +2908,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: appli
 |owner_id|lId of the user who is the owner of the task. Send this field in the task object while adding or updating the task in order to assign the task to the owner.|Long|no|no|Id of the user(Owner)|
 
 
-##4.1 Get the list of pending tasks:
-###dev/api/tasks
-Method: GET
-
-	- Retrieves all the pending tasks of all the users. It will return a list of tasks as a JSON Array.
-
-###Using curl
-```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
-```
-###Response:
-- Status 200: Gets the list of tasks.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-###Example response:
-```javascript
-[
-    {
-        "id": 5149503652888576,
-        "type": "EMAIL",
-        "priority_type": "HIGH",
-        "due": -19800,
-        "created_time": 1409649528,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-            "is_admin": true,
-          ...
-    },
-    {
-        "id": 5176288276905984,
-        "type": "EMAIL",
-        "priority_type": "LOW",
-        "due": -19800,
-        "created_time": 1409649695,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-          ...
-    }
-]
-```
-
-##4.2 Get all tasks:
-###dev/api/tasks/all
-Method: GET
-
-	- Get all the tasks of all the users. It will get both the pending and the completed tasks of all the users.
-
-###Using curl
-```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks/all -H  "Accept:application/json" -v -u {email}:{API Key}
-```
-###Response:
-- Status 200: Gets the list of tasks.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-###Example response:
-```javascript
-[
-    {
-        "id": 5149503652888576,
-        "type": "EMAIL",
-        "priority_type": "HIGH",
-        "due": -19800,
-        "created_time": 1409649528,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-            "is_admin": true,
-          ...
-    },
-    {
-        "id": 5176288276905984,
-        "type": "EMAIL",
-        "priority_type": "LOW",
-        "due": -19800,
-        "created_time": 1409649695,
-        "is_complete": true,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-          ...
-    }
-]
-```
-
-##4.3 Get the list of pending tasks depending on the number of pending days:
+##5.1 Get the list of pending tasks depending on the number of pending days:
 ###dev/api/tasks/pending/{num-days}
 Method: GET
 
@@ -2602,84 +2985,7 @@ Method: GET
     }
 ]
 ```
-##4.4 Get the list of tasks of current user:
-###dev/api/tasks/my/tasks
-Method: GET
-
-	- Retrieves all the tasks of the current user. It will return the list of tasks as a JSON Array.
-
-###Using curl
-```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks/my/tasks -H  "Accept:application/json" -v -u {email}:{API Key}
-```
-###Response:
-- Status 200: Gets the list of tasks.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-###Example response:
-```javascript
-[
-    {
-        "id": 5149503652888576,
-        "type": "EMAIL",
-        "priority_type": "HIGH",
-        "due": -19800,
-        "created_time": 1409649528,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-            "is_admin": true,
-          ...
-    },
-    {
-        "id": 5176288276905984,
-        "type": "EMAIL",
-        "priority_type": "LOW",
-        "due": -19800,
-        "created_time": 1409649695,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "Contact created in agile crm",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-          ...
-    }
-]
-```
-##4.5 Get the list of tasks based on given filters:
+##5.2 Get the list of tasks based on given filters:
 ###dev/api/tasks/based
 Method: GET
 
@@ -2763,7 +3069,7 @@ Method: GET
 ]
 ```
 
-##4.6 Get the task based on ID:
+##5.3 Get the task based on ID:
 ###dev/api/tasks/{id}
 Method: GET
 
@@ -2810,15 +3116,57 @@ Method: GET
     }
 ```
 
-##4.7 Create a task:
+##5.4 Create a task:
 ###dev/api/tasks
 Method: POST
 
 	- Creates a new task.
+	- Acceptable value for below field :
+	 progress (0 to 100), is_complete (true or false), type (CALL, EMAIL, FOLLOW_UP, MEETING, MILESTONE, SEND, TWEET, OTHER),
+	 priority_type (HIGH, NORMAL, LOW), status (YET_TO_START, IN_PROGRESS, COMPLETED)
 
+###Acceptable request Representation:
+```javascript
+{
+    "progress": "0",
+    "is_complete": "false",
+    "subject": "Need to contact vendor",
+    "type": "MEETING",
+    "due": 1459319400,
+    "task_ending_time": "12:00",
+    "owner_id": "6263975862861824",
+    "priority_type": "HIGH",
+    "status": "YET_TO_START",
+    "taskDescription": "This is very important. We need to discuss with few vendors about the product.",
+    "contacts": [
+        "5719430394806272"
+    ],
+    "notes": [
+        "5715549623418880"
+    ],
+    "deal_ids": [
+        "5715549623415649"
+    ]
+}
+```
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/tasks \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "progress": "0",
+    "subject": "Need to contact",
+    "type": "EMAIL",
+    "due": 1456986600,
+    "task_ending_time": "12:00",
+    "priority_type": "HIGH",
+    "status": "YET_TO_START",
+    "contacts": [
+        "5725836472745984"
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 200: Task added successfully and it returns the newly created task as JSON in response.
@@ -2859,7 +3207,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/j
     }
 ```
 
-##4.8 Create a task based on contact email:
+##5.5 Create a task based on contact email:
 ###dev/api/tasks/email/{email}
 Method: POST
 
@@ -2867,7 +3215,18 @@ Method: POST
 
 ###Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Content-Type: application/json" -d ‘{"subject" : "test", "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X POST 
+curl https://{domain}.agilecrm.com/dev/api/tasks/email/samson@walt.ltd \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "subject": "Need to contact1",
+    "type": "EMAIL",
+    "due": 1456986600,
+    "task_ending_time": "12:00",
+    "priority_type": "HIGH",
+    "status": "YET_TO_START"
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X POST
 ```
 ###Response:
 - Status 200: Task added successfully and it returns the newly created task as JSON in response.
@@ -2908,56 +3267,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/email/test@agilecrm.com -H "Con
     }
 ```
 
-##4.9 Update a task:
-###dev/api/tasks
-Method: PUT
-
-	- Updates a task. The ID of the task has to be specified.
-
-###Using curl
-```sh
-curl https://{domain}.agilecrm.com/dev/api/tasks -H "Content-Type: application/json" -d ‘{"id" : 5149503652888576", "subject" : "test",  "contacts" : ["5704147139559424"] , "owner_id" : "5345980119515136", \"type\" : \"EMAIL\", \"priority_type\" : \"HIGH\", \"due\" : 11545245654}’ 000-v -u test@example.com:4uet78u6atfn38m9dounnq9g4u -X PUT 
-```
-###Response:
-- Status 200: Task updated successfully and it returns the newly updated task as JSON in response.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
-- Status 400: If the input is in wrong format
-
-###Example response:
-```javascript   
-   {
-        "id": 5149503652888576,
-        "type": "EMAIL",
-        "priority_type": "HIGH",
-        "due": 11545245654,
-        "created_time": 1409649528,
-        "is_complete": false,
-        "contacts": [
-            {
-                "id": 5704147139559424,
-                "type": "PERSON",
-                "created_time": 1398421585,
-                "updated_time": 1406619697,
-              ...
-            }
-        ],
-        "subject": "test",
-        "entity_type": "task",
-        "notes": [
-            
-        ],
-        "progress": 0,
-        "status": "YET_TO_START",
-        "taskOwner": {
-            "id": 5345980119515136,
-            "domain": "prabathk",
-            "email": "prabath.kolipaka@gmail.com",
-            "is_admin": true,
-          ...
-    }
-```
-
-##4.10 Update a task (Partial update)
+##5.6 Update a task (Partial update)
 ###dev/api/tasks/partial-update
 Method: PUT 
 
@@ -2978,12 +3288,31 @@ We can update task using this call. It accepts task JSON. Id parameter of the ta
 }
 ```
 
+###Using curl
+
+```sh
+curl https://{domain}.agilecrm.com/dev/api/tasks/partial-update \
+-H "Accept : application/json" \
+-H "Content-Type: application/json" \
+-d '{
+    "id": "5690477483393024",
+    "subject": "sample edit",
+    "type": "EMAIL",
+    "due": 1448941500,
+    "contacts": [
+        "5725836472745984",
+        "6487118603878400"
+    ]
+}' \
+-v -u ghanshyam.raut@agilecrm.com:123456 -X PUT
+```
+
 ###Response:
 - Status 200: Deal updated successfully. Returns the updated deal object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
-##4.11 Delete a task based on ID:
+##5.7 Delete a task based on ID:
 ###dev/api/tasks/{id}
 Method: DELETE
 
@@ -2999,7 +3328,7 @@ Method: DELETE
 
 
 
-5. Events API
+6. Events API
 ------------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
@@ -3014,7 +3343,7 @@ Method: DELETE
 |end|End time of Event in epoch time format.|Long|no|yes|epoch time|
 |is_event_starred|It determines whether the particular event is starred or not.|Boolean|no|no|true / false|
 
-##5.1 Get list of events:
+##6.1 Get list of events:
 ###dev/api/events
 Method: GET
 
@@ -3092,7 +3421,7 @@ Method: GET
 ]
 ```
 
-##5.2 Get events related to contact:
+##6.2 Get events related to contact:
 ###dev/api/contacts/{contact_id}/events/sort
 Method: GET
 
@@ -3129,7 +3458,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H 
 ]
 ```
 
-##5.3 Create event:
+##6.3 Create event:
 ###dev/api/events
 Method: POST
 
@@ -3165,7 +3494,7 @@ Method: POST
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##5.4 Update event:
+##6.4 Update event:
 ###dev/api/events
 Method: PUT
 
@@ -3202,7 +3531,7 @@ Method: PUT
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##5.5 Delete an event:
+##6.5 Delete an event:
 ###dev/api/events/{id}
 Method: DELETE
 
@@ -3217,7 +3546,7 @@ Method: DELETE
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
-6. Track / Milestones API
+7. Track / Milestones API
 ----------------------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
@@ -3226,7 +3555,7 @@ Method: DELETE
 |name|Name of the track|String|no|yes|N/A|
 |milestones|Comma separated strings. Each string is a milestone and these are case sensitive. All of them should be specified in the same case. The first letter of the track needs to be specified in upper case.|String|no|yes|N/A|
 
-##6.1 Get all the tracks:
+##7.1 Get all the tracks:
 ###dev/api/milestone/pipelines
 Method: GET
 
@@ -3251,7 +3580,7 @@ curl https://{domain}.agilecrm.com/dev/api/milestone/pipelines -H "Accept: appli
 ]
 ```
 
-##6.2 Create a track:
+##7.2 Create a track:
 ###dev/api/milestone/pipelines
 Method: POST
 
@@ -3274,7 +3603,7 @@ Method: POST
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##6.3 Update a track:
+##7.3 Update a track:
 ###dev/api/milestone/pipelines
 Method: PUT
 
@@ -3299,7 +3628,7 @@ Method: PUT
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-##6.4 Delete a track:
+##7.4 Delete a track:
 ###dev/api/milestone/pipelines/{id}
 Method: DELETE
 
@@ -3314,7 +3643,7 @@ Method: DELETE
 - Status 204: Track deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-##7 List of campaigns.
+##8 List of campaigns.
 ###dev/api/workflows
 Method: GET 
 - Returns a list of campaigns
@@ -3346,17 +3675,16 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 - Status 200: Successfully retrieved the campaign list. 
 - Status 401: Unauthorized. (When the user name and password fields are wrong.)
 
-##8 Youtube Links for Rest APIs.
+##9 Youtube links for Rest APIs.
 
 ###Create contact:
 
 <a href="https://www.youtube.com/watch?v=8-zQMprfDgE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createContact.PNG" 
 alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
-###Update contact:
+###Update contact partial:
 
-<a href="https://www.youtube.com/watch?v=mrAoR7_K4v0" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/updateContact.PNG" 
-alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+WIP
 
 ###Update tag by ID:
 
@@ -3368,4 +3696,12 @@ alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 <a href="https://www.youtube.com/watch?v=otxmAuuHeDA" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
 alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
+###Get list of contact example 1:
 
+<a href="https://www.youtube.com/watch?v=2Yui9HJXAOE" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+###Get list of contact example 2:
+
+<a href="https://www.youtube.com/watch?v=jJAAZKqybQ4" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
+alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
