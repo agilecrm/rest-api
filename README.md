@@ -4069,7 +4069,7 @@ Method: GET
 
 ### Using curl :
 ```sh	
-curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=5632682255974400&custom_filters=%5B%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22NEW%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22OPEN%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22PENDING%22%7D,%7B%22LHS%22:%22status%22,%22CONDITION%22:%22TICKET_STATUS_IS%22,%22RHS%22:%22CLOSED%22%7D%5D&page_size=25&global_sort_key=-last_updated_time -H "Accept : application/json" -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=5716987632156672&page_size=25&global_sort_key=-last_updated_time -H "Accept : application/json" -v -u {email} : {API Key}
 ```
 ### Example response :
 ```sh
@@ -4088,20 +4088,20 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
         "assignee": {
             "id": 6263975862861824,
             "domain": "ghanshyam",
-            "email": "ghanshyam.raut@agilecrm.com",
+            "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
-            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
+            "pic": "https://samplet.cloudfront.net/img/gravatar/71.png",
             "schedule_id": "Ghanshyam",
-            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
-            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            "calendar_url": "https://samplet.agilecrm.com/calendar/Ghanshyam",
+            "calendarURL": "https://samplet.agilecrm.com/calendar/Ghanshyam"
         },
         "requester_name": "ghanshyam ",
-        "requester_email": "ghanshyam.agile@gmail.com",
+        "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working 11??",
         "cc_emails": [
-            "narayanrupraut1691@gmail.com"
+            "samplet@gmail.com"
         ],
         "created_time": 1489653298291,
         "last_updated_time": 1489653298291,
@@ -4133,12 +4133,12 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
                 "domain": "ghanshyam",
-                "email": "ghanshyam.raut@agilecrm.com",
+                "email": "samplet@agilecrm.com",
                 "phone": "",
                 "name": "Ghanshyam",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
-                "schedule_id": "Ghanshyam",
-                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
+                "schedule_id": "samplet",
+                "calendar_url": "https://samplet.agilecrm.com/calendar/Ghanshyam",
                 "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
             }
         },
@@ -4178,7 +4178,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
         "assignee": {
             "id": 6263975862861824,
             "domain": "ghanshyam",
-            "email": "ghanshyam.raut@agilecrm.com",
+            "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4187,11 +4187,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
         "requester_name": "ghanshyam ",
-        "requester_email": "ghanshyam.agile@gmail.com",
+        "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working ??",
         "cc_emails": [
-            "narayanrupraut1691@gmail.com"
+            "samplet@gmail.com"
         ],
         "created_time": 1489653242528,
         "last_updated_time": 1489653242528,
@@ -4223,7 +4223,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
                 "domain": "ghanshyam",
-                "email": "ghanshyam.raut@agilecrm.com",
+                "email": "samplet@agilecrm.com",
                 "phone": "",
                 "name": "Ghanshyam",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4268,7 +4268,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
         "assignee": {
             "id": 6263975862861824,
             "domain": "ghanshyam",
-            "email": "ghanshyam.raut@agilecrm.com",
+            "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4277,11 +4277,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
         "requester_name": "ghanshyam ",
-        "requester_email": "ghanshyam.agile@gmail.com",
+        "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working ??",
         "cc_emails": [
-            "narayanrupraut1691@gmail.com"
+            "samplet@gmail.com"
         ],
         "created_time": 1489649282800,
         "last_updated_time": 1489649282800,
@@ -4313,11 +4313,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
                 "domain": "ghanshyam",
-                "email": "ghanshyam.raut@agilecrm.com",
+                "email": "samplet@agilecrm.com",
                 "phone": "",
                 "name": "Ghanshyam",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
-                "schedule_id": "Ghanshyam",
+                "schedule_id": "samplet",
                 "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
                 "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
             }
@@ -4357,8 +4357,8 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
         "assigned_time": 1489648321029,
         "assignee": {
             "id": 6263975862861824,
-            "domain": "ghanshyam",
-            "email": "ghanshyam.raut@agilecrm.com",
+            "domain": "samplet",
+            "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4367,11 +4367,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
         "requester_name": "ghanshyam ",
-        "requester_email": "ghanshyam.agile@gmail.com",
+        "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working ??",
         "cc_emails": [
-            "narayanrupraut1691@gmail.com"
+            "samplet@gmail.com"
         ],
         "created_time": 1489648321029,
         "last_updated_time": 1489648321029,
@@ -4403,7 +4403,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
                 "domain": "ghanshyam",
-                "email": "ghanshyam.raut@agilecrm.com",
+                "email": "samplet@agilecrm.com",
                 "phone": "",
                 "name": "Ghanshyam",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4448,7 +4448,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
         "assignee": {
             "id": 6263975862861824,
             "domain": "ghanshyam",
-            "email": "ghanshyam.raut@agilecrm.com",
+            "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
@@ -4457,7 +4457,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=563268225597
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
         "requester_name": "ghanshyam ",
-        "requester_email": "ghanshyam.agile@gmail.com",
+        "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Help Desk Ticket",
         "cc_emails": [
