@@ -119,7 +119,7 @@ Table of contents
   * [List of campaigns](#8-list-of-campaigns)
   
 **[Documents](#9-documents-api)**
-  * [1 Get documents related to specific contact](#91-get-documents-related-to-specific-contact)
+  * [1 Get documents related to specific contact](#91-get-documents-related-to-specific-contact-)
   * [2 Create a document to a contact](#92-create-a-document-to-a-contact)
   * [3 Update a document to a contact](#91-update-a-document-to-a-contact)
   
