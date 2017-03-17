@@ -126,7 +126,8 @@ Table of contents
 **[Help Desks](#10-help-desks-api)**
   * [1 Get all tickets](#101-get-all-tickets-)
   * [2 Create a ticket](#102-create-a-ticket)
-  * [3 Delete a ticket](#103-delete-a-ticket)  
+  * [3 Delete a ticket](#103-delete-a-ticket) 
+  * [4 Get all filter IDs](#103-get-all-filter-ids)
 
 **[Video references](#11-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
@@ -4528,7 +4529,6 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
     }
 ]
 ```
-
 ## 10.2 Create a ticket
 ### dev/api/tickets/new-ticket
 Method: POST
@@ -4601,6 +4601,79 @@ Method: DELETE
 ### Response:
 - Status 200: {"status":"success"}
 - Status 401: Unauthorized (When the username and password provided in the respective fields are incorrect)
+
+## 10.4 Get all filter IDs :
+### dev/api/tickets/filters
+Method: GET
+
+- Returns list of filter IDs in JSON format.
+
+### Using curl :
+```sh	
+curl https://{domain}.agilecrm.com/dev/api/tickets/filters -H "Accept : application/json" -v -u {email} : {API Key}
+```
+### Example response :
+```sh
+[
+    {
+        "id": 5632682255974400,
+        "name": "All Tickets",
+        "conditions": [
+            {
+                "LHS": "status",
+                "CONDITION": "TICKET_STATUS_IS",
+                "RHS": "NEW"
+            },
+            {
+                "LHS": "status",
+                "CONDITION": "TICKET_STATUS_IS",
+                "RHS": "OPEN"
+            },
+            {
+                "LHS": "status",
+                "CONDITION": "TICKET_STATUS_IS",
+                "RHS": "PENDING"
+            },
+            {
+                "LHS": "status",
+                "CONDITION": "TICKET_STATUS_IS",
+                "RHS": "CLOSED"
+            }
+        ],
+        "owner_id": 6263975862861824,
+        "updated_time": 1461208420071,
+        "is_default_filter": true
+    },
+    {
+        "id": 5644924254945280,
+        "name": "New Tickets",
+        "conditions": [
+            {
+                "LHS": "status",
+                "CONDITION": "TICKET_STATUS_IS",
+                "RHS": "NEW"
+            }
+        ],
+        "owner_id": 6263975862861824,
+        "updated_time": 1461208419652,
+        "is_default_filter": true
+    },
+    {
+        "id": 5716987632156672,
+        "name": "My Tickets",
+        "conditions": [
+            {
+                "LHS": "assignee_id",
+                "CONDITION": "EQUALS",
+                "RHS": "0"
+            }
+        ],
+        "owner_id": 6263975862861824,
+        "updated_time": 1461208420470,
+        "is_default_filter": true
+    }
+]
+```
 
 ## 11 Youtube links for Rest APIs.
 
