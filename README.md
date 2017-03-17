@@ -3691,7 +3691,7 @@ curl https://{domain}.agilecrm.com/dev/api/workflows?page_size=20&cursor=E-ABAII
 ### dev/api/documents/contact/{contact_id}/docs
 Method: GET
 
-- Returns list of documents JSONs related to the contact. 
+- Returns list of documents in the JSON format related to the contact. 
 
 ### Using curl :
 ```sh	
@@ -3963,7 +3963,7 @@ curl https://{domain}.agilecrm.com/dev/api/documents/contact/5668302869233664/do
 ### dev/api/documents
 Method: POST
 
-	- Creates a new document with link attach.
+	- Creates a new document with the link attached.
 	- url is mandatory filed.You have to provide link of a file it can be your local or server location.
 
 
@@ -4006,14 +4006,14 @@ curl https://{domain}.agilecrm.com/dev/api/documents \
 ```
 ### Response:
 - Status 200: Document added successfully and it returns the newly created document as JSON in response.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 401: Unauthorized (When the username and password provided in the respective fields are incorrect).
 - Status 400: If the input is in wrong format
 
 ## 9.3 Update a document to a contact:
 ### dev/api/documents
 Method: PUT
 
-	- Update a new document with link attach.
+	- Update a new document with link attached.
 	- url is mandatory filed.You have to provide link of a file it can be your local or server location.
 
 
@@ -4055,7 +4055,7 @@ curl https://{domain}.agilecrm.com/dev/api/documents \
 ```
 ### Response:
 - Status 200: Document updated successfully and it returns the newly created document as JSON in response.
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 401: Unauthorized (When the username and password provided in the respective fields are incorrect).
 - Status 400: If the input is in wrong format
 
 
@@ -4065,7 +4065,7 @@ curl https://{domain}.agilecrm.com/dev/api/documents \
 ### dev/api/tickets/filter
 Method: GET
 
-- Returns list of tickets JSONs. 
+- Returns list of JSON tickets.
 
 ### Using curl :
 ```sh	
@@ -4534,7 +4534,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
 Method: POST
 
 	- Creates a new ticket.
-	- All field are mandatory .
+	- All fields are mandatory.
 
 
 ### Acceptable request Representation:
@@ -4592,7 +4592,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/new-ticket \
 ### dev/api/tickets/{id}
 Method: DELETE
 
-- Deletes the ticket with the particular id. The id passed in the url will be used to identify the ticket.
+- It deletes the ticket having a particular id. The id passed in the url will be used to identify the ticket.
 
 ### Using curl
 ```sh	
@@ -4600,7 +4600,7 @@ Method: DELETE
 ```
 ### Response:
 - Status 200: {"status":"success"}
-- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 401: Unauthorized (When the username and password provided in the respective fields are incorrect)
 
 ## 11 Youtube links for Rest APIs.
 
