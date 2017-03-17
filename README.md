@@ -127,7 +127,7 @@ Table of contents
   * [1 Get all tickets](#101-get-all-tickets-)
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
-  * [4 Get all filter IDs](#103-get-all-filter-ids)
+  * [4 Get all filter IDs](#104-get-all-filter-ids-)
 
 **[Video references](#11-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
