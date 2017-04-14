@@ -69,7 +69,7 @@ Table of contents
     * [6 Delete deal](#36-delete-deal)
     * [7 Bulk delete](#37-bulk-delete)
     * [8 Get deals from default track grouped by milestones](#38-get-deals-from-default-track-grouped-by-milestones)
-    * [9 Get deals for a particular drack (grouped by milestone)](#39-get-deals-for-a-particular-track-grouped-by-milestone)
+    * [9 Get deals for a particular track (grouped by milestone)](#39-get-deals-for-a-particular-track-grouped-by-milestone)
     * [10 Get deals from particular track](#310-get-deals-from-particular-track)
     * [11 Get deals related to specific contact](#311-get-deals-related-to-specific-contact)
     * [12 Get deals of current user (my deals)](#312-get-deals-of-current-user-my-deals)
@@ -4081,14 +4081,14 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
         "group": {
             "id": 5756098678095872,
             "group_name": "Support",
-            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+            "group_email": "a_QMVLOjQgq@helptor.com"
         },
         "assigned_to_group": true,
         "assigneeID": 6263975862861824,
         "assigned_time": 1489653298291,
         "assignee": {
             "id": 6263975862861824,
-            "domain": "ghanshyam",
+            "domain": "gsdr",
             "email": "samplet@agilecrm.com",
             "phone": "",
             "name": "Ghanshyam",
@@ -4139,8 +4139,8 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 "name": "Ghanshyam",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
                 "schedule_id": "samplet",
-                "calendar_url": "https://samplet.agilecrm.com/calendar/Ghanshyam",
-                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+                "calendar_url": "https://samplet.agilecrm.com/calendar/san",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/san"
             }
         },
         "contact": {
@@ -4150,7 +4150,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 {
                     "type": "SYSTEM",
                     "name": "first_name",
-                    "value": "ghanshyam"
+                    "value": "sder"
                 },
                 {
                     "type": "SYSTEM",
@@ -4171,7 +4171,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
         "group": {
             "id": 5756098678095872,
             "group_name": "Support",
-            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+            "group_email": "sdedd@helptor.com"
         },
         "assigned_to_group": true,
         "assigneeID": 6263975862861824,
@@ -4181,11 +4181,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "domain": "ghanshyam",
             "email": "samplet@agilecrm.com",
             "phone": "",
-            "name": "Ghanshyam",
+            "name": "sdre",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
             "schedule_id": "Ghanshyam",
-            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
-            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+            "calendar_url": "https://ghanshyam.agilecrm.com/calendar/dss",
+            "calendarURL": "https://ghanshyam.agilecrm.com/calendar/sdd"
         },
         "requester_name": "ghanshyam ",
         "requester_email": "samplet@gmail.com",
@@ -4223,14 +4223,14 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "created_time": 1489653122960,
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
-                "domain": "ghanshyam",
+                "domain": "dsd",
                 "email": "samplet@agilecrm.com",
                 "phone": "",
-                "name": "Ghanshyam",
+                "name": "dsdsd",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
                 "schedule_id": "Ghanshyam",
-                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
-                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
+                "calendar_url": "https://ghanshyam.agilecrm.com/calendar/dsd",
+                "calendarURL": "https://ghanshyam.agilecrm.com/calendar/dsd"
             }
         },
         "contact": {
@@ -4240,7 +4240,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 {
                     "type": "SYSTEM",
                     "name": "first_name",
-                    "value": "ghanshyam"
+                    "value": "dsd"
                 },
                 {
                     "type": "SYSTEM",
@@ -4261,24 +4261,24 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
         "group": {
             "id": 5756098678095872,
             "group_name": "Support",
-            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+            "group_email": "sds@helptor.com"
         },
         "assigned_to_group": true,
         "assigneeID": 6263975862861824,
         "assigned_time": 1489649282800,
         "assignee": {
             "id": 6263975862861824,
-            "domain": "ghanshyam",
+            "domain": "sdsd",
             "email": "samplet@agilecrm.com",
             "phone": "",
-            "name": "Ghanshyam",
+            "name": "sdsds",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
             "schedule_id": "Ghanshyam",
             "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
-        "requester_name": "ghanshyam ",
-        "requester_email": "samplet@gmail.com",
+        "requester_name": "sdsd ",
+        "requester_email": "sdsds@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working ??",
         "cc_emails": [
@@ -4313,10 +4313,10 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "created_time": 1489649163240,
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
-                "domain": "ghanshyam",
+                "domain": "sdsd",
                 "email": "samplet@agilecrm.com",
                 "phone": "",
-                "name": "Ghanshyam",
+                "name": "dssds",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
                 "schedule_id": "samplet",
                 "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
@@ -4330,7 +4330,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 {
                     "type": "SYSTEM",
                     "name": "first_name",
-                    "value": "ghanshyam"
+                    "value": "sdsd"
                 },
                 {
                     "type": "SYSTEM",
@@ -4351,7 +4351,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
         "group": {
             "id": 5756098678095872,
             "group_name": "Support",
-            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+            "group_email": "sddsdsd@helptor.com"
         },
         "assigned_to_group": true,
         "assigneeID": 6263975862861824,
@@ -4363,11 +4363,11 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "phone": "",
             "name": "Ghanshyam",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
-            "schedule_id": "Ghanshyam",
+            "schedule_id": "sdsd",
             "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
-        "requester_name": "ghanshyam ",
+        "requester_name": "sdsds ",
         "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Test not working ??",
@@ -4403,10 +4403,10 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "created_time": 1489648201476,
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
-                "domain": "ghanshyam",
+                "domain": "sdsd",
                 "email": "samplet@agilecrm.com",
                 "phone": "",
-                "name": "Ghanshyam",
+                "name": "sdsdsd",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
                 "schedule_id": "Ghanshyam",
                 "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
@@ -4420,7 +4420,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 {
                     "type": "SYSTEM",
                     "name": "first_name",
-                    "value": "ghanshyam"
+                    "value": "sdsdsd"
                 },
                 {
                     "type": "SYSTEM",
@@ -4441,23 +4441,23 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
         "group": {
             "id": 5756098678095872,
             "group_name": "Support",
-            "group_email": "ghanshyam_QMVLOjQgq@helptor.com"
+            "group_email": "sdsd@helptor.com"
         },
         "assigned_to_group": false,
         "assigneeID": 6263975862861824,
         "assigned_time": 1489647974608,
         "assignee": {
             "id": 6263975862861824,
-            "domain": "ghanshyam",
+            "domain": "sdsd",
             "email": "samplet@agilecrm.com",
             "phone": "",
-            "name": "Ghanshyam",
+            "name": "sds",
             "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
-            "schedule_id": "Ghanshyam",
+            "schedule_id": "sdsd",
             "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
             "calendarURL": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam"
         },
-        "requester_name": "ghanshyam ",
+        "requester_name": "sdds ",
         "requester_email": "samplet@gmail.com",
         "contactID": 5723745293434880,
         "subject": "Help Desk Ticket",
@@ -4495,10 +4495,10 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
             "created_time": 1489647914834,
             "ticket_notes_assinee": {
                 "id": 6263975862861824,
-                "domain": "ghanshyam",
-                "email": "ghanshyam.raut@agilecrm.com",
+                "domain": "sdsd",
+                "email": "sdsd.dsd@agilecrm.com",
                 "phone": "",
-                "name": "Ghanshyam",
+                "name": "sdsds",
                 "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/71.png",
                 "schedule_id": "Ghanshyam",
                 "calendar_url": "https://ghanshyam.agilecrm.com/calendar/Ghanshyam",
@@ -4512,7 +4512,7 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=571698763215
                 {
                     "type": "SYSTEM",
                     "name": "first_name",
-                    "value": "ghanshyam"
+                    "value": "ds"
                 },
                 {
                     "type": "SYSTEM",
@@ -4540,22 +4540,17 @@ Method: POST
 ### Acceptable request Representation:
 ```javascript
 {
-    "contact_id": "5723745293434880",
-    "requester_name": "ghanshyam ",
-    "requester_email": "ghanshyam.agile@gmail.com",
-    "first_name": "",
-    "last_name": "",
-    "email_input": "",
+    "requester_name": "yeki",
+    "requester_email": "yeki@yopmail.com",
     "subject": "Test not working ??",
     "priority": "LOW",
     "status": "OPEN",
     "groupID": "5756098678095872",
     "html_text": "Hello I am testing your docs and find that Test is not working. Please help me",
     "cc_emails": [
-        "narayanrupraut1691@gmail.com"
+        "tester@gmail.com"
     ],
-    "labels": null,
-    "assigneeID": 6263975862861824
+    "labels": null
 }
 ```
 ### Using curl
@@ -4564,22 +4559,17 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/new-ticket \
 -H "Accept : application/json" \
 -H "Content-Type: application/json" \
 -d '{
-    "contact_id": "5723745293434880",
-    "requester_name": "ghanshyam ",
-    "requester_email": "ghanshyam.agile@gmail.com",
-    "first_name": "",
-    "last_name": "",
-    "email_input": "",
+    "requester_name": "yeki",
+    "requester_email": "yeki@yopmail.com",
     "subject": "Test not working ??",
     "priority": "LOW",
     "status": "OPEN",
     "groupID": "5756098678095872",
     "html_text": "Hello I am testing your docs and find that Test is not working. Please help me",
     "cc_emails": [
-        "narayanrupraut1691@gmail.com"
+        "tester@gmail.com"
     ],
-    "labels": null,
-    "assigneeID": 6263975862861824
+    "labels": null
 }' \
 -v -u sample@agilecrm.com:123456 -X POST
 ```
