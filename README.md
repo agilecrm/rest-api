@@ -157,7 +157,7 @@ All API requests should be made to: https://{domain}.agilecrm.com/dev/
 
 Note: All data is case-sensitive. Emails, names and other values are case sensitive. For example, "Test" and "test" are considered two different words.
 
-1. Contacts  & companies API
+### 1. Contacts  & companies API
 -----------------------------
 |Field Name|Description|Value Type|Read-Only|Mandatory|Accepted values|
 |:----------|:-----------|:------|:------|:----------|:----------|
