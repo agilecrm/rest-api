@@ -601,6 +601,10 @@ Method: POST
 
 Accepts contact JSON as post data along with the credentials of domain User (User name and API Key).
 
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
 ### Acceptable request Representation:
 ```javascript
 {
@@ -1312,6 +1316,10 @@ Method: POST
 
 - Accepts company JSON as post data along with the credentials of domain User (User name and API Key).
 
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
+
 ### Acceptable request representation:
 ```javascript
 {
@@ -1900,6 +1908,10 @@ curl https:{domain}.agilecrm.com/dev/api/opportunity/981 -H  "Accept : applicati
 Method: POST
 - Accepts deal JSON as data in Post request to the url specified above, which creates new deal and returns the deal JSON with id field generated when new deal is created. If Post data includes valid deal id, respective deal is updated with the data sent in request.
 Milestone name should be same as the the one in the website and it is case sensitive. (If the milestone name is given in the wrong case, it will not be shown in the milestone view.)
+
+- Each field is case sensitive.
+- Please don't pass null value.
+- If you don't know value of field then either don't pass that field or pass empty data to a field.
 
 - Note : expected_value is mandatory field.
 
