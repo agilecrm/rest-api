@@ -128,6 +128,7 @@ Table of contents
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
+  * [5 Get all messages related to a specific ticket] (#105-get-all-messages-related-to-specific-ticket)
 
 **[Video references](#11-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
@@ -4675,6 +4676,16 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filters -H "Accept : applicat
         "is_default_filter": true
     }
 ]
+
+## 10.5 Get all messages related to a specific ticket :
+### dev/api/tickets/notes/{ticketid}
+Method: GET
+
+- Returns all the messages which is associated with a given ticket.
+
+### Using REST API :
+https://{domain}.agilecrm.com/dev/api/tickets/notes/{ticketid} 
+
 ```
 
 ## 11 Youtube links for Rest APIs.
