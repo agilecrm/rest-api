@@ -128,7 +128,6 @@ Table of contents
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
-  * 5 Test
  
 
 **[Video references](#11-youtube-links-for-rest-apis)**
