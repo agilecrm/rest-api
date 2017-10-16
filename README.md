@@ -3101,7 +3101,7 @@ Method: GET
 
 ### Using curl
 ```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks/5149503652888576 -H  "Accept:application/json" -v -u {email}:{API Key}
+	curl https:{domain}.agilecrm.com/dev/api/tasks/{task-id} -H  "Accept:application/json" -v -u {email}:{API Key}
 ```
 ### Response:
 - Status 200: Gets the list of tasks.
