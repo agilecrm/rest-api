@@ -3332,7 +3332,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/partial-update \
 ```
 
 ### Response:
-- Status 200: Deal updated successfully. Returns the updated deal object in the response.
+- Status 200: Task updated successfully. Returns the updated task object in the response.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format.
 
