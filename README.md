@@ -2859,14 +2859,14 @@ curl https://{domain}.agilecrm.com/dev/api/opportunity/deals/notes  \
 - Status 400: If the input is in wrong format
 
 ## 4.7 Gets notes related to specific deal :
-### /dev/api/opportunity/5088304026353664/notes
+### /dev/api/opportunity/{deal-id}/notes
 Method: GET
 
 - Returns list of note JSONs related to the contact. 
 
 ### Using curl :
 ```sh	
-curl https://{domain}.agilecrm.com/dev/api/opportunity/5088304026353664/notes -H "Accept : application/json" -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/{deal-id}/notes -H "Accept : application/json" -v -u {email} : {API Key}
 ```
 ### Example response :
 ```sh	
