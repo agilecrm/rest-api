@@ -3453,7 +3453,7 @@ Method: GET
 
 ### Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H "Accept: application/xml" -v -u {email}:{apikey}
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/events/sort -H "Accept: application/json" -v -u {email}:{apikey}
 ```
 ### Response:
 - Status 200: Returns the events list related to the contact.
