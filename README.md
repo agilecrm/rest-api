@@ -1262,7 +1262,7 @@ Method: GET
 
 ### Using curl
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{id} \
+curl https://{domain}.agilecrm.com/dev/api/contacts/search/phonenumber/{phone-number} \
 -H "Accept :application/json" \
 -v -u {email}:{apikey}
 ```
