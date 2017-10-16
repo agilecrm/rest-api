@@ -42,7 +42,7 @@ Table of contents
     * [13 Delete tags to a contact based on email](#113-delete-tags-to-a-contact-based-on-email)
     * [14 Add score to a contact using email ID](#114-add-score-to-a-contact-using-email-id)
     * [15 Get tasks related to contact](#115-get-tasks-related-to-contact)
-    * [16 Updating contact properties](#116-updating-contact-properties)
+    * [16 Updating contact properties by Email](#116-updating-contact-properties)
     * [17 Change contact owner](#117-change-contact-owner)
     * [18 Add contact to a campaign](#118-add-contact-to-a-campaign)
     * [19 Remove contact from a campaign](#119-remove-contact-from-a-campaign)
