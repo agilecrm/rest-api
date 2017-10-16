@@ -128,6 +128,7 @@ Table of contents
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
+  * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket)
  
 
 **[Video references](#11-youtube-links-for-rest-apis)**
@@ -4678,6 +4679,62 @@ curl https://{domain}.agilecrm.com/dev/api/tickets/filters -H "Accept : applicat
 ]
 
 ```
+## 10.5 Get all messages within a ticket :
+### dev/api/tickets/notes/{ticket-id}
+Method: GET
+
+- Returns list of JSON tickets.
+
+### Using curl :
+```sh
+https://{domain}.agilecrm.com/dev/api/tickets/notes/{ticketid} -H "Accept : application/json" -v -u {email} : {API Key}
+```
+### Example response :
+```sh
+[
+    {
+        "id": 5661725076488192,
+        "ticket_id": 2,
+        "group_id": 5646239437684736,
+        "feedback_time": 1496990444098,
+        "feedback_comment": "",
+        "assignee_id": 6683813135253504,
+        "feedback_flag": false,
+        "created_by": "REQUESTER",
+        "requester_name": "Prabathk kolipaka",
+        "requester_email": "prabath.kolipaka@gmail.com",
+        "created_time": 1496990444098,
+        "event_description": "",
+        "plain_text": "Get all the messages belongs to a ticket",
+        "html_text": "Get all the messages belongs to a ticket",
+        "mime_object": "",
+        "note_type": "PUBLIC",
+        "attachments_list": [
+        ],
+        "requester_viewed_time": 0,
+        "domain_user": {
+            "id": 6683813135253504,
+            "domain": "ranjandev",
+            "email": "rswain.agilecrm@gmail.com",
+            "phone": "",
+            "name": "Rasmi Ranjan Swain",
+            "pic": "https://d1gwclp1pmzk26.cloudfront.net/img/gravatar/48.png",
+            "schedule_id": "Rasmi_Ranjan_Swain",
+            "calendar_url": "https://ranjandev.agilecrm.com/calendar/Rasmi_Ranjan_Swain",
+            "calendarURL": "https://ranjandev.agilecrm.com/calendar/Rasmi_Ranjan_Swain"
+        },
+        "cc_emails": [
+        ],
+        "close_ticket": false,
+        "requester_viewed_email": false,
+        "is_compressed": false
+    }
+]
+```
+### Response:
+- Status 200: Successfully retrieved all the messages within a ticket.
+- Status 401: Unauthorised. (When the user name and password fields are wrong.)
+
 
 ## 11 Youtube links for Rest APIs.
 
