@@ -1157,7 +1157,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 ```
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
-## 1.16 Updating contact properties
+## 1.16 Updating contact properties by Email
 ### dev/api/contacts/add/property
 Method: POST 
 
