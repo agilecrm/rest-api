@@ -2094,7 +2094,7 @@ Method: GET
 
 ### Using curl :
 ```sh
-curl https://{domain}.agilecrm.com/dev/api/opportunity/byMilestone -H "Accept : application/json"  -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/opportunity/byMilestone -H "Accept : application/json"  -v -u {email}:{API Key}
 ```
 ### Example response :
 ```javascript
