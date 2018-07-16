@@ -4084,7 +4084,7 @@ Method: GET
 
 ### Using curl :
 ```sh	
-curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=5716987632156672&page_size=25&global_sort_key=-last_updated_time -H "Accept : application/json" -v -u {email} : {API Key}
+curl https://{domain}.agilecrm.com/dev/api/tickets/filter?filter_id=5716987632156672&page_size=25&global_sort_key=-last_updated_time -H "Accept : application/json" -v -u {email}:{API Key}
 ```
 ### Example response :
 ```sh
