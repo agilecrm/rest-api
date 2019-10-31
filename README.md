@@ -86,7 +86,7 @@ Table of contents
     * [6 Update note to a deal](#46-update-note-to-a-deal)
     * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal-)
     * [8 Delete notes from specific deal](#48-delete-notes-from-specific-deal-)
-    * [9 Add note to a Ticket using email ID ](#49-Add-note-to-a-ticket-using-email-id-)
+    * [9 Add note to a Ticket using email ID ](#49-Add-note-to-a-ticket-using-ticket-id-)
 
 **[Tasks](#5-tasks-api)**
   * [Task fields](#5-tasks-api)
