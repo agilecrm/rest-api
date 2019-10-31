@@ -86,7 +86,6 @@ Table of contents
     * [6 Update note to a deal](#46-update-note-to-a-deal)
     * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal-)
     * [8 Delete notes from specific deal](#48-delete-notes-from-specific-deal-)
-    * [9 Add note to a Ticket using Ticket ID ](#49-Add-note-to-a-ticket-using-ticket-id-)
 
 **[Tasks](#5-tasks-api)**
   * [Task fields](#5-tasks-api)
@@ -129,7 +128,8 @@ Table of contents
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
-  * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket)
+  * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket)  
+  * [6 Add note to a Ticket using Ticket ID ](#106-Add-note-to-a-ticket-using-ticket-id-)
  
 
 **[Video references](#11-youtube-links-for-rest-apis)**
@@ -2913,44 +2913,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: appli
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
 
-## 4.9 Add note to a ticket using Ticket id :
-### /dev/api/notes/id
-Method: POST 
-
-- Creates a note to specific Ticket.
-
-### Using curl : 
-```sh
-curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
--H "Content-Type : application/json" \
--H "Accept : application/json" \
--d '{
-    	"ticket_id":"{ticket-id}",
-	"html_text":"Note description",
-	"document_id":"",
-	"attachment_key":"",
-	"note_type":"PUBLIC"
-}' \
--v -u {email} : {APi Key} -X POST
-```
-
-### Adding Notes to A particular group Ticket.
-### Using curl : 
-```sh
-curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
--H "Content-Type : application/json" \
--H "Accept : application/json" \
--d '{
-    	"ticket_id":"{ticket-id}",
-	"html_text":"Note description",
-	"document_id":"",
-	"attachment_key":"",
-	"note_type":"PRIVATE"
-}' \
--v -u {email} : {APi Key} -X POST
-```
-
-5. Tasks API
+## 5. Tasks API
 ---------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted values|
@@ -4773,6 +4736,42 @@ https://{domain}.agilecrm.com/dev/api/tickets/notes/{ticketid} -H "Accept : appl
 - Status 200: Successfully retrieved all the messages within a ticket.
 - Status 401: Unauthorised. (When the user name and password fields are wrong.)
 
+## 10.6 Add note to a ticket using Ticket id :
+### /dev/api/notes/{ticket-id}
+Method: POST 
+
+- Creates a note to specific Ticket.
+
+### Using curl : 
+```sh
+curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
+-H "Content-Type : application/json" \
+-H "Accept : application/json" \
+-d '{
+    	"ticket_id":"{ticket-id}",
+	"html_text":"Note description",
+	"note_type":"PUBLIC"
+}' \
+-v -u {email} : {APi Key} -X POST
+```
+
+### Adding Notes to A particular group Ticket.
+### Using curl : 
+```sh
+curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
+-H "Content-Type : application/json" \
+-H "Accept : application/json" \
+-d '{
+    	"ticket_id":"{ticket-id}",
+	"html_text":"Note description",
+	"note_type":"PRIVATE"
+}' \
+-v -u {email} : {APi Key} -X POST
+```
+### Response - statuses:
+- Status 200: Note added successfully and it returns the ticket as JSON in response.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+- Status 400: If the input is in wrong format
 
 ## 11 Youtube links for Rest APIs.
 
