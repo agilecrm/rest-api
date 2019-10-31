@@ -2934,7 +2934,7 @@ curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
 -v -u {email} : {APi Key} -X POST
 ```
 
-## Adding Notes to A particular group Ticket.
+### Adding Notes to A particular group Ticket.
 ### Using curl : 
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
