@@ -128,7 +128,7 @@ Table of contents
   * [2 Create a ticket](#102-create-a-ticket)
   * [3 Delete a ticket](#103-delete-a-ticket) 
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
-  * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket)  
+  * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket-)  
   * [6 Add note to a Ticket using Ticket ID ](#106-Add-note-to-a-ticket-using-ticket-id-)
  
 
@@ -4740,7 +4740,7 @@ https://{domain}.agilecrm.com/dev/api/tickets/notes/{ticketid} -H "Accept : appl
 ### /dev/api/notes/{ticket-id}
 Method: POST 
 
-- Creates a note to specific Ticket.
+- Creates a note to specific ticket.
 
 ### Using curl : 
 ```sh
@@ -4755,7 +4755,8 @@ curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
 -v -u {email} : {APi Key} -X POST
 ```
 
-### Adding Notes to A particular group Ticket.
+ - Adding Notes to A particular group ticket.
+ 
 ### Using curl : 
 ```sh
 curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
