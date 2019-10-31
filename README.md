@@ -86,6 +86,7 @@ Table of contents
     * [6 Update note to a deal](#46-update-note-to-a-deal)
     * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal-)
     * [8 Delete notes from specific deal](#48-delete-notes-from-specific-deal-)
+    * [9 Add note to a Ticket using email ID ](#49-Add-note-to-a-ticket-using-email-id-)
 
 **[Tasks](#5-tasks-api)**
   * [Task fields](#5-tasks-api)
@@ -2911,6 +2912,43 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/notes/bulk -H "Accept: appli
 - Status 204: Note removed successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 - Status 400: If the input is in wrong format
+
+## 4.9 Add note to a ticket using Ticket id :
+### /dev/api/notes/id
+Method: POST 
+
+- Creates a note to specific Ticket.
+
+### Using curl : 
+```sh
+curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
+-H "Content-Type : application/json" \
+-H "Accept : application/json" \
+-d '{
+    	"ticket_id":"{ticket-id}",
+	"html_text":"Note description",
+	"document_id":"",
+	"attachment_key":"",
+	"note_type":"PUBLIC"
+}' \
+-v -u {email} : {APi Key} -X POST
+```
+
+## Adding Notes to A particular group Ticket.
+### Using curl : 
+```sh
+curl https://{domain}.agilecrm.com/dev/api/notes/{ticket-id} \
+-H "Content-Type : application/json" \
+-H "Accept : application/json" \
+-d '{
+    	"ticket_id":"{ticket-id}",
+	"html_text":"Note description",
+	"document_id":"",
+	"attachment_key":"",
+	"note_type":"PRIVATE"
+}' \
+-v -u {email} : {APi Key} -X POST
+```
 
 5. Tasks API
 ---------
