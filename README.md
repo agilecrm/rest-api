@@ -98,6 +98,7 @@ Table of contents
     * [6 Update a task (Partial update)](#56-update-a-task-partial-update)
     * [7 Delete a task based on ID](#57-delete-a-task-based-on-id)
     * [8 Listing Tasks](#58-Listing-Tasks-)
+    * [9 Get tasks related to contact](#59-get-tasks-related-to-contact)
 
 **[Events](#6-events-api)**
   * [Event fields](#6-events-api)
@@ -3366,6 +3367,96 @@ curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v 
 ### Response:
 - Status 204: Successfully retrieved the Tasks list.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+## 5.9 Get tasks related to contact:
+### dev/api/contacts/{contact_id}/tasks/sort
+Method: GET
+
+- Retrieves the tasks related to contact, sorted by the date (latest first.).
+
+### Using curl
+```sh
+curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "Accept: application/json" -v -u {email}:{apikey}
+```
+### Response:
+- Status 200: Returns the tasks list related to the contact.
+```javascript
+[
+    {
+        "id": 5152971570544640,
+        "type": "EMAIL",
+        "priority_type": "NORMAL",
+        "due": 1409596200,
+        "created_time": 1409567774,
+        "is_complete": false,
+        "contacts": [
+            {
+                "id": 5716606839685120,
+                "type": "PERSON",
+                "created_time": 1403057154,
+                "updated_time": 1403057154,
+                "viewed_time": 0,
+                "viewed": {
+                    "viewed_time": 1409567737463,
+                    "viewer_id": 5345980119515136
+                },
+                "star_value": 0,
+                "lead_score": 0,
+                "tags": [],
+                "tagsWithTime": [],
+                "properties": [
+                    {
+                        "type": "SYSTEM",
+                        "name": "first_name",
+                        "value": "Basecamp (2Desk)"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "last_name",
+                        "value": "Basecamp (2Desk)"
+                    },
+                    {
+                        "type": "SYSTEM",
+                        "name": "email",
+                        "value": "notifications@basecamp.com"
+                    }
+                ],
+                "campaign- Status": [],
+                "entity_type": "contact_entity",
+                "unsubscribe- Status": [],
+                "emailBounce- Status": [],
+                "owner": {
+                    "id": 5345980119515136,
+                    "domain": "prabathk",
+                    "email": "prabath.kolipaka@gmail.com",
+                    "is_admin": true,
+                    "is_account_owner": true,
+                    "is_disabled": false,
+                    "name": "prabath kolipaka"
+                }
+            }
+        ],
+        "subject": "Contact created in agile crm",
+        "entity_type": "task",
+        "notes": [],
+        "progress": 0,
+        "- Status": "YET_TO_START",
+        "ownerPic": "https://s3.amazonaws.com/agilecrm/panel/uploaded-logo/1401427105618?id=upload-container",
+        "taskOwner": {
+            "id": 5345980119515136,
+            "domain": "prabathk",
+            "email": "prabath.kolipaka@gmail.com",
+            "is_admin": true,
+            "is_account_owner": true,
+            "is_disabled": false,
+            "name": "prabath kolipaka"
+        }
+    }
+]
+```
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
+
+
 
 
 6. Events API
