@@ -97,6 +97,7 @@ Table of contents
     * [5 Create a task based on Contact email](#55-create-a-task-based-on-contact-email)
     * [6 Update a task (Partial update)](#56-update-a-task-partial-update)
     * [7 Delete a task based on ID](#57-delete-a-task-based-on-id)
+    * [8 Listing Tasks](#58-Listing-Tasks-)
 
 **[Events](#6-events-api)**
   * [Event fields](#6-events-api)
@@ -3352,6 +3353,19 @@ Method: DELETE
 - Status 204: Task deleted successfully.
 - Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
+## 5.8 Listing Tasks :
+### dev/api/tasks/
+Method: GET
+
+	- Returns list of all "Tasks" in the domain in JSON format, which are ordered by created time. 
+
+### Using curl
+```sh	
+	curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+```
+### Response:
+- Status 204: Successfully retrieved the Tasks list.
+- Status 401: Unauthorised. (when the user name and password fields are wrong.)
 
 
 6. Events API
