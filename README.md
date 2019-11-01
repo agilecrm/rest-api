@@ -3459,7 +3459,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/{contact_id}/tasks/sort -H "
 
 
 
-6. Events API
+## 6. Events API
 ------------
 
 |Field Name|Description|Value Type|Read Only|Mandatory|Accepted Values|
