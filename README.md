@@ -3361,7 +3361,7 @@ Method: GET
 
 ### Using curl
 ```sh	
-	curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key} -X DELETE
+curl https:{domain}.agilecrm.com/dev/api/tasks -H  "Accept:application/json" -v -u {email}:{API Key} -X GET
 ```
 ### Response:
 - Status 204: Successfully retrieved the Tasks list.
