@@ -3344,7 +3344,7 @@ curl https://{domain}.agilecrm.com/dev/api/tasks/partial-update \
 ### dev/api/tasks/{id}
 Method: DELETE
 
-	- Deletes the task having the given ID.
+- Deletes the task having the given ID.
 
 ### Using curl
 ```sh	
@@ -3358,7 +3358,7 @@ Method: DELETE
 ### dev/api/tasks/
 Method: GET
 
-	- Returns list of all "Tasks" in the domain in JSON format, which are ordered by created time. 
+- Returns list of all "Tasks" in the domain in JSON format, which are ordered by created time. 
 
 ### Using curl
 ```sh	
