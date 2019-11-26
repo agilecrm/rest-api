@@ -141,7 +141,7 @@ Table of contents
   * [Get list of contacts example 1](#get-list-of-contact-example-1)
   * [Get list of contacts example 2](#get-list-of-contact-example-2)
 
-**[Dynamic Filters](#12-dynamic-filters-on-contacts---deals)**
+**[Dynamic Filters](#12-dynamic-filters-on-contacts--deals)**
 
 Things to know:
 ---------------
