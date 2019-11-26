@@ -132,7 +132,6 @@ Table of contents
   * [4 Get all filter IDs](#104-get-all-filter-ids-)
   * [5 Get all messages within a ticket](#105-get-all-messages-within-a-ticket-)  
   * [6 Add note to a Ticket using Ticket ID ](#106-Add-note-to-a-ticket-using-ticket-id-)
- 
 
 **[Video references](#11-youtube-links-for-rest-apis)**
   * [Create contact test](#create-contact)
@@ -142,6 +141,7 @@ Table of contents
   * [Get list of contacts example 1](#get-list-of-contact-example-1)
   * [Get list of contacts example 2](#get-list-of-contact-example-2)
 
+**[Dynamic Filters](#12-dynamic-filters-on-contacts--deals)**
 
 Things to know:
 ---------------
@@ -4910,3 +4910,82 @@ alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
 
 <a href="https://www.youtube.com/watch?v=jJAAZKqybQ4" target="_blank"><img src="https://github.com/agilecrm/rest-api/blob/master/api/createDeal.PNG" 
 alt="IMAGE ALT TEXT HERE" width="440" height="180" border="10" /></a>
+
+## 12 Dynamic Filters on Contacts & Deals.
+
+### 12.1 Get list of contacts updated within last one day
+Method: POST 
+
+- Returns contacts or companies objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"updated_time","CONDITION":"LAST","RHS":"1"}],"or_rules":[],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+### 12.2 Get list of contacts updated after particulat date
+Method: POST 
+
+- Returns contacts or companies objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"updated_time","CONDITION":"AFTER","RHS":1572580800000}],"or_rules":[],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+### 12.3 Get list of contacts updated on particulat date & associated with particular tag
+Method: POST 
+
+- Returns contacts or companies objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[{"LHS":"tags","CONDITION":"EQUALS","RHS":"paid"},{"LHS":"updated_time","CONDITION":"ON","RHS":1572580800000}],"or_rules":[],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+### 12.4 Get list of contacts based on 'OR' condition with tags
+Method: POST 
+
+- Returns contacts or companies objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=10&global_sort_key=-updated_time&filterJson={"rules":[],"or_rules":[{"LHS":"tags","CONDITION":"EQUALS","RHS":"VIP"},{"LHS":"tags","CONDITION":"EQUALS","RHS":"paid"}],"contact_type":"PERSON"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+### 12.5 Get list of contacts using 'AND' 'OR' condition
+Method: POST 
+
+- Returns contacts or companies objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&global_sort_key=-created_time&filterJson={"rules":[],"or_rules":[{"LHS":"updated_time","CONDITION":"BETWEEN","RHS":1574053200000,"RHS_NEW":1574312399999}, {"LHS":"created_time","CONDITION":"BETWEEN","RHS":1574053200000,"RHS_NEW":1574312399999}],"contact_type":"PERSON"' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
+
+### 12.6 Get list of Deals updated on particular date
+Method: POST 
+
+- Returns deals objects which is associated with given filter
+
+### Using curl
+```sh
+curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H "Accept: application/json" \
+-H "Content-Type :application/x-www-form-urlencoded" \
+-d 'page_size=25&filterJson={"rules":[{"LHS":"updated_time","CONDITION":"ON","RHS":1572580800000}],"or_rules":[],"contact_type":"OPPORTUNITY"}' \
+-v -u sample@agilecrm.com:123fghfhf******* -X POST
+```
