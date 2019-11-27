@@ -4926,7 +4926,7 @@ curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H
 -v -u sample@agilecrm.com:123fghfhf******* -X POST
 ```
 
-### 12.2 Get list of contacts updated after particulat date
+### 12.2 Get list of contacts updated after particular date
 Method: POST 
 
 - Returns contacts or companies objects which is associated with given filter
@@ -4939,7 +4939,7 @@ curl https://{your_domain}.agilecrm.com/dev/api/filters/filter/dynamic-filter -H
 -v -u sample@agilecrm.com:123fghfhf******* -X POST
 ```
 
-### 12.3 Get list of contacts updated on particulat date & associated with particular tag
+### 12.3 Get list of contacts updated on particular date & associated with particular tag
 Method: POST 
 
 - Returns contacts or companies objects which is associated with given filter
