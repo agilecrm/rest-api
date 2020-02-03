@@ -33,7 +33,7 @@ Table of contents
     * [6 Update star value by ID](#16-update-star-value-by-id)
     * [7 Update tags value by ID](#17-update-tags-value-by-id)
     * [8 Delete tags value by ID](#18-delete-tags-value-by-id)
-    * [9 Delete single contact](#110-delete-single-contact)
+    * [9 Delete single contact](#19-delete-single-contact)
     * [10 Search contact by email](#1101-search-contact-by-email)
       * [10.A Search contact by email](#1101-search-contact-by-email)
       * [10.B Search contact by email](#1102-search-contact-by-email)
