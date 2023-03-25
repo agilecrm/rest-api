@@ -836,7 +836,7 @@ curl https://{domain}.agilecrm.com/dev/api/contacts/edit/lead-score \
 - Status 400: If the input is in wrong format.
 
 ## 1.6 Update star value by ID
-###dev/api/contacts/edit/add-star
+### dev/api/contacts/edit/add-star
 Method: PUT 
 
 
